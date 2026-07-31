@@ -1,0 +1,1 @@
+instance_create_layer(x,y - 6,"Instances",obj_wmatR)

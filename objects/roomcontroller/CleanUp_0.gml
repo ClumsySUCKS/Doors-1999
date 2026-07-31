@@ -1,0 +1,1 @@
+with roomspot {instance_destroy()}

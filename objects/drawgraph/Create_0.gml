@@ -1,0 +1,26 @@
+ran = irandom_range(30,120)
+go = 0 
+alarm[0] = ran global.screechJump = 0
+ra = 0
+trans = 0
+ah = false 
+jl = false
+text[0] = "Found you!"
+text[1] = "Found you!"
+text[2] = "Found you!"
+message_current = 0
+message_draw = "" 
+increase = 4
+characters = 0
+choosetext = text[irandom(2)]
+message_length = string_length(choosetext)
+count = 1
+po = false
+gl = false
+walk_timer = 0
+global.hp = 100
+global.hp_max = 100
+global.death = 0
+global.rushKill = 0
+healthchange = global.hp
+global.drawblack = 0

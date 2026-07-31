@@ -1,0 +1,13 @@
+canDraw = false
+rop = false
+count = 0
+ialpha = 1
+aalpha = 0
+palpha = 0
+gh = false
+ny = false
+frame = 0
+frameGo = 0.9
+rushYes = false
+alarm[1] = 2.5
+asd = false

@@ -1,0 +1,2 @@
+
+canTeleport = true
