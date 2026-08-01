@@ -7,3 +7,6 @@ selectAction = function () { global.client = instance_create_depth(0,0,0,obj_cli
 	show_debug_message("Clicked lobbyitem")};
 
 textColor = c_white
+
+
+
