@@ -16,4 +16,6 @@ sa = false
 localSteamID = steam_get_user_steam_id()
 isLocal = localSteamID == steamID
 if global.doorcreated == false
-{instance_create_depth(0,0,-10,doorcontroller)}
+{global.doorcreated = true
+	instance_create_layer(0,0,"HUD",drawgraph)
+	instance_create_depth(0,0,-10,doorcontroller)}
