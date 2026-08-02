@@ -17,7 +17,7 @@ while(steam_net_packet_receive()) {
 	_layer = layer_get_id("Player")
 	_x = buffer_read(inbuf, buffer_u16)
 	_y = buffer_read(inbuf, buffer_u16)
-	_steamID = buffer_read(inbuf, buffer_f64)
+	_steamID = buffer_read(inbuf, buffer_u64)
 	_num = array_length(playerList)
 	_inst = instance_create_layer(_x,_y,_layer,obj_player, {
 		steamName : steam_get_user_persona_name(_steamID),
