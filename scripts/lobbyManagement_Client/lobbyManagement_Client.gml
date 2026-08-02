@@ -13,7 +13,7 @@ function sync_players(_new_list) {
 			array_push(playerList, _new_list[_i])}
 			else {
 				for (var _k = 0; _k < array_length(playerList); _k++){
-					if playerList[_k].steamID = _newSteamID {
+					if playerList[_k].steamID == _newSteamID {
 						playerList[_k].startPos = _new_list[_i].startPos
 						playerList[_k].lobbyMemberID = _new_list[_i].lobbyMemberID
 						if playerList[_k].character == undefined && playerList[_k].steamID != _newSteamID {
