@@ -8,7 +8,7 @@ switch(async_load[? "event_type"])
 	if (async_load[?"change_flags"] & steam_lobby_member_change_entered){
 		
 		show_debug_message("Player joined " + _fromName)
-		var _slot = array_length(playerList)
+		var _slot = ar	ray_length(playerList)
 		array_push(playerList,
 		{
 			steamID : _fromID,
