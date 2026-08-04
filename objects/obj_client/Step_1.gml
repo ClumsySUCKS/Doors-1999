@@ -9,9 +9,9 @@ while(steam_net_packet_receive()) {
 	
 	switch _type {
 		case NETWORK_PACKETS.SYNC_PLAYERS:
-		_playerList = buffer_read(inbuf, buffer_string)
-		_playerList = json_parse(_playerList)
-		sync_players(_playerList)
+		playerList = buffer_read(inbuf, buffer_string)
+		playerList = json_parse(playerList)
+		sync_players(playerList)
 		break
 	case NETWORK_PACKETS.SPAWN_OTHER:
 	_layer = layer_get_id("Player")
@@ -34,8 +34,8 @@ while(steam_net_packet_receive()) {
 	break
 	
 	case NETWORK_PACKETS.SPAWN_SELF:
-	for (var _i = 0; _i < array_length(_playerList); _i++) {
-		if _playerList[_i].steamID == steamID then lobbyMemberID = playerList[_i].lobbyMemberID
+	for (var _i = 0; _i < array_length(playerList); _i++) {
+		if playerList[_i].steamID == steamID then lobbyMemberID = playerList[_i].lobbyMemberID
 	}
 	_layer = layer_get_id("Player")
 	_x = buffer_read(inbuf, buffer_u16)
