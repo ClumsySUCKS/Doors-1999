@@ -38,11 +38,16 @@ function send_other_player_spawn(_steam_id, _pos) {
 }
 /// @self obj_server
 function shrink_player_list(){
-	//_shrunkList = playerList
-	//for (var _i = 0; _i < array_length(_shrunkList); _i++) {
-	//	_shrunkList[_i].character = undefined
-	//}
-	return json_stringify(playerList)
+    var _cleanList = [];
+    for (var _i = 0; _i < array_length(playerList); _i++) {
+        array_push(_cleanList, {
+            steamID: playerList[_i].steamID,
+            steamName: playerList[_i].steamName,
+            startPos: playerList[_i].startPos,
+            lobbyMemberID: playerList[_i].lobbyMemberID
+        });
+    }
+    return json_stringify(_cleanList);
 }
 
 function server_player_spawn_at_pos(_steam_id, _pos){
