@@ -2,12 +2,12 @@
 
 _playerLayer = layer_get_id("Player")
 
-for (var _player = 0; _player < array_length(playerList); _player++) {
+for (var _player = 0; _player < array_length(playerList); _player = _player + 1) {
 	_pos = grab_spawn_point(_player)
 	_inst = instance_create_layer(_pos.x,_pos.y, _playerLayer, obj_player, {
-		steamName : playerList[_player].steamName,
+		steamName : playerList[_player],
 		steamID : playerList[_player].steamID,
-		lobbyMemberID : playerList[_player].lobbyMemberID
+		lobbyMemberID : _player
 		
 	})
 	playerList[_player].character = _inst

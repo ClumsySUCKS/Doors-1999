@@ -1,5 +1,4 @@
 function Input_script(_local){
-	if _local {
 
 
 
@@ -32,7 +31,7 @@ else
 	if (sprite_index == spr_charanoobR) sprite_index = spr_charanoob_standR
 	else if (sprite_index == spr_charanoobL) sprite_index = spr_charanoob_standL
 	else if (sprite_index == spr_charanoobU) sprite_index = spr_charanoob_standU
-	else if (sprite_index == spr_charanoobD) sprite_index = spr_charanoob_standD}}
+	else if (sprite_index == spr_charanoobD) sprite_index = spr_charanoob_standD}
 	
 		
 
