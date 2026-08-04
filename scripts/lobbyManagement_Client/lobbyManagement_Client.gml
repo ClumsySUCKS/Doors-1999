@@ -25,7 +25,7 @@ function sync_players(_new_list) {
 ///@self obj_client
 function client_player_spawn_at_pos(_player_info){
 	_layer = layer_get_id("Player")
-	_name = _player_info.steamName
+	_name = steam_get_persona_name(_player_info.steamID)
 	_steamID = _player_info.steamID
 	_num = _player_info.lobbyMemberID	
 	_loc = _player_info.startPos
