@@ -16,7 +16,7 @@ function sync_players(_new_list) {
 					if playerList[_k].steamID == _newSteamID {
 						playerList[_k].startPos = _new_list[_i].startPos
 						playerList[_k].lobbyMemberID = _new_list[_i].lobbyMemberID
-						if playerList[_k].character == undefined && playerList[_k].steamID != _newSteamID {
+						if playerList[_k].character == undefined && playerList[_k].steamID != steamID {
 							_inst = client_player_spawn_at_pos(playerList[_k])
 							playerList[_k].character = _inst
 							
