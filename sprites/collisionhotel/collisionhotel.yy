@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"collisionhotel",
   "bboxMode":0,
-  "bbox_bottom":144,
+  "bbox_bottom":142,
   "bbox_left":0,
   "bbox_right":207,
   "bbox_top":0,

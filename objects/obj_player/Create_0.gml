@@ -1,4 +1,4 @@
-global.guiw = display_get_gui_width() global.doorcreated = false 
+global.guiw = display_get_gui_width() global.doorcreated = false lightsubin = 0
 global.guih = display_get_gui_height()
 collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL]
 move_speed = 1
