@@ -1,13 +1,6 @@
 
 
-if (!surface_exists(self.light_surface))
-{
-	camera = view_get_camera(0)
-	camw = camera_get_view_width(camera)
-	camh = camera_get_view_height(camera)
-	
-	self.light_surface = surface_create(camw,camh)
-}
+
 
 surface_set_target(self.light_surface)
 draw_clear(c_black)

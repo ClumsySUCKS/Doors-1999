@@ -7,10 +7,7 @@
 
 
 if global.rushKill == 1 or global.rushKill == 2
-{	if global.rushKill == 1
-	{
-		alarm[0] = 60	
-	}
+{	
 	global.rushKill = 2
 	draw_sprite(dark,0,0,0)
 	if go == 2
@@ -33,8 +30,7 @@ if go == 4 or go == 4.1
 }
 }
 		if go == 5 or go == 5.1
-		{if count >= 150 {go = go + 1}
-count = count + 1 draw_sprite_ext(rushd6,0,global.guiw * 0.5, global.guih * 0.5,6 + ra,6 + ra,0,c_white,1) if go == 5 {audio_play_sound(rushscreamt,6,true,-100) go = go + 0.1}
+		{draw_sprite_ext(rushd6,0,global.guiw * 0.5, global.guih * 0.5,6 + ra,6 + ra,0,c_white,1) if go == 5 {audio_play_sound(rushscreamt,6,true,-100) go = go + 0.1}
 			
 		}
 		if go == 6

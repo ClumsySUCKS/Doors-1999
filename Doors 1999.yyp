@@ -81,6 +81,7 @@
     {"id":{"name":"obj_client","path":"objects/obj_client/obj_client.yy",},},
     {"id":{"name":"obj_dark","path":"objects/obj_dark/obj_dark.yy",},},
     {"id":{"name":"obj_darkin","path":"objects/obj_darkin/obj_darkin.yy",},},
+    {"id":{"name":"obj_game_play","path":"objects/obj_game_play/obj_game_play.yy",},},
     {"id":{"name":"obj_game","path":"objects/obj_game/obj_game.yy",},},
     {"id":{"name":"obj_hide","path":"objects/obj_hide/obj_hide.yy",},},
     {"id":{"name":"obj_hostbutton","path":"objects/obj_hostbutton/obj_hostbutton.yy",},},
