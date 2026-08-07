@@ -1,9 +1,10 @@
 global.guiw = display_get_gui_width() global.doorcreated = false lightsubin = 0 i = false
+global.guiw = display_get_gui_width() global.doorcreated = false lightsubin = 0 i = false
 global.guih = display_get_gui_height()  isCrouched = false
 collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL]
 move_speed = 1  camera_set_view_target(view_camera[0], self)
 playerMoveSprites = [] 
-playerStandSprites = []
+playerStandSprites = [] movinga = false
 playerStartSprite = undefined
 switch player_id {
 	case 0: playerStartSprite = spr_charanoob_standU 
@@ -15,7 +16,7 @@ switch player_id {
 	array_push(playerStandSprites,spr_charaavery_standU,spr_charaavery_standD,spr_charaavery_standL,spr_charaavery_standR)
 }
 	
-sprite_index = playerStartSprite
+self.sprite_index = playerStartSprite
 canTeleport = false
 exityes = false
 global.isHiding = false 
