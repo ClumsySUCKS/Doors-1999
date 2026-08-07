@@ -1,22 +1,9 @@
-global.guiw = display_get_gui_width() global.doorcreated = false lightsubin = 0 i = false
+global.guiw = display_get_gui_width() 
 global.guiw = display_get_gui_width() global.doorcreated = false lightsubin = 0 i = false
 global.guih = display_get_gui_height()  isCrouched = false
 collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL]
-move_speed = 1  camera_set_view_target(view_camera[0], self)
-playerMoveSprites = [] 
-playerStandSprites = [] movinga = false
-playerStartSprite = undefined
-switch player_id {
-	case 0: playerStartSprite = spr_charanoob_standU 
-	array_push(playerMoveSprites,spr_charanoobU,spr_charanoobD,spr_charanoobL,spr_charanoobR)
-	array_push(playerStandSprites,spr_charanoob_standU,spr_charanoob_standD,spr_charanoob_standL,spr_charanoob_standR)
-	break
-	case 1: playerStartSprite = spr_charaavery_standU
-	array_push(playerMoveSprites,spr_charaaveryU,spr_charaaveryD,spr_charaaveryL,spr_charaaveryR)
-	array_push(playerStandSprites,spr_charaavery_standU,spr_charaavery_standD,spr_charaavery_standL,spr_charaavery_standR)
-}
-	
-self.sprite_index = playerStartSprite
+move_speed = 1  
+self.sprite_index = spr_charanoob_standU
 canTeleport = false
 exityes = false
 global.isHiding = false 
@@ -32,5 +19,4 @@ isLocal = localSteamID == steamID
 if global.doorcreated == false
 {global.doorcreated = true
 	instance_create_depth(0,0,-10,doorcontroller)}
-	x = obj_spawnPoint.x
-	y = obj_spawnPoint.y
+inti_controls()

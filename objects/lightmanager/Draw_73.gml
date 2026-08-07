@@ -10,17 +10,17 @@ gpu_set_blendmode(bm_subtract)
 
 with obj_wall_light_D
 {
-	draw_sprite_ext(spr_wall_light,0,obj_wall_light_D.x,obj_wall_light_D.y,0,0,0,c_blue,1)
+	draw_sprite(spr_wall_light,0,x,y)
 }
 
 with obj_wall_light_L
 {
-	draw_sprite(spr_wall_light,0,obj_wall_light_L.x,obj_wall_light_L.y)
+	draw_sprite(spr_wall_light,0,x,y)
 }
 
 with obj_wall_light_R
 {
-	draw_sprite(spr_wall_light,0,obj_wall_light_R.x,obj_wall_light_R.y)
+	draw_sprite(spr_wall_light,0,x,y)
 }
 
 with obj_player
