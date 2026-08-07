@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"lobbyManagement_Server",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"lobbyManagement_Server",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

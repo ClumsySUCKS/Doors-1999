@@ -15,9 +15,10 @@ switch(async_load[?"event_type"]) {
 		steam_lobby_set_data("isGameMakerTest", "true")
 		steam_lobby_set_data("Creator", steam_get_persona_name())
 		}
-		show_debug_message("It should go to room why no go")
+
 		room_goto(rm_3)
 
+break
 	
 	
 	
