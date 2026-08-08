@@ -26,7 +26,7 @@
   ],
   "name":"spr_charanoobD",
   "nineSlice":null,
-  "origin":1,
+  "origin":7,
   "parent":{
     "name":"noob",
     "path":"folders/Sprites/players/noob.yy",
@@ -88,7 +88,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":8,
-    "yorigin":0,
+    "yorigin":16,
   },
   "swatchColours":null,
   "swfPrecision":0.5,
