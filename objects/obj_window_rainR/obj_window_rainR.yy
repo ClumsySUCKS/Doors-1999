@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_window",
+  "%Name":"obj_window_rainR",
   "eventList":[],
   "managed":true,
-  "name":"obj_window",
+  "name":"obj_window_rainR",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_window",
-    "path":"sprites/spr_window/spr_window.yy",
+    "name":"spr_window_rain",
+    "path":"sprites/spr_window_rain/spr_window_rain.yy",
   },
   "spriteMaskId":null,
   "visible":true,

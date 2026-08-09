@@ -22,7 +22,6 @@ with obj_wall_light_R
 {
 	draw_sprite(spr_wall_light,0,x,y)
 }
-
 with obj_player
 {
 	draw_sprite(light,0,obj_player.x - 24,obj_player.y - 16)	
