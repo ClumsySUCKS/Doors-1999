@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_carrier",
+  "%Name":"obj_reception_stool_bottom",
   "eventList":[],
   "managed":true,
-  "name":"obj_carrier",
+  "name":"obj_reception_stool_bottom",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite138",
-    "path":"sprites/Sprite138/Sprite138.yy",
+    "name":"spr_receptionstoolbottom",
+    "path":"sprites/spr_receptionstoolbottom/spr_receptionstoolbottom.yy",
   },
   "spriteMaskId":null,
   "visible":true,
