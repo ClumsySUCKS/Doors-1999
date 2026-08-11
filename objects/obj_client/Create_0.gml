@@ -1,6 +1,6 @@
 /// @description Init Client Variables
 
-
+	 playerList = []
 steamID = steam_get_user_steam_id()
 steamName = steam_get_persona_name()
 lobbyMemberID = undefined
