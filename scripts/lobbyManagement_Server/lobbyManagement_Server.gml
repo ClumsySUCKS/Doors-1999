@@ -58,3 +58,18 @@ function server_player_spawn_at_pos(_steam_id, _pos){
 		}}
 }
 
+///@self obj_Server
+function send_player_input_to_clients(_player_input){
+	if _player_input == undefined then return
+	var _b = buffer_create(13, buffer_fixed, 1); //1+8+1+1+1+1
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.SERVER_PLAYER_INPUT);//1
+	buffer_write(_b, buffer_u64, _player_input.steamID);//8
+	buffer_write(_b, buffer_s8, _player_input.xInput);//1
+	buffer_write(_b, buffer_s8, _player_input.yInput);//1
+	for (var _i = 0; _i < array_length(obj_server.playerList); _i++){
+		if (obj_server.playerList[_i].steamID != obj_server.steamID) {
+			steam_net_packet_send(obj_server.playerList[_i].steamID, _b)
+		}
+	}
+	buffer_delete(_b);
+}
