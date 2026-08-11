@@ -1,0 +1,1 @@
+if sniffed == true && looked == true {}
