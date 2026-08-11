@@ -8,5 +8,5 @@ amChance = 0
 aambush = irandom(amChance)
 canA = false
 canR = false
-//playerspawn = [obj_player.x + 16, obj_player.x - 16,obj_player.x, obj_player.y - 16]
+playerspawn = [obj_player.x + 16, obj_player.x - 16,obj_player.x, obj_player.y - 16]
 // SPAWNED BY OBJ_PLAYER NOW
