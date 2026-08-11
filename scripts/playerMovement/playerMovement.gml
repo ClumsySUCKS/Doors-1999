@@ -1,15 +1,3 @@
 function playerMovement(){
-	
-	// Logic for runKey
-	if (runKey == 1 and moveSpeed >= 5) then moveSpeed = 10
-	if (runKey == 0 and moveSpeed == 10) then moveSpeed = 5
-	
-	// Logic to apply movement
-	x += xInput * moveSpeed;
-	y += yInput * moveSpeed;
-	
-	// Logic for getting hit by bullet
-	if currentCooldown > 0 then --currentCooldown
-	if moveSpeed < 5 then moveSpeed = moveSpeed*1.05
-	
+	move_and_collide(hor * move_speed, ver * move_speed, collidewith, undefined, undefined, undefined, move_speed, move_speed);
 }
