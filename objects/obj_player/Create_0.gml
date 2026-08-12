@@ -15,8 +15,10 @@ walk_timer = 0
 ka = false
 sa = false 
 localSteamID = steam_get_user_steam_id()
-isLocal = localSteamID == steamID
+lobbyHost = steam_lobby_get_owner_id()
+isHost = steam_lobby_is_owner()
+isLocal = (localSteamID == steamID)
 if global.doorcreated == false
 {global.doorcreated = true
 	instance_create_depth(0,0,-10,doorcontroller)}
-inti_controls()
+init_controls()
