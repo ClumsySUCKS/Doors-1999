@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_reception_stool_top",
+  "%Name":"obj_reception_stool_top_U",
   "eventList":[],
   "managed":true,
-  "name":"obj_reception_stool_top",
+  "name":"obj_reception_stool_top_U",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
