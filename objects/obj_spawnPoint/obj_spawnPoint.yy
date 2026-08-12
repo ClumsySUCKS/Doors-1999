@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_spawnPoint",
+  "%Name":"obj_SpawnPoint",
   "eventList":[],
   "managed":true,
-  "name":"obj_spawnPoint",
+  "name":"obj_SpawnPoint",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
