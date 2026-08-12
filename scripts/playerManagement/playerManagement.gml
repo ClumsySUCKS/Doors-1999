@@ -51,6 +51,8 @@ function send_player_positions() {
 		buffer_write(_b, buffer_u64, _player.steamID);//8
 		buffer_write(_b, buffer_u16, _player.character.x);//2
 		buffer_write(_b, buffer_u16, _player.character.y);//2
+		buffer_write(_b, buffer_u8, _player.character.sprite_index)
+		buffer_write(_b, buffer_u8,_player.character.image_index)
 		for (var _k = 0; _k < array_length(playerList); _k++){
 			if (playerList[_k].steamID != obj_Server.steamID) {
 				steam_net_packet_send(playerList[_k].steamID, _b)	
@@ -73,6 +75,8 @@ function update_player_position(_b) {
 			if playerList[_i].character = undefined then continue
 			playerList[_i].character.x = _x	
 			playerList[_i].character.y = _y
+			playerList[_i].character.sprite_index = _sprite_index
+			playerList[_i].character.image_index = _image_index
 		}
 	}
 	
