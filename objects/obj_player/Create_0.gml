@@ -4,6 +4,14 @@ global.guiw = display_get_gui_width() global.doorcreated = false lightsubin = 0 
 global.guih = display_get_gui_height()  isCrouched = false
 collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL,obj_windowR,obj_hotelplant,obj_reception_stool_bottom,obj_reception_stool_top_U,obj_windowL,obj_inviswall]
 move_speed = 1
+playerupsprites = [spr_charanoobU,spr_charaaveryU]
+playerupstandsprites = [spr_charanoob_standU,spr_charaavery_standU]
+playerdownsprites = [spr_charanoobD,spr_charaaveryD]
+playerdownstandsprites = [spr_charanoob_standD,spr_charaavery_standD]
+playerleftsprites = [spr_charanoobL,spr_charaaveryL]
+playerleftstandsprites = [spr_charanoob_standL,spr_charaavery_standL]
+playerrightsprites = [spr_charanoobR,spr_charaaveryR]
+playerrightstandsprites = [spr_charanoob_standR,spr_charaavery_standR]
 self.sprite_index = playerupstandsprites[lobbyMemberID]
 canTeleport = false 
 exityes = false
@@ -23,11 +31,3 @@ if global.doorcreated == false
 {global.doorcreated = true
 	instance_create_depth(0,0,-10,doorcontroller)}
 init_controls()
-playerupsprites = [spr_charanoobU,spr_charaaveryU]
-playerupstandsprites = [spr_charanoob_standU,spr_charaavery_standU]
-playerdownsprites = [spr_charanoobD,spr_charaaveryD]
-playerdownstandsprites = [spr_charanoob_standD,spr_charaavery_standD]
-playerleftsprites = [spr_charanoobL,spr_charaaveryL]
-playerleftstandsprites = [spr_charanoob_standL,spr_charaavery_standL]
-playerrightsprites = [spr_charanoobR,spr_charaaveryR]
-playerrightstandsprites = [spr_charanoob_standR,spr_charaavery_standR]
