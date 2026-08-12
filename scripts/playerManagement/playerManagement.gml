@@ -68,8 +68,8 @@ function update_player_position(_b) {
 	var _steam_id = buffer_read(_b, buffer_u64)
 	var _x = buffer_read(_b, buffer_u16)
 	var _y = buffer_read(_b, buffer_u16)
-	var _sprite_index = buffer_read(_b, buffer_u8)
-	var _image_index = buffer_read(_b, buffer_u8)
+	var _sprite_index = buffer_read(_b, buffer_u16)
+	var _image_index = buffer_read(_b, buffer_u16)
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		if (_steam_id == playerList[_i].steamID) {
 			if playerList[_i].character = undefined then continue
