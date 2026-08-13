@@ -4,6 +4,11 @@ function grab_spawn_point(_player) {
 	return {x:_spawnPoint.x, y:_spawnPoint.y}
 }
 
+function get_sprite_index(_player) {
+	var _find_player = instance_find(obj_player, _player)
+	if _player == noone return {sprite_index : spr_doory}
+	return {sprite_index:_find_player.sprite_index}}
+
 function send_player_input(_input,_lobby_host){
 	var _xInput = (_input.rightKey - _input.leftKey)
 	var _yInput = (_input.downKey - _input.upKey)

@@ -7,35 +7,7 @@ function get_controls(_is_host, _is_local)
 
 	xInput = hor
 	yInput = ver
-	if (hor != 0 or ver != 0)
-{
-	if (ver > 0) sprite_index = playerdownsprites[lobbyMemberID];
-	else if (ver < 0) sprite_index = playerupsprites[lobbyMemberID];
-	else if (hor > 0) sprite_index = playerrightsprites[lobbyMemberID];
-	else if (hor < 0) sprite_index = playerleftsprites[lobbyMemberID];
-	if walk_timer < 23 {
-    walk_timer = walk_timer + 1
-}
-else {
-	if sa == false
-		{ walk_timer=0;
-		 audio_play_sound(walk1,20,0)
-		 sa = true}
-		 
-	if sa == true
-	{
-		walk_timer = 0
-		audio_play_sound(walk2,20,0)
-		sa = false
-	}
-    }
-}
-else
-{
-	if (sprite_index == playerrightsprites[lobbyMemberID]) sprite_index = playerrightstandsprites[lobbyMemberID]
-	else if (sprite_index == playerleftsprites[lobbyMemberID]) sprite_index = playerleftstandsprites[lobbyMemberID]
-	else if (sprite_index == playerupsprites[lobbyMemberID]) sprite_index = playerupstandsprites[lobbyMemberID]
-	else if (sprite_index == playerdownsprites[lobbyMemberID]) sprite_index = playerdownstandsprites[lobbyMemberID]}
+
 
 	
 	//Send Host Input to Clients
