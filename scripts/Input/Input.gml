@@ -15,7 +15,7 @@ function get_controls(_is_host, _is_local)
 	else if (hor < 0) sprite_index = spr_charanoobL;
 	if walk_timer < 23 {
     walk_timer = walk_timer + 1
-}
+}b
 else {
 	if sa == false
 		{ walk_timer=0;
