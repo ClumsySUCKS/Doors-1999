@@ -2,21 +2,17 @@ function get_controls(_is_host, _is_local)
 {
 	if (_is_host && _is_local) {
 	//Directions inputs
-	rightKey = keyboard_check(vk_right) ||keyboard_check(ord("D")) || gamepad_button_check( 0, gp_padr );
-	leftKey  = keyboard_check(vk_left) || keyboard_check(ord("A")) || gamepad_button_check( 0, gp_padl );
-	downKey  = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check( 0, gp_padd );
-	upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_button_check( 0, gp_padu );
+	hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
+	ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 	allDir = rightKey+leftKey+downKey+upKey
-	xInput = (rightKey - leftKey)
-	yInput = (downKey - upKey)
+
+	xInput = hor
+	yInput = ver
 	
-	//Action inputs
-	runKey = keyboard_check(vk_shift) || gamepad_button_check( 0, gp_face3 );
-	actionKey = keyboard_check(vk_space) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
 	
 	
 	//Send Host Input to Clients
-	var _input = {steamID: lobbyHost, xInput:xInput, yInput:yInput, runKey:runKey, actionKey:actionKey}
+	var _input = {steamID: lobbyHost, xInput:xInput, yInput:yInput}
 	send_player_input_to_clients(_input)
 	
 	}
@@ -27,12 +23,9 @@ function get_controls(_is_host, _is_local)
 	var _downKey  = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check( 0, gp_padd );
 	var _upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_button_check( 0, gp_padu );
 	
-	//Action inputs
-	var _runKey = keyboard_check(vk_shift) || gamepad_button_check( 0, gp_face3 );
-	var _actionKey = keyboard_check(vk_space) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
-	
+
 	//Send input to Server
-	var _input = {rightKey:_rightKey, leftKey:_leftKey, downKey:_downKey, upKey:_upKey, runKey:_runKey, actionKey:_actionKey}
+	var _input = {rightKey:_rightKey, leftKey:_leftKey, downKey:_downKey, upKey:_upKey}
 	send_player_input(_input,lobbyHost);
 	}
 
@@ -47,9 +40,6 @@ function init_controls(){
 	
 	xInput = 0
 	yInput = 0
-	
-	//Action inputs
-	runKey		= 0
-	actionKey	= 0
+
 		
 }
