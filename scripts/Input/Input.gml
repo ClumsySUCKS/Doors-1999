@@ -4,7 +4,6 @@ function get_controls(_is_host, _is_local)
 	//Directions inputs
 	hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 	ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
-	allDir = rightKey+leftKey+downKey+upKey
 
 	xInput = hor
 	yInput = ver
