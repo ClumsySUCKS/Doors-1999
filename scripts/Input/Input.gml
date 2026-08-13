@@ -35,13 +35,13 @@ else
 	if (sprite_index == playerrightsprites[lobbyMemberID]) sprite_index = playerrightstandsprites[lobbyMemberID]
 	else if (sprite_index == playerleftsprites[lobbyMemberID]) sprite_index = playerleftstandsprites[lobbyMemberID]
 	else if (sprite_index == playerupsprites[lobbyMemberID]) sprite_index = playerupstandsprites[lobbyMemberID]
-	else if (sprite_index == playerdownsprites[lobbyMemberID]) sprite_index = playerdownstandsprites[lobbyMemberID]}}
+	else if (sprite_index == playerdownsprites[lobbyMemberID]) sprite_index = playerdownstandsprites[lobbyMemberID]}
 
 	
 	//Send Host Input to Clients
 	var _input = {steamID: lobbyHost, xInput:xInput, yInput:yInput}
 	send_player_input_to_clients(_input)
-	
+	}
 	
 	if (!_is_host && _is_local) {
 	//Directions inputs
@@ -56,7 +56,7 @@ else
 	send_player_input(_input,lobbyHost);
 	}
 
-}
+}	
 
 function init_controls(){
 	//Directions inputs
