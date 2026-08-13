@@ -4,10 +4,7 @@ function grab_spawn_point(_player) {
 	return {x:_spawnPoint.x, y:_spawnPoint.y}
 }
 
-function get_sprite_index(_player) {
-	var _find_player = instance_find(obj_player, _player)
-	if _player == noone return {sprite_index : spr_doory}
-	return {sprite_index:_find_player.sprite_index}}
+
 
 function send_player_input(_input,_lobby_host){
 	var _xInput = (_input.rightKey - _input.leftKey)
@@ -49,7 +46,7 @@ function send_player_positions() {
 		var _player = playerList[_i]
 		if _player.character == undefined then continue
 		if _player.steamID == undefined then continue
-		var _b = buffer_create(13, buffer_fixed, 1); //1+8+2+2
+		var _b = buffer_create(15, buffer_fixed, 1); //1+8+2+2
 		buffer_write(_b, buffer_u8, NETWORK_PACKETS.PLAYER_POSITION);//1
 		buffer_write(_b, buffer_u64, _player.steamID);//8
 		buffer_write(_b, buffer_u16, _player.character.x);//2
