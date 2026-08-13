@@ -13,8 +13,8 @@ for (var _player = 0; _player < array_length(playerList); _player++) {
 								})
 	playerList[_player].character = _inst
 	playerList[_player].startPos = _pos
-	_inst.sprite_index = get_sprite_index(_player)
 	if (playerList[_player].steamID == steamID) then character = _inst
+	charater.sprite_index = _spr_index
 }
 
 alarm[0] = 5
