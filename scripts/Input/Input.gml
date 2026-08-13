@@ -9,10 +9,10 @@ function get_controls(_is_host, _is_local)
 	yInput = ver
 	if (hor != 0 or ver != 0)
 {
-	if (ver > 0) sprite_index = spr_charanoobD;
-	else if (ver < 0) sprite_index = spr_charanoobU;
-	else if (hor > 0) sprite_index = spr_charanoobR;
-	else if (hor < 0) sprite_index = spr_charanoobL;
+	if (ver > 0) sprite_index = playerdownsprites[lobbyMemberID];
+	else if (ver < 0) sprite_index = playerupsprites[lobbyMemberID];
+	else if (hor > 0) sprite_index = playerrightsprites[lobbyMemberID];
+	else if (hor < 0) sprite_index = playerleftsprites[lobbyMemberID];
 	if walk_timer < 23 {
     walk_timer = walk_timer + 1
 }
@@ -32,10 +32,10 @@ else {
 }
 else
 {
-	if (sprite_index == spr_charanoobR) sprite_index = spr_charanoob_standR
-	else if (sprite_index == spr_charanoobL) sprite_index = spr_charanoob_standL
-	else if (sprite_index == spr_charanoobU) sprite_index = spr_charanoob_standU
-	else if (sprite_index == spr_charanoobD) sprite_index = spr_charanoob_standD}}
+	if (sprite_index == playerrightsprites[lobbyMemberID]) sprite_index = playerrightstandsprites[lobbyMemberID]
+	else if (sprite_index == playerleftsprites[lobbyMemberID]) sprite_index = playerleftstandsprites[lobbyMemberID]
+	else if (sprite_index == playerupsprites[lobbyMemberID]) sprite_index = playerupstandsprites[lobbyMemberID]
+	else if (sprite_index == playerdownsprites[lobbyMemberID]) sprite_index = playerdownstandsprites[lobbyMemberID]}}
 
 	
 	//Send Host Input to Clients
