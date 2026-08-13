@@ -9,7 +9,7 @@ if (xInput != 0 || yInput != 0) {
     else if (yInput < 0) sprite_index = playerupsprites[lobbyMemberID];
 } else {
     image_speed = 0;
-    image_index = 0; // Idle frame
+    image_index = 1; // Idle frame
 }
 
 	
