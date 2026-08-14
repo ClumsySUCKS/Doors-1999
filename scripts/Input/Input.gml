@@ -23,7 +23,7 @@ function get_controls(_is_host, _is_local)
 	var _leftKey  = keyboard_check(vk_left) || keyboard_check(ord("A")) || gamepad_button_check( 0, gp_padl );
 	var _downKey  = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check( 0, gp_padd );
 	var _upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_button_check( 0, gp_padu );
-	var _actionKey = keyboard_check("E")
+	var _actionKey = keyboard_check(ord("E"))
 	
 
 	//Send input to Server
