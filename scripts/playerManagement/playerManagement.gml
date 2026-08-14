@@ -46,13 +46,13 @@ function send_player_positions() {
 		var _player = playerList[_i]
 		if _player.character == undefined then continue
 		if _player.steamID == undefined then continue
-		var _b = buffer_create(15, buffer_fixed, 1); //1+8+2+2
+		var _b = buffer_create(20, buffer_fixed, 1); //1+8+2+2
 		buffer_write(_b, buffer_u8, NETWORK_PACKETS.PLAYER_POSITION);//1
 		buffer_write(_b, buffer_u64, _player.steamID);//8
 		buffer_write(_b, buffer_u16, _player.character.x);//2
 		buffer_write(_b, buffer_u16, _player.character.y);//2
-		buffer_write(_b, buffer_u8, _player.character.sprite_index)
-		buffer_write(_b, buffer_u8, _player.character.image_index)
+		buffer_write(_b, buffer_s16, _player.character.sprite_index)
+		buffer_write(_b, buffer_s16, _player.character.image_index)
 		for (var _k = 0; _k < array_length(playerList); _k++){
 			if (playerList[_k].steamID != obj_Server.steamID) {
 				steam_net_packet_send(playerList[_k].steamID, _b)	
@@ -68,8 +68,8 @@ function update_player_position(_b) {
 	var _steam_id = buffer_read(_b, buffer_u64)
 	var _x = buffer_read(_b, buffer_u16)
 	var _y = buffer_read(_b, buffer_u16)
-	var _sprite_index = buffer_read(_b, buffer_u8)
-	var _image_index = buffer_read(_b, buffer_u8)
+	var _sprite_index = buffer_read(_b, buffer_s16)
+	var _image_index = buffer_read(_b, buffer_s16)
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		if (_steam_id == playerList[_i].steamID) {
 			if playerList[_i].character = undefined then continue
