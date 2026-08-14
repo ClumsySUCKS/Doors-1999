@@ -9,4 +9,5 @@ aambush = irandom(amChance)
 canA = false
 canR = false
 playerspawn = [obj_player.x + 16, obj_player.x - 16,obj_player.x, obj_player.y - 16]
+instance_create_layer(0,0,"HUD",drawgraph)
 // SPAWNED BY OBJ_PLAYER NOW
