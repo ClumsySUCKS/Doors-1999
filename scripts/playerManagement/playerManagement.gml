@@ -46,7 +46,7 @@ function send_player_positions() {
 		var _player = playerList[_i]
 		if _player.character == undefined then continue
 		if _player.steamID == undefined then continue
-		var _b = buffer_create(20, buffer_fixed, 1); //1+8+2+2
+		var _b = buffer_create(20, buffer_grow, 1); //1+8+2+2
 		buffer_write(_b, buffer_u8, NETWORK_PACKETS.PLAYER_POSITION);//1
 		buffer_write(_b, buffer_u64, _player.steamID);//8
 		buffer_write(_b, buffer_u16, _player.character.x);//2
