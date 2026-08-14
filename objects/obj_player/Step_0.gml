@@ -13,7 +13,7 @@ if (xInput != 0 || yInput != 0) {
     self.image_index = 1; // Idle frame
 }
 }
-if (actionKey) {
+if (hasPressed) {
     // Check if the hop animation reached or passed frame 6
     if (image_index >= 6) {
         var closetstool = instance_nearest(x, y, obj_reception_stool_top_U);
