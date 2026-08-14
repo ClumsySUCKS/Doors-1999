@@ -7,14 +7,10 @@ function get_controls(_is_host, _is_local)
 
 	xInput = hor
 	yInput = ver
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	
-	actionKey = keyboard_check(ord("E"))
-=======
->>>>>>> parent of a1910d8 (i could fuck things with this)
-=======
->>>>>>> parent of a1910d8 (i could fuck things with this)
+
+
 
 
 	
