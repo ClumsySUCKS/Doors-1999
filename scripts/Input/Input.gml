@@ -8,7 +8,7 @@ function get_controls(_is_host, _is_local)
 	xInput = hor
 	yInput = ver
 	
-	actionKey = keyboard_check("E")
+	actionKey = keyboard_check(ord("E"))
 
 
 	
