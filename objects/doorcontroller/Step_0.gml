@@ -18,3 +18,6 @@ if reroll == true && global.isRoomdark == 0
 			if newinst != noone {newinst.sprite_index = spr_screech4}}
 		screechDecide = irandom(3)
 		}}
+
+		
+			

@@ -13,8 +13,8 @@ playerleftstandsprites = [spr_charanoob_standL,spr_charaavery_standL]
 playerrightsprites = [spr_charanoobR,spr_charaaveryR]
 playerrightstandsprites = [spr_charanoob_standR,spr_charaavery_standR]
 self.sprite_index = playerupstandsprites[lobbyMemberID]
-canTeleport = false 
-exityes = false
+canTeleport = false  stoolpotential = false
+exityes = false hasPressed = false
 global.isHiding = false 
 global.rushSpawn = false
 global.amSpawn = false
@@ -31,3 +31,4 @@ if global.doorcreated == false
 {global.doorcreated = true
 	instance_create_depth(0,0,-10,doorcontroller)}
 init_controls()
+if room == rm_reception {stoolpotential = true}
