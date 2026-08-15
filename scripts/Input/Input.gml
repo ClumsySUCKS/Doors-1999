@@ -7,6 +7,8 @@ function get_controls(_is_host, _is_local)
 
 	xInput = hor
 	yInput = ver
+	
+	interactKey = keyboard_check(ord("E"))
 
 	
 
@@ -15,7 +17,7 @@ function get_controls(_is_host, _is_local)
 
 	
 	//Send Host Input to Clients
-	var _input = {steamID: lobbyHost, xInput:xInput, yInput:yInput}
+	var _input = {steamID: lobbyHost, xInput:xInput, yInput:yInput, interactKey:interactKey}
 	send_player_input_to_clients(_input)
 	}
 	
@@ -25,10 +27,11 @@ function get_controls(_is_host, _is_local)
 	var _leftKey  = keyboard_check(vk_left) || keyboard_check(ord("A")) || gamepad_button_check( 0, gp_padl );
 	var _downKey  = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check( 0, gp_padd );
 	var _upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_button_check( 0, gp_padu );
+	var _interactKey = keyboard_check(ord("E"))
 	
 
 	//Send input to Server
-	var _input = {rightKey:_rightKey, leftKey:_leftKey, downKey:_downKey, upKey:_upKey}
+	var _input = {rightKey:_rightKey, leftKey:_leftKey, downKey:_downKey, upKey:_upKey, interactKey:_interactKey}
 	send_player_input(_input,lobbyHost);
 	}
 
@@ -43,6 +46,7 @@ function init_controls(){
 	
 	xInput = 0
 	yInput = 0
+	interactKey = 0
 
 		
 }
