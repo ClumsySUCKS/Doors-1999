@@ -82,9 +82,9 @@ function update_player_position(_b) {
 			playerList[_i].character.x = _x	
 			playerList[_i].character.y = _y
 			if (_realName != -1) {
-				playerList[_i].character.sprite_index = _realName
+				playerList[_i].character.sprite_index = _realName}
 			playerList[_i].character.image_index = _image_index
 		}
 	}
-	}
+	
 }
