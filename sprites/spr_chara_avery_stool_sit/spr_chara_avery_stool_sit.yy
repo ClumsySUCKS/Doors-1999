@@ -23,7 +23,7 @@
   ],
   "name":"spr_chara_avery_stool_sit",
   "nineSlice":null,
-  "origin":1,
+  "origin":0,
   "parent":{
     "name":"avery",
     "path":"folders/Sprites/players/avery.yy",
@@ -75,7 +75,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":8,
+    "xorigin":0,
     "yorigin":0,
   },
   "swatchColours":null,
