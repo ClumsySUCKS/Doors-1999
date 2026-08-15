@@ -1,27 +1,27 @@
 {
   "$GMSprite":"v2",
-  "%Name":"collisionhotel",
+  "%Name":"spr_key_wall",
   "bboxMode":0,
-  "bbox_bottom":159,
+  "bbox_bottom":6,
   "bbox_left":0,
-  "bbox_right":207,
-  "bbox_top":0,
+  "bbox_right":7,
+  "bbox_top":1,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"c79227d2-97c1-49f8-8008-9dd790319d86","name":"c79227d2-97c1-49f8-8008-9dd790319d86","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f4a290aa-3cfb-4594-ae71-6afc2ce89362","name":"f4a290aa-3cfb-4594-ae71-6afc2ce89362","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":1600,
+  "height":8,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"ad441147-7519-4725-baec-f8e1e2258651","blendMode":0,"displayName":"default","isLocked":false,"name":"ad441147-7519-4725-baec-f8e1e2258651","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"b6a794c5-1b8b-4ba5-98b5-fed9fdfa6557","blendMode":0,"displayName":"default","isLocked":false,"name":"b6a794c5-1b8b-4ba5-98b5-fed9fdfa6557","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"collisionhotel",
+  "name":"spr_key_wall",
   "nineSlice":null,
   "origin":0,
   "parent":{
@@ -33,7 +33,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"collisionhotel",
+    "%Name":"spr_key_wall",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -57,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"collisionhotel",
+    "name":"spr_key_wall",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c79227d2-97c1-49f8-8008-9dd790319d86","path":"sprites/collisionhotel/collisionhotel.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"aae1b006-3a51-4be2-a1c6-cefca804aef7","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f4a290aa-3cfb-4594-ae71-6afc2ce89362","path":"sprites/spr_key_wall/spr_key_wall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"1dcd5d57-2bda-481f-8e3d-48091cf49305","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":1600,
+  "width":8,
 }
