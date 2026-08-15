@@ -1,7 +1,8 @@
 get_controls(isHost,isLocal)
-
 if (!hasPressed) {
-paddle_movement()
+if lobbyMemberID == obj_Client.lobbyMemberID {
+paddle_movement()}
+else {
 if (xInput != 0 || yInput != 0) {
     image_speed = 1;
     if (xInput > 0)      self.sprite_index = playerrightsprites[lobbyMemberID]
@@ -12,7 +13,7 @@ if (xInput != 0 || yInput != 0) {
     self.image_speed = 0;
     self.image_index = 1; // Idle frame
 }
-}
+
 if (hasPressed) {
     // Check if the hop animation reached or passed frame 6
     if (image_index >= 6) {
@@ -25,6 +26,6 @@ if (hasPressed) {
         
         image_alpha = 0
     }
-}
+}}}
 
 	
