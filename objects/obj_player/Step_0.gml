@@ -1,6 +1,6 @@
 get_controls(isHost,isLocal)
 if (!hasPressed) {
-if lobbyMemberID == obj_Client.lobbyMemberID {
+if isLocal {
 paddle_movement()}
 else {
 if (xInput != 0 || yInput != 0) {
