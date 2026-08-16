@@ -25,7 +25,25 @@ if (xInput != 0 || yInput != 0) {
             sprite_index = playerhopsprites[lobbyMemberID];
             image_index = 0;
             image_speed = 1; // Ensure animation plays
-		}}}}
+        }
+    }
+	}}
+	if walk_timer < 23 {
+    walk_timer = walk_timer + 1
+}
+else {
+	if sa == false
+		{ walk_timer=0;
+		 audio_play_sound(walk1,20,0,0.5)
+		 sa = true}
+		 
+	if sa == true
+	{
+		walk_timer = 0
+		audio_play_sound(walk2,20,0,0.5)
+		sa = false
+	}
+    }
 } else {
     self.image_speed = 0;
     self.image_index = 1; // Idle frame
