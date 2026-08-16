@@ -1,0 +1,1 @@
+draw_sprite_pos(spr_fridge_light2,0,x,y,x,y,x - 10, y + 32, x, y + 32,1)

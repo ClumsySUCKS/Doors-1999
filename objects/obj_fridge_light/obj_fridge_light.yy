@@ -1,9 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_wall_light_L_off",
-  "eventList":[],
+  "%Name":"obj_fridge_light",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_wall_light_L_off",
+  "name":"obj_fridge_light",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -27,10 +29,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"Sprite139",
-    "path":"sprites/Sprite139/Sprite139.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

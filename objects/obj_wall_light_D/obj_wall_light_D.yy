@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite140",
-    "path":"sprites/Sprite140/Sprite140.yy",
+    "name":"spr_wall_light_D_weak",
+    "path":"sprites/spr_wall_light_D_weak/spr_wall_light_D_weak.yy",
   },
   "spriteMaskId":null,
   "visible":true,

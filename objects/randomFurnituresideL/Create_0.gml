@@ -1,6 +1,6 @@
 canpresse = true
 furniture = [drawerS, drawerS, drawerS]
-if irandom(2) == 0
+if irandom(0) == 0
 {
 result = irandom(2)
 sprite_index = furniture[result]
