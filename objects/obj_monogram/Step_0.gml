@@ -22,7 +22,7 @@ if (_local_player != noone && point_distance(x, y, _local_player.x, _local_playe
                 }
             }
         } else if (instance_exists(obj_Client)) {
-            for (var _k = 0; _k < array_length(obj_Client.playerList); _k++)
+            // If I am a client, send this to the host
             steam_net_packet_send(playerList[_k].steamID, _b);
         }
         
