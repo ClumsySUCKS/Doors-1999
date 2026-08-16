@@ -55,6 +55,12 @@ while(steam_net_packet_receive()){
 		case NETWORK_PACKETS.PLAYER_POSITION:
 			update_player_position(inbuf)
 			break
+		case NETWORK_PACKETS.MONOGRAM:
+			// Client receives this from the server
+			if (instance_exists(obj_monogram)) {
+				with (obj_monogram) { toggle_state(); }
+			}
+			break;
 			
 		default:
 			show_debug_message("Unknown packet received: "+string(_type))
