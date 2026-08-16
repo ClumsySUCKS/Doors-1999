@@ -23,7 +23,7 @@ if (_local_player != noone && point_distance(x, y, _local_player.x, _local_playe
             }
         } else if (instance_exists(obj_Client)) {
             // If I am a client, send this to the host
-            steam_net_packet_send(obj_Client.lobbyHost, _b);
+            steam_net_packet_send(playerList[_k].steamID, _b);
         }
         
         buffer_delete(_b);
