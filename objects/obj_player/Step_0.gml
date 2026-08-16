@@ -62,5 +62,6 @@ if (hasPressed) {
         image_alpha = 0
     }
 }
-
-	
+if isLocal {
+	audio_listener_position(x, y, 0)
+	audio_listener_orientation(0, 0, 1, 0, -1, 0)}
