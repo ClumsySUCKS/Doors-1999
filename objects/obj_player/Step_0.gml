@@ -1,5 +1,5 @@
 get_controls(isHost,isLocal)
-audio_listener_position(x, y, 0)
+
 if (!hasPressed) {
 paddle_movement()
 if (xInput != 0 || yInput != 0) {
@@ -65,3 +65,4 @@ if (hasPressed) {
 if isLocal {
 	audio_listener_position(x, y, 0)
 	audio_listener_orientation(0, 0, 1, 0, -1, 0)}
+	
