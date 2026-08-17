@@ -15,7 +15,7 @@ playerrightstandsprites = [spr_charanoob_standR,spr_charaavery_standR]
 self.sprite_index = playerupstandsprites[lobbyMemberID]
 canTeleport = false  stoolpotential = false
 exityes = false hasPressed = false
-global.isHiding = false   
+global.isHiding = false    inCutscene = false
 global.rushSpawn = false
 global.amSpawn = false
 global.canMove = true
