@@ -15,7 +15,7 @@ playerrightstandsprites = [spr_charanoob_standR,spr_charaavery_standR]
 self.sprite_index = playerupstandsprites[lobbyMemberID]
 canTeleport = false  stoolpotential = false
 exityes = false hasPressed = false
-global.isHiding = false   if isLocal {camera_set_view_target(view_camera[0],id)}
+global.isHiding = false   
 global.rushSpawn = false
 global.amSpawn = false
 global.canMove = true
@@ -27,6 +27,7 @@ localSteamID = steam_get_user_steam_id()
 lobbyHost = steam_lobby_get_owner_id()
 isHost = steam_lobby_is_owner()
 isLocal = (localSteamID == steamID)
+if isLocal {camera_set_view_target(view_camera[0],id)}
 if global.doorcreated == false
 {global.doorcreated = true
 	instance_create_depth(0,0,-10,doorcontroller)}
