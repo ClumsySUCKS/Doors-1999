@@ -3,7 +3,7 @@ ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 global.guiw = display_get_gui_width() global.doorcreated = false lightsubin = 0 i = false
 global.guih = display_get_gui_height()  isCrouched = false
 collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL,obj_windowR,obj_hotelplant,obj_reception_stool_bottom,obj_reception_stool_top_U,obj_windowL,obj_inviswall]
-move_speed = 1
+move_speed = 1 trueplayer = id
 playerupsprites = [spr_charanoobU,spr_charaaveryU]
 playerupstandsprites = [spr_charanoob_standU,spr_charaavery_standU]
 playerdownsprites = [spr_charanoobD,spr_charaaveryD]
@@ -15,7 +15,7 @@ playerrightstandsprites = [spr_charanoob_standR,spr_charaavery_standR]
 self.sprite_index = playerupstandsprites[lobbyMemberID]
 canTeleport = false  stoolpotential = false
 exityes = false hasPressed = false
-global.isHiding = false 
+global.isHiding = false camera_set_view_target(view_camera[0],id)
 global.rushSpawn = false
 global.amSpawn = false
 global.canMove = true
