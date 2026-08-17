@@ -34,13 +34,13 @@ if (xInput != 0 || yInput != 0) {
 else {
 	if sa == false
 		{ walk_timer=0;
-		 audio_play_sound_at(walk1,x,y,0,32,100,1,false,6,0.5)
+		 audio_play_sound_at(walk1,x,y,0,32,100,1,false,6,0.4)
 		 sa = true}
 		 
 	if sa == true
 	{
 		walk_timer = 0
-		audio_play_sound_at(walk1,x,y,0,32,100,1,false,6,0.5)
+		audio_play_sound_at(walk1,x,y,0,32,100,1,false,6,0.4)
 		sa = false
 	}
     }
