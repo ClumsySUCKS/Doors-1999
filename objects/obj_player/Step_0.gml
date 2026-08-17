@@ -31,7 +31,7 @@ if (inCutscene && hasPressed) && !count {
         
         if (instance_exists(closetstool)) {
             closetstool.sprite_index = playersitsprites[lobbyMemberID]
-							if count == false {count = true alarm[2] = 1200}
+							if count == false && closetstool.sprite_index == spr_chara_noob_stool_sit {count = true alarm[2] = 1200}
         }
         
         image_alpha = 0
