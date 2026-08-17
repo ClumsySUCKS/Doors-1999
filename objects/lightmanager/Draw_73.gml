@@ -36,8 +36,9 @@ with obj_wall_light_R
 
 with obj_player
 {
-	draw_sprite(light,0,obj_player.x - 24,obj_player.y - 16)	
-}
+	draw_sprite(light,0,x - 24,y - 16)
+}	
+
 
 gpu_set_blendmode(bm_normal)
 
