@@ -15,7 +15,7 @@ playerrightstandsprites = [spr_charanoob_standR,spr_charaavery_standR]
 self.sprite_index = playerupstandsprites[lobbyMemberID]
 canTeleport = false  stoolpotential = false
 exityes = false hasPressed = false
-global.isHiding = false camera_set_view_target(view_camera[0],id)
+global.isHiding = false   if isLocal {camera_set_view_target(view_camera[0],id)}
 global.rushSpawn = false
 global.amSpawn = false
 global.canMove = true
