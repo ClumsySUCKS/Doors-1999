@@ -1,2 +1,2 @@
 if hasSpawned == false {hasSpawned = true
-	alarm[0] = 30}
+	alarm[0] = 10}

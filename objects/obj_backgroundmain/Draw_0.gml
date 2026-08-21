@@ -1,0 +1,1 @@
+draw_rectangle_colour(0, 0, room_width, room_height + 100, #1D003A, #1D003A, #0F001E, #0F001E, false)
