@@ -80,6 +80,7 @@
     {"id":{"name":"obj_act1_button_fake","path":"objects/obj_act1_button_fake/obj_act1_button_fake.yy",},},
     {"id":{"name":"obj_act1_button","path":"objects/obj_act1_button/obj_act1_button.yy",},},
     {"id":{"name":"obj_act2_button","path":"objects/obj_act2_button/obj_act2_button.yy",},},
+    {"id":{"name":"obj_backgroundmain","path":"objects/obj_backgroundmain/obj_backgroundmain.yy",},},
     {"id":{"name":"obj_blue_sparkles_intro","path":"objects/obj_blue_sparkles_intro/obj_blue_sparkles_intro.yy",},},
     {"id":{"name":"obj_blue_sparkles_spawn","path":"objects/obj_blue_sparkles_spawn/obj_blue_sparkles_spawn.yy",},},
     {"id":{"name":"obj_bookshelf_side","path":"objects/obj_bookshelf_side/obj_bookshelf_side.yy",},},
