@@ -10,12 +10,17 @@ switch room {
 		}
 		break}
 	break
+	case rm_hotelmenu:
+	switch spot {
+		case 0:
+		with obj_hostbutton {
+			selectAction()}
 
 		
 	
 	
 
-}
+}}
 
 
 
