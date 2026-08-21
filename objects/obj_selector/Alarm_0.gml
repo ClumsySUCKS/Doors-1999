@@ -1,7 +1,5 @@
-switch room {
-	case rm_beginningmenu:
-	switch spot {
-		case 0: 
+switch spot {
+		case 0:
 		room_goto(rm_hotelmenu)
 		instance_destroy()
 		break
@@ -9,13 +7,6 @@ switch room {
 		if global.act2 == true {
 		}
 		break}
-	break
-
-		
-	
-	
-
-}
 
 
 
@@ -23,3 +14,4 @@ switch room {
 
 
 
+instance_destroy()

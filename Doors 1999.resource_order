@@ -52,7 +52,6 @@
     {"name":"obj_act1_button_fake","order":16,"path":"objects/obj_act1_button_fake/obj_act1_button_fake.yy",},
     {"name":"obj_act1_button","order":14,"path":"objects/obj_act1_button/obj_act1_button.yy",},
     {"name":"obj_act2_button","order":17,"path":"objects/obj_act2_button/obj_act2_button.yy",},
-    {"name":"obj_backgroundmain","order":25,"path":"objects/obj_backgroundmain/obj_backgroundmain.yy",},
     {"name":"obj_blue_sparkles_spawn","order":1,"path":"objects/obj_blue_sparkles_spawn/obj_blue_sparkles_spawn.yy",},
     {"name":"obj_bookshelf_side","order":47,"path":"objects/obj_bookshelf_side/obj_bookshelf_side.yy",},
     {"name":"obj_carrier_side","order":50,"path":"objects/obj_carrier_side/obj_carrier_side.yy",},

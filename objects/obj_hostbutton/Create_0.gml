@@ -1,8 +1,7 @@
 hovered = false
 selected = false
 disabled = false
-pressed = false
-image_speed = 0
+
 
 selectAction = function () {
 	global.server = instance_create_depth(0,0,0,obj_Server);
