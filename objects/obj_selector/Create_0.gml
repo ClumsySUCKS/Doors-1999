@@ -3,10 +3,6 @@ stage = 0
 spot = 0
 endspot = undefined
 spotx = undefined
+spoty = undefined
 pressed = false
-switch room
-{
-	case rm_beginningmenu:
-	spotx = [x = 177, x = 50]
-	endspot = 1
-	break}
+canMove = true

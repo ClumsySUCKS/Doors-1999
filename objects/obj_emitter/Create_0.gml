@@ -1,0 +1,2 @@
+hasSpawned = false
+emit = undefined

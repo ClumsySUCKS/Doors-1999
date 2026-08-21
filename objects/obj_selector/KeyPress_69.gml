@@ -1,4 +1,3 @@
 image_speed = 1
 
-if casf == false {casf = true
-	alarm[0] = 100}
+if pressed == false {pressed = true canMove = false alarm[0] = 120}
