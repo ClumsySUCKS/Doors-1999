@@ -10,8 +10,8 @@
   "name":"deathmanager",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"server",
+    "path":"folders/Objects/server.yy",
   },
   "parentObjectId":null,
   "persistent":true,

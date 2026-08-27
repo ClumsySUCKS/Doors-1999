@@ -4,8 +4,6 @@
 
 
 
-
-
 if (ds_map_find_value(new_rooms, room) == undefined) 
 {
     ds_map_add(new_rooms, room, true);

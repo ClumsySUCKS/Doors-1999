@@ -9,7 +9,9 @@ draw_sprite_stretched_ext(healthinside,0,130,870,240 * (global.hp / global.hp_ma
 draw_sprite_ext(healthicon,0,100,854,7,7,0,c_white,1)
 //draw_sprite_ext(doornumberHUD,0,50,700,7,7,0,c_white,1)
 //text = string_replace_all(string_format(global.doorcount,4,0)," ","0")
-draw_sprite_ext(spr_itemHUD,0,360,854,8,7,0,c_white,1)
+draw_sprite_ext(spr_itemHUD,0,360,854,8,7,0,c_white,1) 
+if instance_exists(obj_player) {if obj_player.isLocal {if array_contains(obj_player.playeritems, "key"){
+draw_sprite_ext(spr_key_wall,0,400,875,4,4,0,c_white,1)}}}
 //draw_text_transformed_colour(432,875,text,0.7,0.9,0,#5B2418,#5B2418,#5B2418,#5B2418,1)
 draw_set_font(gameFont)
 //draw_text(300,830, $"Steam initalised? {steam_initialised() ? "Yes" : "No"}")

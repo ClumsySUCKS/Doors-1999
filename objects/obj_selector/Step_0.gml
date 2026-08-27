@@ -6,18 +6,20 @@ switch room
 	endspot = 1
 	break
 	case rm_hotelmenu:
-	spotx = [76]
-	spoty = [obj_hostbutton.y - 18]
+	spotx = [76,176]
+	spoty = [obj_hostbutton.y - 18, obj_friendbutton.y - 18]
 	endspot = 1}
 switch room {
 	case rm_beginningmenu:
 if keyboard_check_pressed(ord("A")) && canMove == true {
 	spot = spot - 1
+	audio_play_sound(snd_spot_change_menu,4,false)
 	if spot < 0 {
 		spot = endspot}
 }
 if keyboard_check_pressed(ord("D")) && canMove == true {
 spot++
+audio_play_sound(snd_spot_change_menu,4,false)
 if spot > 1 {
 	spot = 0}
 }
@@ -32,11 +34,13 @@ if keyboard_check_pressed(ord("E")) && pressed == false {pressed = true
 	case rm_hotelmenu:
 if keyboard_check_pressed(ord("A")) && canMove == true {
 	spot = spot - 1
+	audio_play_sound(snd_spot_change_menu,4,false)
 	if spot < 0 {
 		spot = endspot}
 }
 if keyboard_check_pressed(ord("D")) && canMove == true {
 spot++
+audio_play_sound(snd_spot_change_menu,4,false)
 if spot > 1 {
 	spot = 0}
 }

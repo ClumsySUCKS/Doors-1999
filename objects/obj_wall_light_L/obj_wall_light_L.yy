@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite139",
-    "path":"sprites/Sprite139/Sprite139.yy",
+    "name":"spr_wall_light_R",
+    "path":"sprites/spr_wall_light_R/spr_wall_light_R.yy",
   },
   "spriteMaskId":null,
   "visible":true,

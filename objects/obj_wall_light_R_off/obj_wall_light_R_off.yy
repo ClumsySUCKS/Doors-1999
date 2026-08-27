@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_wall_light_R_off",
-    "path":"sprites/spr_wall_light_R_off/spr_wall_light_R_off.yy",
+    "name":"spr_wall_light_L_off",
+    "path":"sprites/spr_wall_light_L_off/spr_wall_light_L_off.yy",
   },
   "spriteMaskId":null,
   "visible":true,

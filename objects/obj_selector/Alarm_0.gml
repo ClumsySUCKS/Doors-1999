@@ -15,9 +15,6 @@ switch room {
 		case 0:
 		with obj_hostbutton {
 			selectAction()}
-
-		
-	
 	
 
 }}

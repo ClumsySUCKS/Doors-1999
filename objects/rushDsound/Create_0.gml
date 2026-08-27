@@ -1,1 +1,1 @@
-audio_play_sound(rushtext,5,0)
+audio_play_sound(snd_rushtext,5,0)
