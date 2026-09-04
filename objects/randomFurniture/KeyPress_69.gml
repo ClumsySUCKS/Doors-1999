@@ -39,7 +39,7 @@ if sprite_index == closetF
         if obj_player.x > x && obj_player.x < x + 20
         {global.lastx = obj_player.x 
             global.lasty = obj_player.y
-            instance_destroy(obj_player)
+            
             global.bid = id
             global.isHiding = true
             global.canMove = false

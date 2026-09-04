@@ -16,7 +16,7 @@ switch(async_load[?"event_type"]) {
 		steam_lobby_set_data("Creator", steam_get_persona_name())
 		}
 
-		room_goto(rm_reception)
+		room_goto(rm_3)
 
 break
 	
