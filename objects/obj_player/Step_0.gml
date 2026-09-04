@@ -37,9 +37,7 @@ if (inCutscene && hasPressed) && !count {
         image_alpha = 0
     }
 }
-if closetpotential && instance_exists(randomFurniture) {var closetcheck = instance_nearest(x,y,randomFurniture)
-	if closetcheck.sprite_index == closetF && point_distance(x,y,closetcheck.x,closetcheck.y) < 20 && keyboard_check_pressed(ord("E")) && !hasPressed {
-		hasPressed = true image_alpha = 0 closetcheck.sprite_index
+
 paddle_movement()
 
 if (!inCutscene) {

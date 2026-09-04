@@ -45,7 +45,9 @@
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.gm_filter_tintfilter-1.0.0","name":"io.gamemaker.gm_filter_tintfilter-1.0.0","path":"io.gamemaker.gm_filter_tintfilter-1.0.0.yyp",},
   ],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"GMEXT-Discord.html","CopyToMask":-1,"filePath":"datafiles","name":"GMEXT-Discord.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
@@ -53,6 +55,7 @@
   },
   "name":"Doors 1999",
   "resources":[
+    {"id":{"name":"NekoPresence","path":"extensions/NekoPresence/NekoPresence.yy",},},
     {"id":{"name":"Steamworks","path":"extensions/Steamworks/Steamworks.yy",},},
     {"id":{"name":"bigFont","path":"fonts/bigFont/bigFont.yy",},},
     {"id":{"name":"gameFont","path":"fonts/gameFont/gameFont.yy",},},
@@ -178,6 +181,7 @@
     {"id":{"name":"Object52","path":"objects/Object52/Object52.yy",},},
     {"id":{"name":"Object53","path":"objects/Object53/Object53.yy",},},
     {"id":{"name":"Object54","path":"objects/Object54/Object54.yy",},},
+    {"id":{"name":"objNekoPresenceDemo","path":"objects/objNekoPresenceDemo/objNekoPresenceDemo.yy",},},
     {"id":{"name":"randomFurniture","path":"objects/randomFurniture/randomFurniture.yy",},},
     {"id":{"name":"randomFurnituresideL","path":"objects/randomFurnituresideL/randomFurnituresideL.yy",},},
     {"id":{"name":"randomFurnituresideR","path":"objects/randomFurnituresideR/randomFurnituresideR.yy",},},
@@ -327,6 +331,9 @@
     {"id":{"name":"spr_charaaveryL","path":"sprites/spr_charaaveryL/spr_charaaveryL.yy",},},
     {"id":{"name":"spr_charaaveryR","path":"sprites/spr_charaaveryR/spr_charaaveryR.yy",},},
     {"id":{"name":"spr_charaaveryU","path":"sprites/spr_charaaveryU/spr_charaaveryU.yy",},},
+    {"id":{"name":"spr_charanoob_back","path":"sprites/spr_charanoob_back/spr_charanoob_back.yy",},},
+    {"id":{"name":"spr_charanoob_leftLeg","path":"sprites/spr_charanoob_leftLeg/spr_charanoob_leftLeg.yy",},},
+    {"id":{"name":"spr_charanoob_rightLeg","path":"sprites/spr_charanoob_rightLeg/spr_charanoob_rightLeg.yy",},},
     {"id":{"name":"spr_charanoob_standD","path":"sprites/spr_charanoob_standD/spr_charanoob_standD.yy",},},
     {"id":{"name":"spr_charanoob_standL","path":"sprites/spr_charanoob_standL/spr_charanoob_standL.yy",},},
     {"id":{"name":"spr_charanoob_standR","path":"sprites/spr_charanoob_standR/spr_charanoob_standR.yy",},},
@@ -334,6 +341,8 @@
     {"id":{"name":"spr_charanoobD","path":"sprites/spr_charanoobD/spr_charanoobD.yy",},},
     {"id":{"name":"spr_charanoobL","path":"sprites/spr_charanoobL/spr_charanoobL.yy",},},
     {"id":{"name":"spr_charanoobR","path":"sprites/spr_charanoobR/spr_charanoobR.yy",},},
+    {"id":{"name":"spr_charanoobU_4","path":"sprites/spr_charanoobU_4/spr_charanoobU_4.yy",},},
+    {"id":{"name":"spr_charanoobU_5","path":"sprites/spr_charanoobU_5/spr_charanoobU_5.yy",},},
     {"id":{"name":"spr_charanoobU","path":"sprites/spr_charanoobU/spr_charanoobU.yy",},},
     {"id":{"name":"spr_door_locked","path":"sprites/spr_door_locked/spr_door_locked.yy",},},
     {"id":{"name":"spr_door_side","path":"sprites/spr_door_side/spr_door_side.yy",},},
