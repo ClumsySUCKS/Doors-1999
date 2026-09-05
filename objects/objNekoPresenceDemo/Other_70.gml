@@ -18,7 +18,9 @@ if (ev_type == "DiscordReady")
 	
 	//np_setpresence() should ALWAYS come the last!!
 	if room == rm_hotelmenu {
-	np_setpresence("Playing", "In The Menu", "doors_1999_title_dgs", "doors_1999_title_dgs");}
+	np_setpresence("Playing", "In Limbo's Menu", "doors_1999_title_dgs", "doors_1999_title_dgs");}
+	
+	
 	
 
 }
