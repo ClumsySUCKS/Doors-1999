@@ -3,7 +3,7 @@ go = 0
 alarm[0] = ran global.screechJump = 0
 ra = 0
 trans = 0
-ah = false 
+ah = false  
 jl = false
 text[0] = "Found you!"
 text[1] = "Found you!"

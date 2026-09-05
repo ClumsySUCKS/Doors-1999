@@ -1,6 +1,6 @@
 global.guiw = display_get_gui_width() at_window = false 	hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 ver = keyboard_check(ord("S")) - keyboard_check(ord("W")); key = undefined
-global.guiw = display_get_gui_width() global.doorcreated = false lightsubin = 0 i = false
+global.guiw = display_get_gui_width() lightsubin = 0 i = false
 global.guih = display_get_gui_height()  isCrouched = false playeritems = []
 collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL,obj_windowR,obj_hotelplant,obj_reception_stool_bottom,obj_reception_stool_top_U,obj_windowL,obj_inviswall]
 move_speed = 1 trueplayer = id inCutscene = false hasPressed = false count = 0
@@ -28,8 +28,7 @@ lobbyHost = steam_lobby_get_owner_id()
 isHost = steam_lobby_is_owner()
 isLocal = (localSteamID == steamID)
 if isLocal {camera_set_view_target(view_camera[0],id)}
-if global.doorcreated == false
-{global.doorcreated = true
+if !instance_exists(doorcontroller) {
 	instance_create_depth(0,0,-10,doorcontroller)}
 init_controls()
 if room == rm_reception {stoolpotential = true}
