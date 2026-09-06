@@ -1,0 +1,4 @@
+var chooselight = [obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D_weak,obj_wall_light_D_weak,obj_wall_light_D_weak,obj_wall_light_D_weak,obj_wall_light_D_weak,obj_wall_light_D_off,obj_wall_light_D_off,obj_wall_light_D_off,obj_wall_light_D_off]
+array_shuffle_ext(chooselight)
+var select = chooselight[0]
+var newlight = instance_create_layer(x,y,"dark",select)

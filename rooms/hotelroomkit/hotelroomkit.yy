@@ -9,7 +9,6 @@
     {"name":"inst_635DE048_2","path":"rooms/hotelroomkit/hotelroomkit.yy",},
     {"name":"inst_5F61DD66_2","path":"rooms/hotelroomkit/hotelroomkit.yy",},
     {"name":"inst_59CE18FC2","path":"rooms/hotelroomkit/hotelroomkit.yy",},
-    {"name":"inst_5FF23C1_2","path":"rooms/hotelroomkit/hotelroomkit.yy",},
     {"name":"inst_4221C019_1","path":"rooms/hotelroomkit/hotelroomkit.yy",},
     {"name":"inst_63050C08_1","path":"rooms/hotelroomkit/hotelroomkit.yy",},
     {"name":"inst_6C943F82_1","path":"rooms/hotelroomkit/hotelroomkit.yy",},
@@ -23,6 +22,8 @@
     {"name":"inst_42EA0F80_2","path":"rooms/hotelroomkit/hotelroomkit.yy",},
     {"name":"inst_29FE32FF1","path":"rooms/hotelroomkit/hotelroomkit.yy",},
     {"name":"inst_4C947881_1","path":"rooms/hotelroomkit/hotelroomkit.yy",},
+    {"name":"inst_7F68E567","path":"rooms/hotelroomkit/hotelroomkit.yy",},
+    {"name":"inst_40036F64","path":"rooms/hotelroomkit/hotelroomkit.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -31,7 +32,8 @@
         {"$GMRInstance":"v4","%Name":"inst_4C947881_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4C947881_1","objectId":{"name":"lightmanager","path":"objects/lightmanager/lightmanager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":416.0,"y":464.0,},
       ],"layers":[],"name":"dark","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Player","depth":200,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
-        {"$GMRInstance":"v4","%Name":"inst_5FF23C1_2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5FF23C1_2","objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":560.0,"y":864.0,},
+        {"$GMRInstance":"v4","%Name":"inst_7F68E567","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7F68E567","objectId":{"name":"obj_SpawnPoint","path":"objects/obj_SpawnPoint/obj_SpawnPoint.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":560.0,"y":752.0,},
+        {"$GMRInstance":"v4","%Name":"inst_40036F64","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_40036F64","objectId":{"name":"obj_SpawnPoint","path":"objects/obj_SpawnPoint/obj_SpawnPoint.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":576.0,"y":752.0,},
       ],"layers":[],"name":"Player","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"trans","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"name":"trans","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Drawer","depth":400,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"name":"Drawer","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},

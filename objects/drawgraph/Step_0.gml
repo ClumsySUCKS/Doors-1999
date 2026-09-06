@@ -1,4 +1,4 @@
-
+textdis = string_replace_all(string_format(global.doorcountdiscord,4,0)," ","0")
 
 
 
