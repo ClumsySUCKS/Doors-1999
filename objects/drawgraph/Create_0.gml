@@ -1,7 +1,7 @@
 ran = irandom_range(30,120)
 go = 0 
-alarm[0] = ran global.screechJump = 0
-ra = 0
+alarm[0] = ran global.screechJump = 0 
+ra = 0 
 trans = 0
 ah = false  
 jl = false

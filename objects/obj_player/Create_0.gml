@@ -1,10 +1,10 @@
 global.guiw = display_get_gui_width() at_window = false 	hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-ver = keyboard_check(ord("S")) - keyboard_check(ord("W")); key = undefined discordmessages = ["Exploring The Hotel...", "Holding W In The Hotel...", "Keeping The Grounds...", "Making Lights...", "Adding Crucifix Dupe...", "Hiding Secrets...", "Knocking On Walls...", "Door 13", "Sniffing Plants...", "Opening Drawers...", "Dying To First Rush...", "Creating Rugs...", "Writing dialogue...", "Multiplying Players...", "Weakening Lungs...", "Adding Perro...", "Dissing Medi_Nate", "Adding Glitches...", "Creating A Story...", "Glitching Glitch...", "Adding Items...", "Praying For A Release Date...", "Writing Code...", "Adding Achievements...", "Adding More Achievements...", "Adding More More Achievements...", "Collecting all the achievements...", "Reworking Dread...", "Reworking Void...", "Adding", "Reworking Basements...", "Jumpscaring Player...", "Adding Lore...", "Find The Lever!", "Down The Drain 2ing...", "Going Insane...", "Pondering Life...", "Visioning Visions...", "Taking Too Long...", "Modifying The Hotel...", "Adding Secret Subfloors...", "Getting Sued By LSPLASH...", "Rushing Rush...", "Ambushing Ambush...", "Figuring Figure...", "Seeking Seek...", "Adding Rich Presence Messages...", "Creating Lazy Badge Names...", "Writing In Journal...", "Copying From Various Games...", "Adding Unoriginal Ideas..."] 
-global.guiw = display_get_gui_width() lightsubin = 0 i = false	array_shuffle_ext(discordmessages)	discordmessagechoose = discordmessages[0]
-global.guih = display_get_gui_height()  isCrouched = false playeritems = []
+ver = keyboard_check(ord("S")) - keyboard_check(ord("W")); key = undefined  
+global.guiw = display_get_gui_width() lightsubin = 0 i = false	
+global.guih = display_get_gui_height()  isCrouched = false playeritems = [] hasDiscord = false
 collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL,obj_windowR,obj_hotelplant,obj_reception_stool_bottom,obj_reception_stool_top_U,obj_windowL,obj_inviswall]
 move_speed = 1 trueplayer = id inCutscene = false hasPressed = false count = 0
-playerupsprites = [spr_charanoobU,spr_charaaveryU]
+playerupsprites = [spr_charanoobU,spr_charaaveryU] 
 playerupstandsprites = [spr_charanoob_standU,spr_charaavery_standU]
 playerdownsprites = [spr_charanoobD,spr_charaaveryD]
 playerdownstandsprites = [spr_charanoob_standD,spr_charaavery_standD]
