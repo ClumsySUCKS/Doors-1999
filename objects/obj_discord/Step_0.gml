@@ -1,1 +1,0 @@
-textdis = string_replace_all(string_format(global.discord_list[global.doorcountdiscord],4,0)," ","0")
