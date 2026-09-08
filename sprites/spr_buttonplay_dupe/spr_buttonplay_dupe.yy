@@ -47,8 +47,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"main_menu",
-    "path":"folders/Sprites/main_menu.yy",
+    "name":"Limbo Menu",
+    "path":"folders/Sprites/intro/Limbo Menu.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

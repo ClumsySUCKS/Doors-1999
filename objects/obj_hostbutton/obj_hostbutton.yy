@@ -11,8 +11,8 @@
   "name":"obj_hostbutton",
   "overriddenProperties":[],
   "parent":{
-    "name":"intro",
-    "path":"folders/Objects/intro.yy",
+    "name":"Limbo Menu",
+    "path":"folders/Objects/intro/Limbo Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -94,8 +94,8 @@
   ],
   "name":"rm_2",
   "parent":{
-    "name":"hotelrooms",
-    "path":"folders/Rooms/hotelrooms.yy",
+    "name":"main",
+    "path":"folders/Rooms/hotelrooms/main.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

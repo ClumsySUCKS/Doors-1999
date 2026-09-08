@@ -8,8 +8,8 @@
   "name":"rushDsound",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"entities",
+    "path":"folders/Objects/game/entities.yy",
   },
   "parentObjectId":null,
   "persistent":false,

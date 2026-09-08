@@ -1,15 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"rushexito1_2",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_rugMiddle2",
+  "eventList":[],
   "managed":true,
-  "name":"rushexito1_2",
+  "name":"obj_rugMiddle2",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Furniture",
+    "path":"folders/Objects/room/Furniture.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -6,8 +6,8 @@
   "name":"obj_wall_light_R",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Lights",
+    "path":"folders/Objects/room/Furniture/Lights.yy",
   },
   "parentObjectId":null,
   "persistent":false,

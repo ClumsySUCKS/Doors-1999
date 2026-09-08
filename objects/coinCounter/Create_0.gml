@@ -1,1 +1,0 @@
-global.coinCount = 0

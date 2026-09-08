@@ -9,8 +9,8 @@
   "name":"obj_glitch_particles_spawn",
   "overriddenProperties":[],
   "parent":{
-    "name":"intro",
-    "path":"folders/Objects/intro.yy",
+    "name":"THAT Menu",
+    "path":"folders/Objects/intro/THAT Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

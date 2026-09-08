@@ -6,8 +6,8 @@
   "name":"coiniconHUD",
   "overriddenProperties":[],
   "parent":{
-    "name":"game",
-    "path":"folders/Objects/game.yy",
+    "name":"mechanics",
+    "path":"folders/Objects/game/mechanics.yy",
   },
   "parentObjectId":null,
   "persistent":false,

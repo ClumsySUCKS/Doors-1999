@@ -8,8 +8,8 @@
   "name":"obj_reception_stool_top_U",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Reception",
+    "path":"folders/Objects/room/Furniture/Reception.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -6,8 +6,8 @@
   "name":"obj_wmat",
   "overriddenProperties":[],
   "parent":{
-    "name":"room",
-    "path":"folders/Objects/room.yy",
+    "name":"Furniture",
+    "path":"folders/Objects/room/Furniture.yy",
   },
   "parentObjectId":null,
   "persistent":false,

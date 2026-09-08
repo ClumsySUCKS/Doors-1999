@@ -6,8 +6,8 @@
   "name":"obj_window_rainR",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Windows",
+    "path":"folders/Objects/room/Furniture/Windows.yy",
   },
   "parentObjectId":null,
   "persistent":false,

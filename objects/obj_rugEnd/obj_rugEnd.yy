@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_light",
+  "%Name":"obj_rugEnd",
   "eventList":[],
   "managed":true,
-  "name":"obj_light",
+  "name":"obj_rugEnd",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Furniture",
+    "path":"folders/Objects/room/Furniture.yy",
   },
   "parentObjectId":null,
   "persistent":false,

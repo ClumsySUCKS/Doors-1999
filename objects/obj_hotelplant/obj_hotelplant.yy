@@ -6,8 +6,8 @@
   "name":"obj_hotelplant",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Furniture",
+    "path":"folders/Objects/room/Furniture.yy",
   },
   "parentObjectId":null,
   "persistent":false,

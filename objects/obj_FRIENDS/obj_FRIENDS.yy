@@ -6,8 +6,8 @@
   "name":"obj_FRIENDS",
   "overriddenProperties":[],
   "parent":{
-    "name":"game",
-    "path":"folders/Objects/game.yy",
+    "name":"THAT Menu",
+    "path":"folders/Objects/intro/THAT Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

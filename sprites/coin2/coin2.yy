@@ -43,8 +43,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"getstuff",
-    "path":"folders/Sprites/getstuff.yy",
+    "name":"mechanics",
+    "path":"folders/Sprites/mechanics.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

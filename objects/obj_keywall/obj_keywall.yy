@@ -9,8 +9,8 @@
   "name":"obj_keywall",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Reception",
+    "path":"folders/Objects/room/Furniture/Reception.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -9,8 +9,8 @@
   "name":"obj_discord",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"mechanics",
+    "path":"folders/Objects/game/mechanics.yy",
   },
   "parentObjectId":null,
   "persistent":true,

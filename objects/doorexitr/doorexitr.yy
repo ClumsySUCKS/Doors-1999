@@ -6,8 +6,8 @@
   "name":"doorexitr",
   "overriddenProperties":[],
   "parent":{
-    "name":"room",
-    "path":"folders/Objects/room.yy",
+    "name":"Mechanics",
+    "path":"folders/Objects/room/Mechanics.yy",
   },
   "parentObjectId":null,
   "persistent":false,

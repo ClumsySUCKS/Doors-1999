@@ -8,8 +8,8 @@
   "name":"obj_screech",
   "overriddenProperties":[],
   "parent":{
-    "name":"game",
-    "path":"folders/Objects/game.yy",
+    "name":"entities",
+    "path":"folders/Objects/game/entities.yy",
   },
   "parentObjectId":null,
   "persistent":true,

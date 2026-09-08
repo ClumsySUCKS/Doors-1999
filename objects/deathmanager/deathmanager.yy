@@ -10,8 +10,8 @@
   "name":"deathmanager",
   "overriddenProperties":[],
   "parent":{
-    "name":"server",
-    "path":"folders/Objects/server.yy",
+    "name":"mechanics",
+    "path":"folders/Objects/game/mechanics.yy",
   },
   "parentObjectId":null,
   "persistent":false,
