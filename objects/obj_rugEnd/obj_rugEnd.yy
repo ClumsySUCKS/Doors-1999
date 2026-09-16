@@ -27,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_rugEnd",
+    "path":"sprites/spr_rugEnd/spr_rugEnd.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

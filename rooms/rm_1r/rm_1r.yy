@@ -67,7 +67,15 @@
           1,604,-7,-2147483648,1,605,-35,-2147483648,1,604,-7,-2147483648,1,605,-35,-2147483648,1,604,-7,-2147483648,
           1,605,-35,-2147483648,1,4,-7,2,1,5,-549,-2147483648,
         ],"TileDataFormat":1,},"tilesetId":{"name":"collisonhotelts","path":"tilesets/collisonhotelts/collisonhotelts.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
-    {"$GMRTileLayer":"","%Name":"floor","depth":900,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"floor","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":44,"SerialiseWidth":44,"TileCompressedData":[
+    {"$GMRTileLayer":"","%Name":"OnFloor","depth":900,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"OnFloor","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":44,"SerialiseWidth":44,"TileCompressedData":[
+          -500,-2147483648,1,7,-3,8,1,9,-39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,
+          1,10,-3,11,1,12,-39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,1,10,
+          -3,11,1,12,-39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,1,10,-3,11,
+          1,12,-39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,1,10,-3,11,1,12,
+          -39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,1,10,-3,11,1,12,-39,
+          -2147483648,1,10,-3,11,1,12,-39,-2147483648,1,10,-3,11,1,12,-39,-2147483648,1,4,-3,5,1,6,-639,-2147483648,
+        ],"TileDataFormat":1,},"tilesetId":{"name":"hotelfloorts","path":"tilesets/hotelfloorts/hotelfloorts.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+    {"$GMRTileLayer":"","%Name":"floor","depth":1000,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"floor","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":44,"SerialiseWidth":44,"TileCompressedData":[
           -45,-2147483648,-13,0,-31,-2147483648,-13,0,-31,-2147483648,-13,0,-31,-2147483648,-14,0,-30,-2147483648,
           -13,0,-31,-2147483648,-13,0,-31,-2147483648,-11,0,-33,-2147483648,-10,0,-34,-2147483648,-9,0,-35,-2147483648,
           -8,0,-6,-2147483648,-14,1,-16,-2147483648,-7,0,-7,-2147483648,-14,1,-16,-2147483648,-7,0,-7,-2147483648,
@@ -78,7 +86,7 @@
           -7,1,-37,-2147483648,-7,1,-37,-2147483648,-7,1,-37,-2147483648,-7,1,-37,-2147483648,-7,1,-37,-2147483648,
           -7,1,-594,-2147483648,
         ],"TileDataFormat":1,},"tilesetId":{"name":"hotelfloorts","path":"tilesets/hotelfloorts/hotelfloorts.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
-    {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4278190080,"depth":1000,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
+    {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4278190080,"depth":1100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],
   "name":"rm_1r",
   "parent":{

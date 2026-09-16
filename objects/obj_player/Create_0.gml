@@ -2,7 +2,7 @@ global.guiw = display_get_gui_width() at_window = false 	hor = keyboard_check(or
 ver = keyboard_check(ord("S")) - keyboard_check(ord("W")); key = undefined  
 global.guiw = display_get_gui_width() lightsubin = 0 i = false	
 global.guih = display_get_gui_height()  isCrouched = false playeritems = [] hasDiscord = false
-collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL,obj_windowR,obj_hotelplant,obj_reception_stool_bottom,obj_reception_stool_top_U,obj_windowL,obj_inviswall]
+collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL,obj_windowR,obj_hotelplant,obj_reception_stool_bottom,obj_reception_stool_top_U,obj_windowL,obj_inviswall,layer_tilemap_get_id("Extracol")]
 move_speed = 1 trueplayer = id inCutscene = false hasPressed = false count = 0
 playerupsprites = [spr_charanoobU,spr_charaaveryU] 
 playerupstandsprites = [spr_charanoob_standU,spr_charaavery_standU]

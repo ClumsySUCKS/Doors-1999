@@ -6,8 +6,8 @@
   "name":"sideroom_exitL",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Mechanics",
+    "path":"folders/Objects/room/Mechanics.yy",
   },
   "parentObjectId":null,
   "persistent":false,

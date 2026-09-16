@@ -27,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_rugMiddle",
+    "path":"sprites/spr_rugMiddle/spr_rugMiddle.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
