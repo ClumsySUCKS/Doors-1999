@@ -1,5 +1,5 @@
 nearplayer = instance_nearest(x,y,obj_player)
-if isLocal {
+if obj_player.isLocal {
 if obj_player.y > y {layer = depth1}
 if obj_player.y <= y {layer = depth2}}
 
