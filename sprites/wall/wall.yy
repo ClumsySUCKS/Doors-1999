@@ -23,7 +23,7 @@
   ],
   "name":"wall",
   "nineSlice":null,
-  "origin":6,
+  "origin":9,
   "parent":{
     "name":"Sprites",
     "path":"folders/Sprites.yy",
@@ -76,7 +76,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":0,
-    "yorigin":16,
+    "yorigin":3,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

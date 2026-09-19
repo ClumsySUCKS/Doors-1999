@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":1,
   "parent":{
-    "name":"avery",
-    "path":"folders/Sprites/players/avery.yy",
+    "name":"complete",
+    "path":"folders/Sprites/players/avery/complete.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

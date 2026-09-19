@@ -1,0 +1,1 @@
+if nearplayer.y <= y {image_index = 1}
