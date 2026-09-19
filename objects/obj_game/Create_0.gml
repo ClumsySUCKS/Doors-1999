@@ -4,4 +4,11 @@ global.chest = 0
 global.armL = 0
 global.armR = 0
 global.head = 0
-global.
+global.playerupsprites = [spr_charanoobU,spr_charaaveryU] 
+global.playerupstandsprites = [spr_charanoob_standU,spr_charaavery_standU]
+global.playerdownsprites = [spr_charanoobD,spr_charaaveryD]
+global.playerdownstandsprites = [spr_charanoob_standD,spr_charaavery_standD]
+global.playerleftsprites = [spr_charanoobL,spr_charaaveryL]
+global.playerleftstandsprites = [spr_charanoob_standL,spr_charaavery_standL]
+global.playerrightsprites = [spr_charanoobR,spr_charaaveryR]
+global.playerrightstandsprites = [spr_charanoob_standR,spr_charaavery_standR]

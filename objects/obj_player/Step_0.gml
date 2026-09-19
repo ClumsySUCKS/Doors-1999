@@ -42,10 +42,10 @@ paddle_movement()
 if (!inCutscene) {
     if (xInput != 0 || yInput != 0) {
         image_speed = 1
-        if (xInput > 0)      self.sprite_index = playerrightsprites[lobbyMemberID]
-        else if (xInput < 0) self.sprite_index = playerleftsprites[lobbyMemberID]
-        else if (yInput > 0) self.sprite_index = playerdownsprites[lobbyMemberID]
-        else if (yInput < 0) self.sprite_index = playerupsprites[lobbyMemberID]
+        if (xInput > 0)      self.sprite_index = global.playerrightsprites[lobbyMemberID]
+        else if (xInput < 0) self.sprite_index = global.playerleftsprites[lobbyMemberID]
+        else if (yInput > 0) self.sprite_index = global.playerdownsprites[lobbyMemberID]
+        else if (yInput < 0) self.sprite_index = global.playerupsprites[lobbyMemberID]
         
         if (walk_timer < 23) {
             walk_timer = walk_timer + 1

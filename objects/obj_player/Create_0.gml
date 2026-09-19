@@ -4,15 +4,8 @@ global.guiw = display_get_gui_width() lightsubin = 0 i = false
 global.guih = display_get_gui_height()  isCrouched = false playeritems = [] hasDiscord = false
 collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL,obj_windowR,obj_hotelplant,obj_reception_stool_bottom,obj_reception_stool_top_U,obj_windowL,obj_inviswall,obj_wall,obj_wall_wall,obj_wall_middle]
 move_speed = 1 trueplayer = id inCutscene = false hasPressed = false count = 0
-playerupsprites = [spr_charanoobU,spr_charaaveryU] 
-playerupstandsprites = [spr_charanoob_standU,spr_charaavery_standU]
-playerdownsprites = [spr_charanoobD,spr_charaaveryD]
-playerdownstandsprites = [spr_charanoob_standD,spr_charaavery_standD]
-playerleftsprites = [spr_charanoobL,spr_charaaveryL]
-playerleftstandsprites = [spr_charanoob_standL,spr_charaavery_standL]
-playerrightsprites = [spr_charanoobR,spr_charaaveryR]
-playerrightstandsprites = [spr_charanoob_standR,spr_charaavery_standR]
-self.sprite_index = playerupstandsprites[lobbyMemberID]
+
+self.sprite_index = global.playerupstandsprites[lobbyMemberID]
 
 canTeleport = false  stoolpotential = false closetpotential = false
 exityes = false hasPressed = false
