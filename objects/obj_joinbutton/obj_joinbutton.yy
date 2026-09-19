@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_joinplay",
-    "path":"sprites/spr_joinplay/spr_joinplay.yy",
+    "name":"spr_friend_menu",
+    "path":"sprites/spr_friend_menu/spr_friend_menu.yy",
   },
   "spriteMaskId":null,
   "visible":true,

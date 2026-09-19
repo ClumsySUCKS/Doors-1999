@@ -16,7 +16,7 @@ switch room {
 		with obj_hostbutton {
 			selectAction()}
 		case 1:	
-		with obj_friendbutton2 {
+		with obj_joinbutton {
 			selectAction()}
 
 }}
