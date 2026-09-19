@@ -115,6 +115,7 @@
     {"id":{"name":"obj_fridge_door","path":"objects/obj_fridge_door/obj_fridge_door.yy",},},
     {"id":{"name":"obj_fridge_light","path":"objects/obj_fridge_light/obj_fridge_light.yy",},},
     {"id":{"name":"obj_friendbutton","path":"objects/obj_friendbutton/obj_friendbutton.yy",},},
+    {"id":{"name":"obj_friendbutton2","path":"objects/obj_friendbutton2/obj_friendbutton2.yy",},},
     {"id":{"name":"obj_FRIENDS","path":"objects/obj_FRIENDS/obj_FRIENDS.yy",},},
     {"id":{"name":"obj_fuck","path":"objects/obj_fuck/obj_fuck.yy",},},
     {"id":{"name":"obj_game","path":"objects/obj_game/obj_game.yy",},},

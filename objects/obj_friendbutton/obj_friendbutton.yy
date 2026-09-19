@@ -9,8 +9,8 @@
   "name":"obj_friendbutton",
   "overriddenProperties":[],
   "parent":{
-    "name":"THAT Menu",
-    "path":"folders/Objects/intro/THAT Menu.yy",
+    "name":"Limbo Menu",
+    "path":"folders/Objects/intro/Limbo Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,
