@@ -92,7 +92,7 @@
     {"name":"obj_inviskey","order":16,"path":"objects/obj_inviskey/obj_inviskey.yy",},
     {"name":"obj_inviswall","order":17,"path":"objects/obj_inviswall/obj_inviswall.yy",},
     {"name":"obj_joinbutton","order":3,"path":"objects/obj_joinbutton/obj_joinbutton.yy",},
-    {"name":"obj_keywall","order":3,"path":"objects/obj_keywall/obj_keywall.yy",},
+    {"name":"obj_keywall","order":15,"path":"objects/obj_keywall/obj_keywall.yy",},
     {"name":"obj_legL","order":25,"path":"objects/obj_legL/obj_legL.yy",},
     {"name":"obj_legR","order":26,"path":"objects/obj_legR/obj_legR.yy",},
     {"name":"obj_LobbyItem","order":4,"path":"objects/obj_LobbyItem/obj_LobbyItem.yy",},
