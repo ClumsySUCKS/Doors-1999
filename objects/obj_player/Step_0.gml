@@ -1,4 +1,4 @@
-get_controls(isHost,isLocal) 
+get_controls(isHost, isLocal) 
 if stoolpotential {closetstool = instance_nearest(x,y,obj_reception_stool_top_U)}
 if (stoolpotential && !hasPressed) {
    
