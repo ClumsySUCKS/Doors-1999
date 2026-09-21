@@ -18,12 +18,12 @@ if (_local_player != noone && point_distance(x, y, _local_player.x, _local_playe
             // If I am the host, send this to all connected clients
             for (var _i = 0; _i < array_length(obj_Server.playerList); _i++) {
                 if (obj_Server.playerList[_i].steamID != obj_Server.steamID) {
-                    steam_net_packet_send(obj_Server.playerList[_i].steamID, _b);
+                    net_packet_send(obj_Server.playerList[_i].steamID, _b);
                 }
             }
         } else if (instance_exists(obj_Client)) {
             var lobbyHost = obj_player.lobbyHost
-            steam_net_packet_send(lobbyHost,_b);
+            net_packet_send(lobbyHost,_b);
         }
         
         buffer_delete(_b);

@@ -1,9 +1,9 @@
 /// @description Listening for activity as client
 
-while(steam_net_packet_receive()){
+while(net_packet_receive()){
 	
-	var _sender = steam_net_packet_get_sender_id();
-	steam_net_packet_get_data(inbuf);
+	var _sender = net_packet_get_sender_id();
+	net_packet_get_data(inbuf);
 	buffer_seek(inbuf, buffer_seek_start, 0);
 	var _type = buffer_read(inbuf, buffer_u8);
 	
@@ -26,7 +26,7 @@ while(steam_net_packet_receive()){
 							})
 			array_push(playerList, {
 				steamID	 : _steamID,
-				steamName: steam_get_user_persona_name(_steamID),
+				steamName: net_peer_name(_steamID),
 				character: _inst,
 				lobbyMemberID : _num
 			})

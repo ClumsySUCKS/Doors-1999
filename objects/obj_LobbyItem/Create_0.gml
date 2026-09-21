@@ -3,7 +3,7 @@ selected = false;
 disabled = false;
 
 selectAction = function () { global.client = instance_create_depth(0,0,0,obj_Client)
-	steam_lobby_list_join(lobby_index)
+	net_lobby_join(lobby_id)
 	show_debug_message("Clicked lobbyitem")};
 
 textColor = c_white

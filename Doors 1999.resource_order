@@ -118,7 +118,6 @@
     {"name":"obj_spawn_title","order":8,"path":"objects/obj_spawn_title/obj_spawn_title.yy",},
     {"name":"obj_SpawnPoint","order":3,"path":"objects/obj_SpawnPoint/obj_SpawnPoint.yy",},
     {"name":"obj_spherespawner","order":12,"path":"objects/obj_spherespawner/obj_spherespawner.yy",},
-    {"name":"obj_Steam","order":2,"path":"objects/obj_Steam/obj_Steam.yy",},
     {"name":"obj_wall_light_D_off","order":1,"path":"objects/obj_wall_light_D_off/obj_wall_light_D_off.yy",},
     {"name":"obj_wall_light_D_weak","order":2,"path":"objects/obj_wall_light_D_weak/obj_wall_light_D_weak.yy",},
     {"name":"obj_wall_light_L_off","order":4,"path":"objects/obj_wall_light_L_off/obj_wall_light_L_off.yy",},

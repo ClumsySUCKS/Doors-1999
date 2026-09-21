@@ -17,9 +17,9 @@ global.canInteract = true
 walk_timer = 0
 ka = false 
 sa = false 
-localSteamID = steam_get_user_steam_id()
-lobbyHost = steam_lobby_get_owner_id()
-isHost = steam_lobby_is_owner()
+localSteamID = net_my_id()
+lobbyHost = net_host_id()
+isHost = net_is_host()
 isLocal = (localSteamID == steamID)
 if isLocal {camera_set_view_target(view_camera[0],id)}
 if !instance_exists(doorcontroller) {

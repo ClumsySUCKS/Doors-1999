@@ -3,10 +3,10 @@
 	
 playerList = []
 
-steamID = steam_get_user_steam_id()
-steamName = steam_get_persona_name()
+steamID = net_my_id()
+steamName = global.player_name
 lobbyMemberID = undefined
-lobbyHost = steam_lobby_get_owner_id()
+lobbyHost = net_host_id()
 character = undefined
 
 inbuf = buffer_create(16, buffer_grow, 1);
@@ -18,3 +18,8 @@ playerList[0] = {
 	startPos	: grab_spawn_point(0),
 	lobbyMemberID : undefined
 	}
+	
+on_net_event = function (evt) {
+	if (evt.type == "lobby_closed" || evt.type == "disconnected") {
+		show_debug_message("Host left or connection lost")
+		game_restart()}}

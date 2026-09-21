@@ -15,7 +15,7 @@ function send_player_input(_input,_lobby_host){
 	buffer_write(_b, buffer_s8, _xInput);//1
 	buffer_write(_b, buffer_s8, _yInput);//1
 	buffer_write(_b, buffer_u8, _interactKey)
-	steam_net_packet_send(_lobby_host, _b)
+	net_packet_send(_lobby_host, _b)
 	buffer_delete(_b)
 }
 
@@ -48,9 +48,9 @@ function find_player_by_steam_id(_steam_id){
 function send_player_positions() {
 	for (var _i = 0; _i < array_length(playerList); _i++){	
 		var _player = playerList[_i]
-		var _spritename = sprite_get_name(_player.character.sprite_index)
 		if _player.character == undefined then continue
 		if _player.steamID == undefined then continue
+		var _spritename = sprite_get_name(_player.character.sprite_index)
 		var _b = buffer_create(20, buffer_grow, 1); //1+8+2+2
 		buffer_write(_b, buffer_u8, NETWORK_PACKETS.PLAYER_POSITION);//1
 		buffer_write(_b, buffer_u64, _player.steamID);//8
@@ -60,7 +60,7 @@ function send_player_positions() {
 		buffer_write(_b, buffer_s16, _player.character.image_index)
 		for (var _k = 0; _k < array_length(playerList); _k++){
 			if (playerList[_k].steamID != obj_Server.steamID) {
-				steam_net_packet_send(playerList[_k].steamID, _b)	
+				net_packet_send(playerList[_k].steamID, _b)	
 			}
 		}
 		buffer_delete(_b)

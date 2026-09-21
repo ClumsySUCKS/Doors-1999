@@ -12,3 +12,4 @@ global.playerleftsprites = [spr_charanoobL,spr_charaaveryL]
 global.playerleftstandsprites = [spr_charanoob_standL,spr_charaavery_standL]
 global.playerrightsprites = [spr_charanoobR,spr_charaaveryR]
 global.playerrightstandsprites = [spr_charanoob_standR,spr_charaavery_standR]
+global.player_name = "Player123"

@@ -158,7 +158,6 @@
     {"id":{"name":"obj_spawn_title","path":"objects/obj_spawn_title/obj_spawn_title.yy",},},
     {"id":{"name":"obj_SpawnPoint","path":"objects/obj_SpawnPoint/obj_SpawnPoint.yy",},},
     {"id":{"name":"obj_spherespawner","path":"objects/obj_spherespawner/obj_spherespawner.yy",},},
-    {"id":{"name":"obj_Steam","path":"objects/obj_Steam/obj_Steam.yy",},},
     {"id":{"name":"obj_wall_light_D_off","path":"objects/obj_wall_light_D_off/obj_wall_light_D_off.yy",},},
     {"id":{"name":"obj_wall_light_D_weak","path":"objects/obj_wall_light_D_weak/obj_wall_light_D_weak.yy",},},
     {"id":{"name":"obj_wall_light_D","path":"objects/obj_wall_light_D/obj_wall_light_D.yy",},},

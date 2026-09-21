@@ -1,7 +1,7 @@
-while(steam_net_packet_receive()){
+while(net_packet_receive()){
 	
-	var _sender = steam_net_packet_get_sender_id();
-	steam_net_packet_get_data(inbuf);
+	var _sender = net_packet_get_sender_id();
+	net_packet_get_data(inbuf);
 	buffer_seek(inbuf, buffer_seek_start, 0);
 	var _type = buffer_read(inbuf, buffer_u8);
 	
@@ -21,7 +21,7 @@ while(steam_net_packet_receive()){
 			buffer_write(_b, buffer_u8, NETWORK_PACKETS.MONOGRAM);
 			for (var _i = 0; _i < array_length(playerList); _i++){
 				if (playerList[_i].steamID != steamID && playerList[_i].steamID != _sender) {
-					steam_net_packet_send(playerList[_i].steamID, _b);
+					net_packet_send(playerList[_i].steamID, _b);
 				}
 			}
 			buffer_delete(_b);
