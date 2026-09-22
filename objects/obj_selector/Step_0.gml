@@ -7,7 +7,7 @@ switch room
 	break
 	case rm_hotelmenu:
 	spotx = [16,106,206]
-	spoty = [obj_hostbutton.y - 18, obj_skinbutton.y - 18]
+	spoty = [obj_hostbutton.y - 18, obj_joinbutton.y - 18, obj_skinbutton.y - 18]
 	endspot = 2}
 switch room {
 	case rm_beginningmenu:
