@@ -29,6 +29,10 @@ function get_controls(_is_host, _is_local)
 	var _upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_button_check( 0, gp_padu );
 	var _interactKey = keyboard_check(ord("E"))
 	
+	xInput = _rightKey - _leftKey
+	yInput = _downKey - _upKey
+	interactKey = _interactKey
+	
 
 	//Send input to Server
 	var _input = {rightKey:_rightKey, leftKey:_leftKey, downKey:_downKey, upKey:_upKey, interactKey:_interactKey}
