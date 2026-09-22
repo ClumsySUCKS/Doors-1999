@@ -27,3 +27,5 @@ if !instance_exists(doorcontroller) {
 init_controls()
 if room == rm_reception {stoolpotential = true}
 if instance_exists(randomFurniture) {closetpotential = true}
+if (is_undefined(lobbyMemberID)) {lobbyMemberID = 0
+self.sprite_index = global.playerupstandsprites[lobbyMemberID]}

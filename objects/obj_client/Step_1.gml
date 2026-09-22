@@ -33,18 +33,17 @@ while(net_packet_receive()){
 			break
 			
 		case NETWORK_PACKETS.SPAWN_SELF:
-			for (var _i = 0; _i < array_length(playerList); _i++){
-				if playerList[_i].steamID == steamID then lobbyMemberID = playerList[_i].lobbyMemberID	
-			}
 			var _layer = layer_get_id("Player");
 			var _x = buffer_read(inbuf, buffer_u16)
 			var _y = buffer_read(inbuf, buffer_u16)
+			lobbyMemberID = buffer_read(inbuf, buffer_u16)
 			var _inst = instance_create_layer(_x,_y,_layer,obj_player,{
 							steamName	: steamName,
 							steamID: steamID,
 							lobbyMemberID: lobbyMemberID
 						})
 			playerList[0].character = _inst
+			playerList[0].lobbyMemberID = lobbyMemberID
 			character = _inst
 			break
 
