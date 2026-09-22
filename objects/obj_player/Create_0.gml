@@ -5,7 +5,7 @@ global.guih = display_get_gui_height()  isCrouched = false playeritems = [] hasD
 collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL,obj_windowR,obj_hotelplant,obj_reception_stool_bottom,obj_reception_stool_top_U,obj_windowL,obj_inviswall,obj_wall,obj_wall_wall,obj_wall_middle]
 move_speed = 1 trueplayer = id inCutscene = false hasPressed = false count = 0
 
-self.sprite_index = global.playerupstandsprites[lobbyMemberID]
+sprite_index = global.playerupstandsprites[lobbyMemberID]
 
 canTeleport = false  stoolpotential = false closetpotential = false
 exityes = false hasPressed = false
