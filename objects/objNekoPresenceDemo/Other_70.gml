@@ -17,6 +17,7 @@ if (ev_type == "DiscordReady")
 	// DISCORD_MAX_BUTTONS == 2, so only allowed IDs are 0 and 1.
 	
 	//np_setpresence() should ALWAYS come the last!!
+	if room == rm_beginningmenu 
 	if room == rm_hotelmenu {
 	np_setpresence("Playing", "In Limbo's Menu", "doors_1999_title_dgs", "doors_1999_title_dgs");}
 	
