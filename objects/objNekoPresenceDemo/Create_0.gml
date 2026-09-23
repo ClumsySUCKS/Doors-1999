@@ -10,3 +10,4 @@ if (!np_initdiscord(DISCORD_APP_ID, true, 0))
 {
 	show_error("NekoPresence init fail.", true);
 }
+if instance_number(objNekoPresenceDemo) > 1 {instance_destroy()}
