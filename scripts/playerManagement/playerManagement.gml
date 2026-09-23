@@ -76,6 +76,9 @@ function update_player_position(_b) {
 	var _spritename = buffer_read(_b, buffer_string)
 	var _image_index = buffer_read(_b, buffer_s16)
 	var _realName = asset_get_index(_spritename)
+	
+	if _steam_id == steamID return
+	
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		if (_steam_id == playerList[_i].steamID) {
 			if playerList[_i].character = undefined then continue
