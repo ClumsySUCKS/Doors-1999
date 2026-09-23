@@ -37,7 +37,12 @@ if (inCutscene && hasPressed) && !count {
     }
 }
 
-paddle_movement()
+if isLocal || isHost {
+    paddle_movement()
+} else {
+    x = lerp(x, tx, 0.25)
+    y = lerp(y, ty, 0.25)
+}
 
 if (!inCutscene) {
     if (xInput != 0 || yInput != 0) {

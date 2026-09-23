@@ -82,8 +82,8 @@ function update_player_position(_b) {
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		if (_steam_id == playerList[_i].steamID) {
 			if playerList[_i].character = undefined then continue
-			playerList[_i].character.x = _x	
-			playerList[_i].character.y = _y
+			playerList[_i].character.tx = _x	
+			playerList[_i].character.ty = _y
 			if (_realName != -1) {
 				playerList[_i].character.sprite_index = _realName}
 			playerList[_i].character.image_index = _image_index
