@@ -32,7 +32,7 @@
   "origin":1,
   "parent":{
     "name":"complete",
-    "path":"folders/Sprites/players/noob/complete.yy",
+    "path":"folders/Sprites/players/No/complete.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

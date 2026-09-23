@@ -2,7 +2,7 @@ get_controls(isHost,isLocal)
 if stoolpotential {closetstool = instance_nearest(x,y,obj_reception_stool_top_U)}
 if (stoolpotential && !hasPressed) {
    
-    var playerhopsprites = [spr_chara_noob_hop, spr_chara_avery_hop]
+    var playerhopsprites = [spr_chara_noob_hop, spr_chara_av_hop]
     
     if (interactKey > 0 && instance_exists(closetstool) && point_distance(closetstool.x, closetstool.y, x, y) < 20) {
         hasPressed = true
@@ -22,11 +22,11 @@ if (stoolpotential && !hasPressed) {
 
 
 if (inCutscene && hasPressed) && !count {
-    var playerhopsprites = [spr_chara_noob_hop, spr_chara_avery_hop]
+    var playerhopsprites = [spr_chara_noob_hop, spr_chara_av_hop]
     
     if (sprite_index == playerhopsprites[lobbyMemberID] && image_index >= 6) {
         
-        var playersitsprites = [spr_chara_noob_stool_sit, spr_chara_avery_stool_sit]
+        var playersitsprites = [spr_chara_noob_stool_sit, spr_chara_av_stool_sit]
         
         if (instance_exists(closetstool)) {
             closetstool.sprite_index = playersitsprites[lobbyMemberID]
