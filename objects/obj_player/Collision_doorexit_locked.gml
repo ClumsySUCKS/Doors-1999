@@ -1,5 +1,5 @@
 
-if array_contains(playeritems,"key"){
+
 	if canTeleport == true
 {global.doorcount = global.doorcount + 1
     global.doorcountdiscord++
@@ -11,4 +11,4 @@ if array_contains(playeritems,"key"){
     
     go_to_room(global.doorcount)
     canTeleport = false
-}}
+}
