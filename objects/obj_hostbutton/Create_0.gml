@@ -11,4 +11,4 @@ selectAction = function () {
 	on_net_event = function (evt) {
 		if (evt.type != "lobby_joined") return
 		if (evt.is_host) {global.server = instance_create_depth(0,0,0,obj_Server)}
-		random_set_seed(20260101) room_goto(rm_reception)}
+		room_goto(rm_reception)}
