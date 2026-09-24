@@ -21,6 +21,7 @@ localSteamID = net_my_id()
 lobbyHost = net_host_id()
 isHost = net_is_host()
 isLocal = (localSteamID == steamID)
+persistent = isLocal
 if isLocal {camera_set_view_target(view_camera[0],id)}
 if !instance_exists(doorcontroller) {
 	instance_create_depth(0,0,-10,doorcontroller)}
