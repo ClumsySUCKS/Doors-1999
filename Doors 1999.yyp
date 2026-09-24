@@ -269,6 +269,7 @@
     {"id":{"name":"playerManagement","path":"scripts/playerManagement/playerManagement.yy",},},
     {"id":{"name":"playerMovement","path":"scripts/playerMovement/playerMovement.yy",},},
     {"id":{"name":"scr_net_protocol","path":"scripts/scr_net_protocol/scr_net_protocol.yy",},},
+    {"id":{"name":"scr_room_sync","path":"scripts/scr_room_sync/scr_room_sync.yy",},},
     {"id":{"name":"string_wrap","path":"scripts/string_wrap/string_wrap.yy",},},
     {"id":{"name":"snd_coincollect","path":"sounds/snd_coincollect/snd_coincollect.yy",},},
     {"id":{"name":"snd_introbounce","path":"sounds/snd_introbounce/snd_introbounce.yy",},},

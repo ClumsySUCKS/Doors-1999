@@ -12,7 +12,7 @@ if canTeleport == true
     }
     instance_destroy(obj_SpawnPoint)
 	instance_create_layer(x,y,"Instances",obj_SpawnPoint)
-    room_goto(global.room_list[global.doorcount])
+    go_to_room(global.doorcount)
     canTeleport = false
 }
 
