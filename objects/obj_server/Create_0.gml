@@ -25,7 +25,7 @@ on_net_event = function (evt) {
 		var _existing = -1
 		for (var _i = 0; _i < array_length(playerList); _i++) {
 			if (playerList[_i].steamID == evt.pid) {_existing = _i; break}}
-		var _slot
+		var _slot = undefined
 		if _existing >= 0 {
 			_slot  = _existing
 			playerList[_slot].steamName = evt.name}
