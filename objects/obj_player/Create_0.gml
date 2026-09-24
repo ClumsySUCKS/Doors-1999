@@ -1,5 +1,3 @@
-x = obj_SpawnPoint.x
-y = obj_SpawnPoint.y
 global.guiw = display_get_gui_width() at_window = false 	hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 ver = keyboard_check(ord("S")) - keyboard_check(ord("W")); key = undefined  
 global.guiw = display_get_gui_width() lightsubin = 0 i = false	
