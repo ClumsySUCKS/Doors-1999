@@ -1,4 +1,4 @@
-/// @description Init Client Variables
+	/// @description Init Client Variables
 
 	
 playerList = []
@@ -20,6 +20,10 @@ playerList[0] = {
 	}
 	
 on_net_event = function (evt) {
+	if evt.type == "lobby_joined" {
+		steamID = evt.my_id
+        lobbyHost = evt.host_id	
+		playerList[0].steamID = evt.my_id}
 	if (evt.type == "lobby_closed" || evt.type == "disconnected") {
 		show_debug_message("Host left or connection lost")
 		game_restart()}}
