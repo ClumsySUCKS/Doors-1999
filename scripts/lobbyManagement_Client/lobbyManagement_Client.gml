@@ -28,6 +28,7 @@ function sync_players(_new_list) {
 
 ///@self obj_client
 function client_player_spawn_at_pos(_player_info) {
+	show_debug_message("client_player_spawn_at_pos called for steamID " + string(_player_info.steamID))
 	var _layer	= layer_get_id("Player")
 	var _name	= global.player_name
 	var _steamID= _player_info.steamID
