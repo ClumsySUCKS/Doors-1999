@@ -39,6 +39,8 @@ function find_player_by_steam_id(_steam_id){
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		var _player = playerList[_i].character
 		if _player == undefined continue;
+		if !instance_exists(_player) {
+			playerList[_i].character = undefined continue}
 		if _player.steamID == _steam_id return _player;
 		
 	}
