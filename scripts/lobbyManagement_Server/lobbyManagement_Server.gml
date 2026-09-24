@@ -10,11 +10,12 @@ function send_player_sync(_steam_id){
 ///@self obj_server
 function send_player_spawn(_steam_id, _slot) {
 	var _pos = grab_spawn_point(_slot)
-	var _b = buffer_create(7, buffer_fixed, 1); //1+2+2
+	var _b = buffer_create(11, buffer_fixed, 1); //1+2+2
 	buffer_write(_b, buffer_u8, NETWORK_PACKETS.SPAWN_SELF);//1
 	buffer_write(_b, buffer_u16, _pos.x);//2
 	buffer_write(_b, buffer_u16, _pos.y);//2
 	buffer_write(_b, buffer_u16, _slot)
+	buffer_write(_b, buffer_u32, global.room_seed)
 	net_packet_send(_steam_id, _b)
 	buffer_delete(_b);
 	server_player_spawn_at_pos(_steam_id, _pos)

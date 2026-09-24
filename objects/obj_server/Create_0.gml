@@ -42,3 +42,5 @@ on_net_event = function (evt) {
 		case "disconnected":
 		game_restart()
 		break}}
+		
+	global.room_seed = irandom(999999999)
