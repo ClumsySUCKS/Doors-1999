@@ -15,9 +15,11 @@ switch room {
 		case 0:
 		with obj_hostbutton {
 			selectAction()}
+		break
 		case 1:	
 		with obj_joinbutton {
 			selectAction()}
+		break
 
 }}
 

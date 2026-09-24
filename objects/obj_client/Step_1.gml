@@ -43,6 +43,9 @@ while(net_packet_receive()){
 							steamID: steamID,
 							lobbyMemberID: lobbyMemberID
 						})
+			with _inst {
+				alarm[0] = 100
+				instance_create_layer(0,0,"trans",obj_dark)}
 			playerList[0].character = _inst
 			playerList[0].lobbyMemberID = lobbyMemberID
 			character = _inst

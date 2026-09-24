@@ -22,6 +22,9 @@ on_net_event = function (evt) {
 	switch (evt.type) {
 		case "peer_joined":
 		show_debug_message("Player Joined: " + evt.name)
+		var _existing = -1
+		for (var _i = 0; _i < array_length(playerList); _i++) {
+			if (playerList[_i].steamID == evt.pid) {_existing = _i; break}}
 		var _slot = array_length(playerList)
 		array_push(playerList, {
 			steamID: evt.pid,
@@ -31,7 +34,7 @@ on_net_event = function (evt) {
 			lobbyMemberID: _slot})
 			send_player_sync(evt.pid)
 			send_player_spawn(evt.pid, _slot)
-			break
+			break	
 		
 		case "peer_left":
 		for (var _i = 0; _i < array_length(playerList); _i++) {
