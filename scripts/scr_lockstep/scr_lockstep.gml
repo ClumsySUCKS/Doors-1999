@@ -1,26 +1,26 @@
 function get_forward_door(){
-	if instance_exists(doorexit) return doorexit
-	if instance_exists(doorexitb) return doorexitb
-	if instance_exists(doorexitr) return doorexitr
-	if instance_exists(doorexity) return doorexity
-	if instance_exists(doorexit_locked) return doorexit_locked
-	if instance_exists(sidexitL) return sidexitL
-	if instance_exists(sidexitR) return sidexitR
+	if (instance_exists(doorexit)) return doorexit
+	if (instance_exists(doorexitb)) return doorexitb
+	if (instance_exists(doorexitr)) return doorexitr
+	if (instance_exists(doorexity)) return doorexity
+	if (instance_exists(doorexit_locked)) return doorexit_locked
+	if (instance_exists(sidexitL)) return sidexitL
+	if (instance_exists(sidexitR)) return sidexitR
 	return noone
 
 }
 
 function enter_new_room(_door_index, _going_forward) {
-	var _marker = _going_forward ? get_forward_door() : (instance_exists(doorstart)) ? doorstart : noone
-	var _mx = _marker != noone ? _marker.x : 0
-	var _my = _marker != noone ? _marker.y : 0
+	var _marker = _going_forward ? get_forward_door() : (instance_exists(doorstart) ? doorstart : noone)
+	var _mx = (_marker != noone) ? _marker.x : 0
+	var _my = (_marker != noone) ? _marker.y : 0
 	instance_destroy(obj_SpawnPoint)
 	instance_create_layer(_mx,_my,"Instances",obj_SpawnPoint)
 	global.doorcount = _door_index
 	go_to_room(_door_index)}
 	
 function respawn_other_players() {
-	var _owner = instance_exists(obj_Server) ? obj_Server : instance_exists(obj_Client) ? obj_Client : noone
+	var _owner = instance_exists(obj_Server) ? obj_Server : (instance_exists(obj_Client) ? obj_Client : noone)
 	if _owner == noone return
 	var _layer = layer_get_id("Player")
 	for (var _i = 0; array_length(_owner.playerList); _i++) {
