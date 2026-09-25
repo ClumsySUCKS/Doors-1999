@@ -39,6 +39,9 @@ if (inCutscene && hasPressed) && !count {
 
 if isLocal || isHost {
     paddle_movement()
+	if (isLocal && !isHost) {
+		x = lerp(x, tx, 0.05)
+		y = lerp(y, ty, 0.05)}
 } else {
     x = lerp(x, tx, 0.6)
     y = lerp(y, ty, 0.6)

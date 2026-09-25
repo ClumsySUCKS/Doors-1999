@@ -5,4 +5,5 @@ if (!instance_exists(obj_player)) {
 		steamID: obj_Server.steamID,
 		lobbyMemberID: 0 })
 	playerList[0].character = _inst
+	playerList[0].startPos = _pos
 	character = _inst}

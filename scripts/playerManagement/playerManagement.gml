@@ -79,17 +79,16 @@ function update_player_position(_b) {
 	var _image_index = buffer_read(_b, buffer_s16)
 	var _realName = asset_get_index(_spritename)
 	
-	if _steam_id == steamID return
+
 	
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		if (_steam_id == playerList[_i].steamID) {
 			if playerList[_i].character = undefined then continue
 			playerList[_i].character.tx = _x	
 			playerList[_i].character.ty = _y
+			if (_steam_id != steamID) {
 			if (_realName != -1) {
 				playerList[_i].character.sprite_index = _realName}
 			playerList[_i].character.image_index = _image_index
 		}
-	}
-	
-}
+	}}}
