@@ -23,7 +23,7 @@ function respawn_other_players() {
 	var _owner = instance_exists(obj_Server) ? obj_Server : (instance_exists(obj_Client) ? obj_Client : noone)
 	if _owner == noone return
 	var _layer = layer_get_id("Player")
-	for (var _i = 0; array_length(_owner.playerList); _i++) {
+	for (var _i = 0; _i < array_length(_owner.playerList); _i++) {
 		var _p = _owner.playerList[_i]
 		if (_p.steamID == _owner.steamID) continue
 		var _pos = grab_spawn_point(0)
@@ -58,7 +58,7 @@ function host_update_gather_timer() {
 	var _all_forward = true, _any_forward = false
 	var _all_backward = true, _any_backward = false
 	with doorcontroller {
-		for (var _i; _i < _total; _i++) {
+		for (var _i = 0; _i < _total; _i++) {
 			var _sid = obj_Server.playerList[_i].steamID
 			var _entry = ds_map_exists(door_gather_state, _sid) ? door_gather_state[? _sid] : {forward:false, backward:false}
 			if _entry.forward {_any_forward = true} else {_all_forward = false}
