@@ -7,3 +7,5 @@ if (!instance_exists(obj_player)) {
 	playerList[0].character = _inst
 	playerList[0].startPos = _pos
 	character = _inst}
+	
+alarm[0] = 2

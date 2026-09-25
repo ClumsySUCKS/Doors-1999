@@ -24,7 +24,7 @@ while(net_packet_receive()){
 							steamID : _steamID,
 							lobbyMemberID : _num
 							})
-			show_debug_message("SPAWN_SELF handled, created instance " + string(_inst))
+			show_debug_message("SPAWN_OTHER handled, created instance " + string(_inst))
 			array_push(playerList, {
 				steamID	 : _steamID,
 				steamName: net_peer_name(_steamID),
@@ -44,7 +44,7 @@ while(net_packet_receive()){
 							steamID: steamID,
 							lobbyMemberID: lobbyMemberID
 						})
-			show_debug_message("SPAWN_OTHER handled, created instance " + string(_inst))
+			show_debug_message("SPAWN_SELF handled, created instance " + string(_inst))
 			with _inst {
 				alarm[0] = 100
 				instance_create_layer(0,0,"trans",obj_dark)}
