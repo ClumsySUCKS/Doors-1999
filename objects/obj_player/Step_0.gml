@@ -43,10 +43,11 @@ if (inCutscene && hasPressed) && !count {
 if isLocal || isHost {
     paddle_movement()
 	if (isLocal && !isHost) {
+	if  (point_distance(x,y,tx,ty) > 8) {
 		x = lerp(x, tx, 0.05)
-		y = lerp(y, ty, 0.05)}
+		y = lerp(y, ty, 0.05)}}
 } else {
-	var _s = pos_buffer_sample(pos_buffer, current_time - 100)
+	var _s = pos_buffer_sample(pos_buffer, current_time - 150)
 	if (!is_undefined(_s)) {
 		x = _s.x
 		y = _s.y}
