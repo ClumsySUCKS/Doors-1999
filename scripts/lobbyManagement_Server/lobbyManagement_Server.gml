@@ -75,3 +75,22 @@ function send_player_input_to_clients(_player_input){
 	}
 	buffer_delete(_b);
 }
+
+///@self obj_server
+function door_transition(_direction) {
+	global.doorcount += _direction
+	global.doorcountdiscord += _direction
+	if global.doorcount == 13 {
+		global.doorcount += _direction
+		global.doorcountdiscord += _direction}
+	
+		var _new_index = global.doorcount
+	
+	var _b = buffer_create(3, buffer_fixed, 1)
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.ROOM_CHANGE)
+	buffer_write(_b, buffer_u16, _new_index)
+	for (var _i; _i < array_length(playerList); _i++) {
+		if playerList[_i].steamID != steamID {net_packet_send(playerList[_i].steamID, _b)}}
+		buffer_delete(_b)
+		enter_new_room(_new_index, _direction > 0)}
+		

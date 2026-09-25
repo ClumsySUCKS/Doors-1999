@@ -66,7 +66,11 @@ while(net_packet_receive()){
 				with (obj_monogram) { toggle_state(); }
 			}
 			break;
-			
+		case NETWORK_PACKETS.ROOM_CHANGE:
+		var _new_index = buffer_read(inbuf, buffer_u16)
+		var _going_forward = (_new_index > global.doorcount)
+		enter_new_room(_new_index, _going_forward)
+		break
 		default:
 			show_debug_message("Unknown packet received: "+string(_type))
 			break

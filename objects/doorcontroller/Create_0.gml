@@ -10,3 +10,9 @@ canA = false
 canR = false
 instance_create_layer(0,0,"HUD",drawgraph)
 // SPAWNED BY OBJ_PLAYER NOW
+gather_timer = -1
+GATHER_TIMEOUT = 7000
+gathered_forward = false
+gathered_backward = false
+start_door_active_at = 0
+door_gather_state = ds_map_create()

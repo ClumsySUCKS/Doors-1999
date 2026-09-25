@@ -26,6 +26,11 @@ while(net_packet_receive()){
 			}
 			buffer_delete(_b);
 			break;
+		case NETWORK_PACKETS.DOOR_GATHER:
+		var _forward = buffer_read(inbuf, buffer_u8)
+		var _near = buffer_read(inbuf, buffer_u8)
+		host_receive_gather(_sender, _forward, _near)
+		break
 		default:
 			show_debug_message("Unknown packet received: "+string(_type))
 			break
