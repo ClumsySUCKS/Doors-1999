@@ -1,3 +1,4 @@
+if (isLocal) { show_debug_message("MY OWN CHAR: isLocal=" + string(isLocal) + " isHost=" + string(isHost) + " tx=" + string(tx) + " ty=" + string(ty)) }
 get_controls(isHost,isLocal) 
 if stoolpotential {closetstool = instance_nearest(x,y,obj_reception_stool_top_U)}
 if (stoolpotential && !hasPressed) {
