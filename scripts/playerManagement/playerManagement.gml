@@ -86,6 +86,7 @@ function update_player_position(_b) {
 			if playerList[_i].character = undefined then continue
 			playerList[_i].character.tx = _x	
 			playerList[_i].character.ty = _y
+			pos_buffer_push(playerList[_i].character,_x,_y)
 			if (_steam_id != steamID) {
 			if (_realName != -1) {
 				playerList[_i].character.sprite_index = _realName}

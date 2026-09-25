@@ -32,3 +32,4 @@ if (is_undefined(lobbyMemberID)) {lobbyMemberID = 0
 self.sprite_index = global.playerupstandsprites[lobbyMemberID]}
 tx = x
 ty = y
+pos_buffer = [{x:x, y:y, t:current_time}]

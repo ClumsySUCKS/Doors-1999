@@ -46,8 +46,10 @@ if isLocal || isHost {
 		x = lerp(x, tx, 0.05)
 		y = lerp(y, ty, 0.05)}
 } else {
-    x = lerp(x, tx, 0.3)
-    y = lerp(y, ty, 0.3)
+	var _s = pos_buffer_sample(pos_buffer, current_time - 100)
+	if (!is_undefined(_s)) {
+		x = _s.x
+		y = _s.y}
 }
 
 if (!inCutscene) {
