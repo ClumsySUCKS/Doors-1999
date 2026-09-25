@@ -1,4 +1,4 @@
 
 send_player_positions()
 
-alarm[0] = 2
+alarm[0] = 1

@@ -46,8 +46,8 @@ if isLocal || isHost {
 		x = lerp(x, tx, 0.05)
 		y = lerp(y, ty, 0.05)}
 } else {
-    x = lerp(x, tx, 0.6)
-    y = lerp(y, ty, 0.6)
+    x = lerp(x, tx, 0.3)
+    y = lerp(y, ty, 0.3)
 }
 
 if (!inCutscene) {
