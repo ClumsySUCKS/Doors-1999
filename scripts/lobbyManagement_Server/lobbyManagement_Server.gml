@@ -89,7 +89,7 @@ function door_transition(_direction) {
 	var _b = buffer_create(3, buffer_fixed, 1)
 	buffer_write(_b, buffer_u8, NETWORK_PACKETS.ROOM_CHANGE)
 	buffer_write(_b, buffer_u16, _new_index)
-	for (var _i; _i < array_length(playerList); _i++) {
+	for (var _i = 0; _i < array_length(playerList); _i++) {
 		if playerList[_i].steamID != steamID {net_packet_send(playerList[_i].steamID, _b)}}
 		buffer_delete(_b)
 		enter_new_room(_new_index, _direction > 0)}
