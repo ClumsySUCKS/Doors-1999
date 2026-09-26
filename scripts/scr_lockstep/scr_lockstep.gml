@@ -63,11 +63,22 @@ function host_update_gather_timer() {
 			var _entry = ds_map_exists(door_gather_state, _sid) ? door_gather_state[? _sid] : {forward:false, backward:false}
 			if _entry.forward {_any_forward = true} else {_all_forward = false}
 			if _entry.backward {_any_backward = true} else {_all_backward = false}}
-			
+			global.gather_timer_display = gather_timer
 			if _any_forward || _all_backward {
 				if gather_timer < 0 {gather_timer = GATHER_TIMEOUT}
 				gather_timer -= (1000/room_speed)} else {
 					gather_timer = -1}
+			static _last_sent = -999
+			if (abs(gather_timer - _last_sent) > 100 || (gather_timer < 0) != (_last_sent < 0)) {
+				_last_sent = gather_timer
+				var _b = buffer_create(5, buffer_fixed, 1)
+				buffer_write(_b, buffer_u8, NETWORK_PACKETS.DOOR_GATHER)
+				buffer_write(_b, buffer_u8, 255)
+				buffer_write(_b, buffer_u32, gather_timer)
+				with (obj_Server) {
+					for (var _i = 0; _i < array_length(playerList); _i++) {
+						if (playerList[_i].steamID != steamID) {net_packet_send(playerList[_i].steamID, _b)}}}
+						buffer_delete(_b)}
 					
 			var _timed_out = (gather_timer >= 0 && gather_timer <= 0)
 			var _go_forward = _all_forward || (_timed_out && _any_forward)

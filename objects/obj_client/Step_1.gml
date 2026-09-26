@@ -74,6 +74,10 @@ while(net_packet_receive()){
 		default:
 			show_debug_message("Unknown packet received: "+string(_type))
 			break
+		case NETWORK_PACKETS.DOOR_GATHER:
+		var _flag = buffer_read(inbuf, buffer_u8)
+		if (_flag == 255) {global.gather_timer_display = buffer_read(inbuf, buffer_s32)}
+		break
 	}
 }
 
