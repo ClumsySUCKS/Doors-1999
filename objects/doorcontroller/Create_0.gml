@@ -16,4 +16,3 @@ gathered_forward = false
 gathered_backward = false
 start_door_active_at = 0
 door_gather_state = ds_map_create()
-_near = false
