@@ -21,7 +21,7 @@ if reroll == true && global.isRoomdark == 0
 		
 var _fdoor = get_forward_door()
 if _fdoor != noone {
-	var _near = false
+	
 	with obj_player {if isLocal && point_distance(x,y,_fdoor.x,_fdoor.y) < 40 {_near = true}}
 	if _near != gathered_forward {gathered_forward = _near; send_gather_status(true, _near)}}
 if instance_exists(doorstart) && current_time >= start_door_active_at {

@@ -1,0 +1,1 @@
+if _near == true && instance_exists(obj_doorradiusD) {draw_text(obj_doorradiusD.x,obj_doorradiusD.y, gather_timer)}

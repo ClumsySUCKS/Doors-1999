@@ -1,16 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"doorexit_locked",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_doorradiusD",
+  "eventList":[],
   "managed":true,
-  "name":"doorexit_locked",
+  "name":"obj_doorradiusD",
   "overriddenProperties":[],
   "parent":{
-    "name":"Mechanics",
-    "path":"folders/Objects/room/Mechanics.yy",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_door_locked",
-    "path":"sprites/spr_door_locked/spr_door_locked.yy",
+    "name":"spr_doorradiusD",
+    "path":"sprites/spr_doorradiusD/spr_doorradiusD.yy",
   },
   "spriteMaskId":null,
   "visible":true,
