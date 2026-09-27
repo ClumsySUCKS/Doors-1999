@@ -62,16 +62,16 @@ function host_update_gather_timer() {
 			var _sid = obj_Server.playerList[_i].steamID
 			var _entry = ds_map_exists(door_gather_state, _sid) ? door_gather_state[? _sid] : {forward:false, backward:false}
 			if _entry.forward {_any_forward = true} else {_all_forward = false}
-			if _entry.backward {_any_backward = true} else {_all_backward = false}}
-			if _any_forward || _all_backward {
+			if _entry.backward {_any_backward = true} else {_any_backward = false}}
+			if _any_forward || _any_backward {
 				if gather_timer < 0 {gather_timer = GATHER_TIMEOUT}
 				gather_timer -= (1000/room_speed)} else {
 					gather_timer = -1}
 			static _last_sent = -999
 			if (abs(gather_timer - _last_sent) > 100 || (gather_timer < 0) != (_last_sent < 0)) {
-				_last_sent = gather_time
+				_last_sent = gather_timer
 				set_gather_timer_display(gather_timer, _any_forward)
-				var _b = buffer_create(6, buffer_fixed, 1)
+				var _b = buffer_create(7, buffer_fixed, 1)
 				buffer_write(_b, buffer_u8, NETWORK_PACKETS.DOOR_GATHER)
 				buffer_write(_b, buffer_u8, 255)
 				buffer_write(_b, buffer_u32, gather_timer)
@@ -83,7 +83,7 @@ function host_update_gather_timer() {
 					
 			var _timed_out = (gather_timer >= 0 && gather_timer <= 0)
 			var _go_forward = _all_forward || (_timed_out && _any_forward)
-			var _go_backward = !_go_forward && (_all_backward || (_timed_out && _any_backward))
+			var _go_backward = !_go_forward && (_any_backward || (_timed_out && _any_backward))
 			
 			if (_go_forward) {with (obj_Server) {door_transition(1)}}
 			else if (_go_backward) {with obj_Server {door_transition(-1)}}}}
