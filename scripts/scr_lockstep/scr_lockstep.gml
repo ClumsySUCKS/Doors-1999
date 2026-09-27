@@ -74,7 +74,7 @@ function host_update_gather_timer() {
 				var _b = buffer_create(1, buffer_grow, 1)
 				buffer_write(_b, buffer_u8, NETWORK_PACKETS.DOOR_GATHER)
 				buffer_write(_b, buffer_u8, 255)
-				buffer_write(_b, buffer_u32, gather_timer)
+				buffer_write(_b, buffer_s32, gather_timer)
 				buffer_write(_b, buffer_u8, _any_forward)
 				with (obj_Server) {
 					for (var _i = 0; _i < array_length(playerList); _i++) {

@@ -77,7 +77,7 @@ while(net_packet_receive()){
 		case NETWORK_PACKETS.DOOR_GATHER:
 		var _flag = buffer_read(inbuf, buffer_u8)
 		if _flag == 255 {
-			var _ms = buffer_read(inbuf, buffer_u32)
+			var _ms = buffer_read(inbuf, buffer_s32)
 			var _fwd = buffer_read(inbuf, buffer_u8)
 			show_debug_message("DOOR_GATHER recv: ms=" + string(_ms) + " fwd=" + string(_fwd))
 			set_gather_timer_display(_ms,_fwd)}
