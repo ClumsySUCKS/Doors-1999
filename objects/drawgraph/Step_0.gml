@@ -1,3 +1,20 @@
+if global.drawcountHUD == true {
+if instance_exists(doorexit) {
+	var _exit = instance_nearest(x,y,doorexit)
+var countHUDvisibilty = point_distance(obj_player.x, obj_player.y, _exit.x,_exit.y)
+_math = (countHUDvisibilty - 30) / (50 - 30)}
+if instance_exists(doorexit_locked) {
+	var _exit = instance_nearest(x,y,doorexit_locked)
+var countHUDvisibilty = point_distance(obj_player.x, obj_player.y, _exit.x,_exit.y)
+_math = (countHUDvisibilty - 30) / (50 - 30)}
+if instance_exists(sidexitL) {
+	var _exit = instance_nearest(x,y,sidexitL)
+var countHUDvisibilty = point_distance(obj_player.x, obj_player.y, _exit.x,_exit.y)
+_math = (countHUDvisibilty - 30) / (50 - 30)}
+if instance_exists(sidexitR) {
+	var _exit = instance_nearest(x,y,sidexitR)
+var countHUDvisibilty = point_distance(obj_player.x, obj_player.y, _exit.x,_exit.y)
+_math = (countHUDvisibilty - 30) / (50 - 30)}}
 
 
 

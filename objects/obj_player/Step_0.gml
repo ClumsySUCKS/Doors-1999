@@ -82,5 +82,10 @@ if (!inCutscene) {
 if isLocal {
     audio_listener_position(x, y, 0)
     audio_listener_orientation(0, 0, 1, 0, -1, 0)
-}
+	if instance_exists(doorexit) || instance_exists(doorexit_locked) {
+		var _exit = instance_nearest(x,y,doorexit)
+		var _exitlocked = instance_nearest(x,y,doorexit_locked)
+	if point_distance(x,y,_exit.x,_exit.y) < 50 || point_distance(x,y,_exitlocked.x,_exitlocked.y) {global.drawcountHUD = true}
+	if point_distance(x,y,_exit.x,_exit.y) >= 50 || point_distance(x,y,_exitlocked.x,_exitlocked.y) {global.drawcountHUD = false}
+}}
 	

@@ -7,7 +7,8 @@ draw_sprite(coinicon,0,600,866)
 draw_sprite_ext(healthoutside,0,130,870,5,5,0,c_white,1)
 draw_sprite_stretched_ext(healthinside,0,130,870,240 * (global.hp / global.hp_max),80,c_white,1)
 draw_sprite_ext(healthicon,0,100,854,7,7,0,c_white,1)
-draw_sprite_ext(doornumberHUD,0,50,700,7,7,0,c_white,1)
+if global.drawcountHUD == true {
+draw_sprite_ext(doornumberHUD,0,50,700,7,7,0,c_white,_math)}
 text = string_replace_all(string_format(global.doorcount,4,0)," ","0")
 draw_sprite_ext(spr_itemHUD,0,360,854,8,7,0,c_white,1) 
 if instance_exists(obj_player) {if obj_player.isLocal {if array_contains(obj_player.playeritems, "key"){
