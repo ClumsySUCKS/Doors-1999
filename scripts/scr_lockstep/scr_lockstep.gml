@@ -63,18 +63,19 @@ function host_update_gather_timer() {
 			var _entry = ds_map_exists(door_gather_state, _sid) ? door_gather_state[? _sid] : {forward:false, backward:false}
 			if _entry.forward {_any_forward = true} else {_all_forward = false}
 			if _entry.backward {_any_backward = true} else {_all_backward = false}}
-			global.gather_timer_display = gather_timer
 			if _any_forward || _all_backward {
 				if gather_timer < 0 {gather_timer = GATHER_TIMEOUT}
 				gather_timer -= (1000/room_speed)} else {
 					gather_timer = -1}
 			static _last_sent = -999
 			if (abs(gather_timer - _last_sent) > 100 || (gather_timer < 0) != (_last_sent < 0)) {
-				_last_sent = gather_timer
-				var _b = buffer_create(5, buffer_fixed, 1)
+				_last_sent = gather_time
+				set_gather_timer_display(gather_timer, _any_forward)
+				var _b = buffer_create(6, buffer_fixed, 1)
 				buffer_write(_b, buffer_u8, NETWORK_PACKETS.DOOR_GATHER)
 				buffer_write(_b, buffer_u8, 255)
 				buffer_write(_b, buffer_u32, gather_timer)
+				buffer_write(_b, buffer_u8, _any_forward)
 				with (obj_Server) {
 					for (var _i = 0; _i < array_length(playerList); _i++) {
 						if (playerList[_i].steamID != steamID) {net_packet_send(playerList[_i].steamID, _b)}}}
@@ -86,4 +87,16 @@ function host_update_gather_timer() {
 			
 			if (_go_forward) {with (obj_Server) {door_transition(1)}}
 			else if (_go_backward) {with obj_Server {door_transition(-1)}}}}
+			
+function set_gather_timer_display(_ms,_forward) {
+	if (_ms < 0) {
+		if (instance_exists(obj_door_timer)) {instance_destroy(obj_door_timer)} return}
+		var _digit = ceil(_ms / 1000)
+		if (_digit < 0) {_digit = 0}
+		if !instance_exists(obj_door_timer) {
+			var _door = _forward ? get_forward_door() : (instance_exists(doorstart) ? doorstart : noone)
+			var _dx = (_door != noone) ? _door.x : 0
+			var _dy = (_door != noone) ? (_door.y - 32) : 0
+			instance_create_layer(_dx, _dy, "HUD", obj_door_timer)}
+			with (obj_door_timer) {image_index = _digit}}
 	

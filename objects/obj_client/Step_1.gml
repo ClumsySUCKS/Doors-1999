@@ -76,8 +76,11 @@ while(net_packet_receive()){
 			break
 		case NETWORK_PACKETS.DOOR_GATHER:
 		var _flag = buffer_read(inbuf, buffer_u8)
-		if (_flag == 255) {global.gather_timer_display = buffer_read(inbuf, buffer_s32)}
-		break
+		if _flag == 255 {
+			var _ms = buffer_read(inbuf, buffer_s32)
+			var _fwd = buffer_read(inbuf, buffer_u8)
+			set_gather_timer_display(_ms,_fwd)}
+			break
 	}
 }
 

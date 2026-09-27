@@ -1,1 +1,1 @@
-instance_create_layer(x,y,"Instances",obj_doorradiusD)
+instance_create_layer(x - 20,y + 16,"Instances",obj_doorradiusU)
