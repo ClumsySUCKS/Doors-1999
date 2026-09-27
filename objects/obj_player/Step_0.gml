@@ -1,6 +1,3 @@
-if (isLocal && (current_time mod 500 < 16)) {
-    show_debug_message("x=" + string(x) + " y=" + string(y) + " tx=" + string(tx) + " ty=" + string(ty))
-}
 get_controls(isHost,isLocal) 
 if stoolpotential {closetstool = instance_nearest(x,y,obj_reception_stool_top_U)}
 if (stoolpotential && !hasPressed) {
