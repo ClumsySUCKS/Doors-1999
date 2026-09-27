@@ -1,4 +1,4 @@
-randomise()
+
 canpresse = true
 furniture = [drawerF, closetF, closetF]
 cShelf = 0 
