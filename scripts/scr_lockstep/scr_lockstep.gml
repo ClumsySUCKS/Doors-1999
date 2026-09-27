@@ -71,7 +71,7 @@ function host_update_gather_timer() {
 			if (abs(gather_timer - _last_sent) > 100 || (gather_timer < 0) != (_last_sent < 0)) {
 				_last_sent = gather_timer
 				set_gather_timer_display(gather_timer, _any_forward)
-				var _b = buffer_create(7, buffer_fixed, 1)
+				var _b = buffer_create(1, buffer_grow, 1)
 				buffer_write(_b, buffer_u8, NETWORK_PACKETS.DOOR_GATHER)
 				buffer_write(_b, buffer_u8, 255)
 				buffer_write(_b, buffer_u32, gather_timer)
