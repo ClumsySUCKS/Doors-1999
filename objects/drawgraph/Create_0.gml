@@ -25,6 +25,4 @@ global.rushKill = 0
 healthchange = global.hp
 global.drawblack = 0
 global.isHotel = false
-global.drawcountHUD = false
-_math = 0
 if room == rm_reception {global.isHotel = true}
