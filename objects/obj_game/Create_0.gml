@@ -1,9 +1,3 @@
-global.legL = 0
-global.legR = 0
-global.chest = 0
-global.armL = 0
-global.armR = 0
-global.head = 0
 global.playerupsprites = [spr_charanoobU,spr_chara_av_U] 
 global.playerupstandsprites = [spr_charanoob_standU,spr_chara_av_standU]
 global.playerdownsprites = [spr_charanoobD,spr_chara_av_D]
@@ -13,3 +7,6 @@ global.playerleftstandsprites = [spr_charanoob_standL,spr_chara_av_standL]
 global.playerrightsprites = [spr_charanoobR,spr_chara_av_R]
 global.playerrightstandsprites = [spr_charanoob_standR,spr_chara_av_standR]
 global.player_name = "Player123"
+character_init()
+
+
