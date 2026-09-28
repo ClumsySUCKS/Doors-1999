@@ -9,14 +9,11 @@ attribute vec2 in_TextureCoord;              // (u,v)
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
-uniform vec3 v_vTexcoord;
-uniform vec3 u_tint;
-
 void main()
 {
-	vec4 base = texture2D(gm_BaseTexture, v_vTexcord);
-	if (distance(base.rgb, vec3(1.0,0.0,1.0)) < 0.02) {
-		base.rgb = u_outline;}
-		else {base.rgb *= u_tint;}
-		gl_FragColor = v_vColour * base;
+    vec4 object_space_pos = vec4( in_Position.x, in_Position.y, in_Position.z, 1.0);
+    gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * object_space_pos;
+    
+    v_vColour = in_Colour;
+    v_vTexcoord = in_TextureCoord;
 }
