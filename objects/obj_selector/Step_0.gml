@@ -29,7 +29,8 @@ y = spoty[spot]
 
 if keyboard_check_pressed(ord("E")) && pressed == false {pressed = true
 	image_speed = 1
-	alarm[0] = 120}
+	alarm[0] = 120
+	if (spot == 0) {with obj_hostbutton {image_speed = 1}}}
 	break
 	case rm_hotelmenu:
 if keyboard_check_pressed(ord("A")) && canMove == true {
@@ -43,14 +44,7 @@ spot++
 audio_play_sound(snd_spot_change_menu,4,false)
 if spot > 2 {
 	spot = 0}
-}
+}}
 
 x = spotx[spot]
 y = spoty[spot]
-
-if keyboard_check_pressed(ord("E")) && pressed == false {pressed = true
-	image_speed = 1
-	with obj_hostbutton {image_speed = 1}
-	alarm[0] = 120
-
-}}

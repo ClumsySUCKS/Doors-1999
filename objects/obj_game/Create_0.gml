@@ -7,6 +7,6 @@ global.playerleftstandsprites = [spr_charanoob_standL,spr_chara_av_standL]
 global.playerrightsprites = [spr_charanoobR,spr_chara_av_R]
 global.playerrightstandsprites = [spr_charanoob_standR,spr_chara_av_standR]
 global.player_name = "Player123"
-character_init()
+
 
 

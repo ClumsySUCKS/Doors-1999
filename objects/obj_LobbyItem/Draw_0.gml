@@ -11,3 +11,5 @@ if is_string(lobby_id) {
 } else {
 	draw_text(bbox_left+10,y + 15,"Searching...")
 }
+draw_set_valign(fa_top)
+draw_set_halign(fa_left	)

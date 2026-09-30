@@ -31,6 +31,12 @@ while(net_packet_receive()){
 		var _near = buffer_read(inbuf, buffer_u8)
 		host_receive_gather(_sender, _forward, _near)
 		break
+		case NETWORK_PACKETS.OUTFIT:
+		buffer_read(inbuf, buffer_u64)
+		var _outfit_in = outfit_read(inbuf)
+		apply_outfit(_sender, _outfit_in)
+		host_relay_outfit(_sender, _outfit_in)
+		break
 		default:
 			show_debug_message("Unknown packet received: "+string(_type))
 			break

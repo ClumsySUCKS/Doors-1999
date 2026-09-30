@@ -20,6 +20,9 @@ switch room {
 		with obj_joinbutton {
 			selectAction()}
 		break
+		case 2:
+		room_goto(rm_characreator)
+		break
 
 }}
 

@@ -33,5 +33,4 @@ self.sprite_index = global.playerupstandsprites[lobbyMemberID]}
 tx = x
 ty = y
 facing = 0
-outfit = default_outfit(lobbyMemberID)
 pos_buffer = [{x:x, y:y, t:current_time}]

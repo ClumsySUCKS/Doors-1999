@@ -51,6 +51,7 @@ while(net_packet_receive()){
 			playerList[0].character = _inst
 			playerList[0].lobbyMemberID = lobbyMemberID
 			character = _inst
+			send_my_outfit()
 			break
 
 		case NETWORK_PACKETS.SERVER_PLAYER_INPUT:
@@ -81,6 +82,10 @@ while(net_packet_receive()){
 			var _fwd = buffer_read(inbuf, buffer_u8)
 			show_debug_message("DOOR_GATHER recv: ms=" + string(_ms) + " fwd=" + string(_fwd))
 			set_gather_timer_display(_ms,_fwd)}
+		case NETWORK_PACKETS.OUTFIT:
+		var _subject = buffer_read(inbuf, buffer_u64)
+		var _outfit_in = outfit_read(inbuf)
+		apply_outfit(_subject, _outfit_in)
 			break
 	}
 }

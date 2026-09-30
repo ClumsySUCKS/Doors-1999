@@ -257,7 +257,7 @@ function net_packet_send(to_id, buff, size = undefined) {
 }
 
 // Moves to the next waiting packet. Use exactly like steam_net_packet_receive().
-function net_packet_receive() {
+	function net_packet_receive() {
     var n = global.net;
     if (!is_undefined(n.current)) {
         if (buffer_exists(n.current.data)) buffer_delete(n.current.data);

@@ -40,6 +40,7 @@ on_net_event = function (evt) {
 			}
 			send_player_sync(evt.pid)
 			send_player_spawn(evt.pid, _slot)
+			host_send_outfits_to(evt.pid)
 			break
 
 		case "peer_left":
