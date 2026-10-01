@@ -1,1 +1,15 @@
-enum PART {HEAD_ACC,HEAD,EYES_L,EYES_R,FACE_ACC,CHEST,ARM_L,ARM_R,HIP_ACC,LEG_L,LEG_R}
+
+
+function part_variant_count(_slot, _direction) {
+var _slot_name = global.part_names[_slot]
+var _variant = 0
+while (asset_get_index("spr_part_" + string(_slot_name) + "_" +_variant + "_" + _direction)!= false)  {
+	_variant++
+
+
+
+}
+return _variant
+}
+
+
