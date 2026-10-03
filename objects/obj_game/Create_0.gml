@@ -7,8 +7,7 @@ global.playerleftstandsprites = [spr_charanoob_standL,spr_chara_av_standL]
 global.playerrightsprites = [spr_charanoobR,spr_chara_av_R]
 global.playerrightstandsprites = [spr_charanoob_standR,spr_chara_av_standR]
 global.player_name = "Player123"
-enum PART {HEAD_ACC,HEAD,EYES_L,EYES_R,FACE_ACC,CHEST,ARM_L,ARM_R,HIP_ACC,LEG_L,LEG_R}
-global.part_names = ["head_acc","head","eyesL","eyesR","face_acc","chest","armL","armR","hip_acc","legL","legR"]
-
-
+enum PART {LEG_L,LEG_R,HIP_ACC,CHEST,ARM_L,ARM_R,HEAD,FACE_ACC,HEAD_ACC,COUNT}
+global.part_order = {D: ["legL","legR","hip_acc","chest","armL","armR","head","face_acc","head_acc"], U: ["legL","legR","hip_acc","chest","armL","armR","head","face_acc","head_acc"],
+	L: ["legL","legR","hip_acc","armL","chest","head","face_acc","head_acc","armR"], R: ["legR","legL","hip_acc","armR","chest","head","face_acc","head_acc","armL"]}
 

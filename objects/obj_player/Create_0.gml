@@ -4,6 +4,7 @@ global.guiw = display_get_gui_width() lightsubin = 0 i = false
 global.guih = display_get_gui_height()  isCrouched = false playeritems = [] 
 collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL,obj_windowR,obj_hotelplant,obj_reception_stool_bottom,obj_reception_stool_top_U,obj_windowL,obj_inviswall,obj_wall,obj_wall_wall,obj_wall_middle]
 move_speed = 1 trueplayer = id inCutscene = false hasPressed = false count = 0
+global.part_slots = ["legL","legR","hip_acc","chest","armL","armR","head","face_acc","head_acc"]
 
 sprite_index = global.playerupstandsprites[lobbyMemberID]
 
@@ -32,5 +33,11 @@ if (is_undefined(lobbyMemberID)) {lobbyMemberID = 0
 self.sprite_index = global.playerupstandsprites[lobbyMemberID]}
 tx = x
 ty = y
-facing = 0
+facing = "D"
 pos_buffer = [{x:x, y:y, t:current_time}]
+outfit = {legL: 0, legR:0,chest:0,armL:0,armR:0,head:0,hip_acc:-1,face_acc:-1,head_acc:-1,skin:0,cloth:0,outline:0}
+var _text = "spr_part_" + "chest_" + string(outfit.chest) + "_" + "D"
+var _sprite = asset_get_index(_text)
+show_debug_message(_sprite)
+var _s = part_sprite("chest", outfit.chest, "D")
+show_debug_message(_s)

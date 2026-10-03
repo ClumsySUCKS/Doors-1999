@@ -53,10 +53,10 @@ if isLocal || isHost {
 if (!inCutscene) {
     if (xInput != 0 || yInput != 0) {
         image_speed = 1
-        if (xInput > 0)      {self.sprite_index = global.playerrightsprites[lobbyMemberID] facing = 3}
-        else if (xInput < 0) {self.sprite_index = global.playerleftsprites[lobbyMemberID] facing = 2}
-        else if (yInput > 0) {self.sprite_index = global.playerdownsprites[lobbyMemberID] facing = 1}
-        else if (yInput < 0) {self.sprite_index = global.playerupsprites[lobbyMemberID] facing = 0}
+        if (xInput > 0)      {self.sprite_index = global.playerrightsprites[lobbyMemberID] facing = "R"}
+        else if (xInput < 0) {self.sprite_index = global.playerleftsprites[lobbyMemberID] facing = "L"}
+        else if (yInput > 0) {self.sprite_index = global.playerdownsprites[lobbyMemberID] facing = "D"}
+        else if (yInput < 0) {self.sprite_index = global.playerupsprites[lobbyMemberID] facing = "U"}
         
         if (walk_timer < 23) {
             walk_timer = walk_timer + 1
