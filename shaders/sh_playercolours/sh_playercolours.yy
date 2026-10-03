@@ -1,7 +1,7 @@
 {
   "$GMShader":"",
-  "%Name":"sh_recolour",
-  "name":"sh_recolour",
+  "%Name":"sh_playercolours",
+  "name":"sh_playercolours",
   "parent":{
     "name":"Shaders",
     "path":"folders/Shaders.yy",
