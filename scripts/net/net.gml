@@ -1,37 +1,3 @@
-// ============================================================
-// Script asset: net      (GAME project only)
-//
-// Replaces Steam networking with the relay server.
-//
-// Packet functions deliberately mirror Steam's names, so most of your code
-// only needs   steam_net_packet_   ->   net_packet_
-//
-//   net_packet_send(to_id, buffer)      send what has been written to the buffer
-//   net_packet_receive()                true while a packet is waiting
-//   net_packet_get_sender_id()          who sent the current packet
-//   net_packet_get_data(buffer)         copy the current packet into a buffer
-//
-// "IDs" are small numbers handed out by the relay. They take the place of
-// Steam IDs, so keep using your steamID variables and just fill them with these.
-//
-// Lobby events reach your objects like Steam's async events did, but through
-// a method: give any object   on_net_event = function(evt) { ... }   and it
-// receives every event. evt.type is one of:
-//   "lobby_joined"       code, my_id, host_id, is_host, members   (you created OR joined)
-//   "lobby_join_failed"  reason (JOIN_ERR.NOT_FOUND / JOIN_ERR.FULL)
-//   "lobby_list"         lobbies: array of { code, creator, players, limit }
-//   "peer_joined"        pid, name
-//   "peer_left"          pid
-//   "lobby_closed"       (the host left)
-//   "connect_failed"     (could not reach the relay)
-//   "disconnected"       (lost the relay)
-// ============================================================
-
-
-// ---------------------------------------------------------------
-// Setup / teardown  (call from obj_game)
-// ---------------------------------------------------------------
-
 function net_init() {
     if (variable_global_exists("net")) net_shutdown();
 

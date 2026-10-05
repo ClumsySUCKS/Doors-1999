@@ -1,6 +1,6 @@
 function grab_spawn_point(_player) {
 	var _spawnPoint  = instance_find(obj_SpawnPoint, _player)
-	if _spawnPoint == noone return {x:0,y:0};
+	if _spawnPoint == noone return {x:0,y:0}
 	return {x:_spawnPoint.x, y:_spawnPoint.y}
 }
 
@@ -10,10 +10,10 @@ function send_player_input(_input,_lobby_host){
 	var _xInput = (_input.rightKey - _input.leftKey)
 	var _yInput = (_input.downKey - _input.upKey)
 	var _interactKey = _input.interactKey
-	var _b = buffer_create(5, buffer_fixed, 1); //1+1+1+1+1
-	buffer_write(_b, buffer_u8, NETWORK_PACKETS.CLIENT_PLAYER_INPUT);//1
-	buffer_write(_b, buffer_s8, _xInput);//1
-	buffer_write(_b, buffer_s8, _yInput);//1
+	var _b = buffer_create(5, buffer_fixed, 1)
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.CLIENT_PLAYER_INPUT)
+	buffer_write(_b, buffer_s8, _xInput)
+	buffer_write(_b, buffer_s8, _yInput)
 	buffer_write(_b, buffer_u8, _interactKey)
 	net_packet_send(_lobby_host, _b)
 	buffer_delete(_b)
@@ -26,7 +26,7 @@ function receive_player_input(_b, _steam_id=-1){
 	var _yInput = buffer_read(_b, buffer_s8)
 	var _interactKey = buffer_read(_b, buffer_u8)
 	var _player = find_player_by_steam_id(_steam_id)
-	if _player == noone return;
+	if _player == noone return
 	_player.xInput = _xInput
 	_player.yInput = _yInput
 	_player.interactKey = _interactKey
@@ -38,10 +38,10 @@ function receive_player_input(_b, _steam_id=-1){
 function find_player_by_steam_id(_steam_id){
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		var _player = playerList[_i].character
-		if _player == undefined continue;
+		if _player == undefined continue
 		if !instance_exists(_player) {
 			playerList[_i].character = undefined continue}
-		if _player.steamID == _steam_id return _player;
+		if _player.steamID == _steam_id return _player
 		
 	}
 	return noone;
@@ -53,11 +53,11 @@ function send_player_positions() {
 		if _player.character == undefined then continue
 		if _player.steamID == undefined then continue
 		var _spritename = sprite_get_name(_player.character.sprite_index)
-		var _b = buffer_create(20, buffer_grow, 1); //1+8+2+2
-		buffer_write(_b, buffer_u8, NETWORK_PACKETS.PLAYER_POSITION);//1
-		buffer_write(_b, buffer_u64, _player.steamID);//8
-		buffer_write(_b, buffer_u16, _player.character.x);//2
-		buffer_write(_b, buffer_u16, _player.character.y);//2
+		var _b = buffer_create(20, buffer_grow, 1)
+		buffer_write(_b, buffer_u8, NETWORK_PACKETS.PLAYER_POSITION)
+		buffer_write(_b, buffer_u64, _player.steamID)
+		buffer_write(_b, buffer_u16, _player.character.x)
+		buffer_write(_b, buffer_u16, _player.character.y)
 		buffer_write(_b, buffer_string, _spritename)
 		buffer_write(_b, buffer_s16, _player.character.image_index)
 		for (var _k = 0; _k < array_length(playerList); _k++){
