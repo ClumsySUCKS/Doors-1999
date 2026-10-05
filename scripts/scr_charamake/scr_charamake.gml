@@ -18,4 +18,6 @@ function skincol_give(_index) {
 	return global.skin_pal[_index]}
 function clothcol_give(_index) {
 	return global.cloth_pal[_index]}
+function outcol_give(_index) {
+	return global.out_pal[_index]}
 	

@@ -8,6 +8,7 @@ global.playerrightsprites = [spr_charanoobR,spr_chara_av_R]
 global.playerrightstandsprites = [spr_charanoob_standR,spr_chara_av_standR]
 global.skin_pal = [c_aqua,c_blue,c_lime,c_orange]
 global.cloth_pal = [c_aqua,c_blue,c_lime,c_orange]
+global.out_pal = [c_aqua,c_blue,c_lime,c_orange]
 global.player_name = "Player123"
 global.part_order = {D: ["legL","legR","hip_acc","chest","armL","armR","head","eyesL","eyesR","face_acc","head_acc"], U: ["eyesL","eyesR","legL","legR","hip_acc","chest","armL","armR","head","face_acc","head_acc"],
 	L: ["eyesR","legL","legR","hip_acc","armL","chest","head","eyesL","face_acc","head_acc","armR"], R: ["eyesL","legR","legL","hip_acc","armR","chest","head","eyesR","face_acc","head_acc","armL"]}
