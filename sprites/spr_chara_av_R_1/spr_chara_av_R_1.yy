@@ -34,7 +34,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_chara_av_R",
+    "%Name":"spr_chara_av_R_1",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -58,7 +58,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_chara_av_R",
+    "name":"spr_chara_av_R_1",
     "playback":1,
     "playbackSpeed":5.0,
     "playbackSpeedType":0,
