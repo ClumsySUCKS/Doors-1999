@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_buttonplay",
-    "path":"sprites/spr_buttonplay/spr_buttonplay.yy",
+    "name":"spr_skin_button",
+    "path":"sprites/spr_skin_button/spr_skin_button.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -6,3 +6,5 @@ spotx = undefined
 spoty = undefined
 pressed = false
 canMove = true
+function go_up() {y = y - 3}
+go = false

@@ -6,7 +6,7 @@ switch room
 	endspot = 1
 	break
 	case rm_hotelmenu:
-	spotx = [16,106,206]
+	spotx = [16,106,196]
 	spoty = [obj_hostbutton.y - 18, obj_joinbutton.y - 18, obj_skinbutton.y - 18]
 	endspot = 2}
 switch room {
@@ -45,6 +45,12 @@ audio_play_sound(snd_spot_change_menu,4,false)
 if spot > 2 {
 	spot = 0}
 }}
-
+if go == true {
+	with obj_spawn_title {y = y - 10}
+	with obj_joinbutton {y = y - 10}
+	with obj_hostbutton {y = y - 10}
+	with obj_skinbutton {y = y - 10}
+	with obj_blue_sparkles_spawn {stop = true}
+	with obj_blue_sparkles_intro {y = y - 10}}
 x = spotx[spot]
 y = spoty[spot]

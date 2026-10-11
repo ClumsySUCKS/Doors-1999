@@ -5,90 +5,76 @@ function net_init() {
     // The tag must match region_tag inside that relay project.
     global.net_regions = [
         { tag: "LOCAL", ip: "127.0.0.1" },
-        // { tag: "US", ip: "YOUR.US.SERVER.IP" },
-        // { tag: "AU", ip: "YOUR.SYDNEY.SERVER.IP" },
+        // {tag: "US", ip: "US.SERVER.IP"},
+        // {tag: "AU", ip: "SYDNEY.SERVER.IP"},
     ];
-    global.net_region = global.net_regions[0].tag;   // region used for hosting and the lobby list
+    global.net_region = global.net_regions[0].tag
 
-    global.player_name = "Player" + string(irandom_range(100, 999));   // TODO: replace with a name entry box
+    global.player_name = "Player" + string(irandom_range(100, 999))
 
     global.net = {
         socket: -1,
         connecting: false,
         connected: false,
         tag: "",
-        pending: undefined,     // what to do once the connection is up
+        pending: undefined,     
         my_id: -1,
         host_id: -1,
         is_host: false,
         lobby_code: "",
-        members: [],            // array of { pid, name }
-        inbox: [],              // received game packets waiting to be read
-        current: undefined,     // the packet net_packet_receive() is currently on
+        members: [],            
+        inbox: [],              
+        current: undefined,     
         out: buffer_create(1024, buffer_grow, 1),
         last_ping: 0,
         last_rx: 0
-    };
+    }
 }
 
 function net_shutdown() {
-    if (!variable_global_exists("net") || is_undefined(global.net)) return;
-    var n = global.net;
-    net_clear_inbox();
-    if (n.socket >= 0) network_destroy(n.socket);
-    if (buffer_exists(n.out)) buffer_delete(n.out);
-    global.net = undefined;
+    if (!variable_global_exists("net") || is_undefined(global.net)) return
+    var n = global.net
+    net_clear_inbox()
+    if (n.socket >= 0) network_destroy(n.socket)
+    if (buffer_exists(n.out)) buffer_delete(n.out)
+    global.net = undefined
 }
-
-// Keep-alive and dead-connection detection (call every step from obj_game)
 function net_update() {
-    if (is_undefined(global.net)) return;
-    var n = global.net;
-    if (!n.connected) return;
+    if (is_undefined(global.net)) return
+    var n = global.net
+    if (!n.connected) return
 
     if (current_time - n.last_ping > 10000) {
-        n.last_ping = current_time;
-        buffer_seek(n.out, buffer_seek_start, 0);
-        buffer_write(n.out, buffer_u8, C2S.PING);
-        network_send_packet(n.socket, n.out, 1);
+        n.last_ping = current_time
+        buffer_seek(n.out, buffer_seek_start, 0)
+        buffer_write(n.out, buffer_u8, C2S.PING)
+        network_send_packet(n.socket, n.out, 1)
     }
 
     if (current_time - n.last_rx > 30000) {
-        show_debug_message("net: lost the connection to the relay");
-        net_disconnect();
-        net_dispatch({ type: "disconnected" });
+        show_debug_message("net: lost the connection to the relay")
+        net_disconnect()
+        net_dispatch({ type: "disconnected" })
     }
 }
-
-
-// ---------------------------------------------------------------
-// Connecting
-// ---------------------------------------------------------------
-
 function net_region_ip(tag) {
     for (var i = 0; i < array_length(global.net_regions); i++) {
-        if (global.net_regions[i].tag == tag) return global.net_regions[i].ip;
+        if (global.net_regions[i].tag == tag) return global.net_regions[i].ip
     }
-    return "";
+    return ""
 }
-
-// Make sure we are connected to the relay for this region, then run 'job'
 function net_connect(tag, job) {
-    var n = global.net;
-    var ip = net_region_ip(tag);
+    var n = global.net
+    var ip = net_region_ip(tag)
     if (ip == "") {
-        show_debug_message("net: no server is set up for region " + tag);
-        net_dispatch({ type: "connect_failed" });
-        return;
+        show_debug_message("net: no server is set up for region " + tag)
+        net_dispatch({ type: "connect_failed" })
+        return
     }
 
-    // Already connected to the right place: do the job now
-    if (n.connected && n.tag == tag) { net_run_pending(job); return; }
+    if (n.connected && n.tag == tag) {net_run_pending(job); return}
+    if (n.connecting && n.tag == tag) {n.pending = job; return}
 
-    // Already dialling the right place: just swap in the newest job
-    if (n.connecting && n.tag == tag) { n.pending = job; return; }
-
-    // Otherwise (re)connect
     net_disconnect();
     n.socket = network_create_socket(network_socket_tcp);
     n.tag = tag;

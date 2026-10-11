@@ -21,7 +21,8 @@ switch room {
 			selectAction()}
 		break
 		case 2:
-		room_goto(rm_characreator)
+		go = true
+		alarm[1] = 60
 		break
 
 }}

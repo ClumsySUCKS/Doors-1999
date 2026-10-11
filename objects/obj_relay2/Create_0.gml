@@ -1,0 +1,1 @@
+server_socket = network_create_server(network_socket_tcp, 6510, 8)
