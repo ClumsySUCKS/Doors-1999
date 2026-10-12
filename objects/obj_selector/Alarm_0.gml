@@ -23,6 +23,7 @@ switch room {
 		case 2:
 		go = true
 		alarm[1] = 60
+		alarm[2] = 48
 		break
 
 }}
