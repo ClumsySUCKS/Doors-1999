@@ -1,13 +1,10 @@
 function net_init() {
-    if (variable_global_exists("net")) net_shutdown();
-
-    // One line per relay server you rent. LOCAL = the relay running on your own PC.
-    // The tag must match region_tag inside that relay project.
+    if (variable_global_exists("net")) net_shutdown()
     global.net_regions = [
         { tag: "LOCAL", ip: "127.0.0.1" },
         // {tag: "US", ip: "US.SERVER.IP"},
         // {tag: "AU", ip: "SYDNEY.SERVER.IP"},
-    ];
+    ]
     global.net_region = global.net_regions[0].tag
 
     global.player_name = "Player" + string(irandom_range(100, 999))
@@ -54,7 +51,7 @@ function net_update() {
     if (current_time - n.last_rx > 30000) {
         show_debug_message("net: lost the connection to the relay")
         net_disconnect()
-        net_dispatch({ type: "disconnected" })
+        net_dispatch({type: "disconnected"})
     }
 }
 function net_region_ip(tag) {
@@ -68,51 +65,51 @@ function net_connect(tag, job) {
     var ip = net_region_ip(tag)
     if (ip == "") {
         show_debug_message("net: no server is set up for region " + tag)
-        net_dispatch({ type: "connect_failed" })
+        net_dispatch({ type: "connect_failed"})
         return
     }
 
     if (n.connected && n.tag == tag) {net_run_pending(job); return}
     if (n.connecting && n.tag == tag) {n.pending = job; return}
 
-    net_disconnect();
-    n.socket = network_create_socket(network_socket_tcp);
-    n.tag = tag;
-    n.connecting = true;
-    n.pending = job;
-    network_connect_async(n.socket, ip, NET_PORT);
+    net_disconnect()
+    n.socket = network_create_socket(network_socket_tcp)
+    n.tag = tag
+    n.connecting = true
+    n.pending = job
+    network_connect_async(n.socket, ip, NET_PORT)
 }
 
 function net_disconnect() {
-    var n = global.net;
-    if (n.socket >= 0) network_destroy(n.socket);
-    n.socket = -1;
-    n.connecting = false;
-    n.connected = false;
-    n.pending = undefined;
-    n.tag = "";
-    net_clear_lobby();
-    net_clear_inbox();
+    var n = global.net
+    if (n.socket >= 0) network_destroy(n.socket)
+    n.socket = -1
+    n.connecting = false
+    n.connected = false
+    n.pending = undefined
+    n.tag = ""
+    net_clear_lobby()
+    net_clear_inbox()
 }
 
 function net_clear_lobby() {
-    var n = global.net;
-    n.my_id = -1;
-    n.host_id = -1;
-    n.is_host = false;
-    n.lobby_code = "";
-    n.members = [];
+    var n = global.net
+    n.my_id = -1
+    n.host_id = -1
+    n.is_host = false
+    n.lobby_code = ""
+    n.members = []
 }
 
 function net_clear_inbox() {
-    var n = global.net;
+    var n = global.net
     for (var i = 0; i < array_length(n.inbox); i++) {
-        if (buffer_exists(n.inbox[i].data)) buffer_delete(n.inbox[i].data);
+        if (buffer_exists(n.inbox[i].data)) buffer_delete(n.inbox[i].data)
     }
-    n.inbox = [];
+    n.inbox = []
     if (!is_undefined(n.current)) {
-        if (buffer_exists(n.current.data)) buffer_delete(n.current.data);
-        n.current = undefined;
+        if (buffer_exists(n.current.data)) buffer_delete(n.current.data)
+        n.current = undefined
     }
 }
 function net_run_pending(job) {

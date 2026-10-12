@@ -62,11 +62,10 @@ while(net_packet_receive()){
 			update_player_position(inbuf)
 			break
 		case NETWORK_PACKETS.MONOGRAM:
-			// Client receives this from the server
 			if (instance_exists(obj_monogram)) {
-				with (obj_monogram) { toggle_state(); }
+				with (obj_monogram) {toggle_state()}
 			}
-			break;
+			break
 		case NETWORK_PACKETS.ROOM_CHANGE:
 		var _new_index = buffer_read(inbuf, buffer_u16)
 		var _going_forward = (_new_index > global.doorcount)

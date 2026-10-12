@@ -6,7 +6,7 @@ steamName = global.player_name
 lobbyMemberID = 0
 character = undefined
 
-inbuf = buffer_create(16, buffer_grow, 1);
+inbuf = buffer_create(16, buffer_grow, 1)
 
 
 			

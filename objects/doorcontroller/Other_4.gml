@@ -6,7 +6,7 @@
 
 if (ds_map_find_value(new_rooms, room) == undefined) 
 {
-    ds_map_add(new_rooms, room, true);
+    ds_map_add(new_rooms, room, true)
 	randomTimeRush = irandom(60)
 	if aambush == 1
 	if global.amSpawn == false

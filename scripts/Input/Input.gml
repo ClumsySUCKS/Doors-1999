@@ -2,21 +2,11 @@ function get_controls(_is_host, _is_local)
 {
 	if (_is_host && _is_local) {
 
-	hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-	ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
-
+	hor = keyboard_check(ord("D")) - keyboard_check(ord("A"))
+	ver = keyboard_check(ord("S")) - keyboard_check(ord("W"))
 	xInput = hor
 	yInput = ver
-	
 	interactKey = keyboard_check(ord("E"))
-
-	
-
-
-
-
-	
-	
 	var _input = {steamID: lobbyHost, xInput:xInput, yInput:yInput, interactKey:interactKey}
 	send_player_input_to_clients(_input)
 	}
