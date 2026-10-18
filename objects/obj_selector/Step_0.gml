@@ -46,11 +46,11 @@ if spot > 2 {
 	spot = 0}
 }}
 if go == true {
-	with obj_spawn_title {y = y - 10}
-	with obj_joinbutton {y = y - 10}
-	with obj_hostbutton {y = y - 10}
-	with obj_skinbutton {y = y - 10}
+	with obj_spawn_title {y = y - 15}
+	with obj_joinbutton {y = y - 15}
+	with obj_hostbutton {y = y - 15}
+	with obj_skinbutton {y = y - 15}
 	with obj_blue_sparkles_spawn {stop = true}
-	with obj_blue_sparkles_intro {y = y - 10}}
+	with obj_blue_sparkles_intro {y = y - 15}}
 x = spotx[spot]
 y = spoty[spot]

@@ -1,1 +1,1 @@
-draw_rectangle_colour(0, 0, room_width, room_height + 100, #1B4C56, #1B4C56, #000000, #000000, false)
+draw_rectangle_colour(0, 0, room_width, room_height + 100, #1B4C56, #1B4C56, #061214, #061214, false)

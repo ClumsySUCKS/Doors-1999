@@ -20,4 +20,17 @@ function clothcol_give(_index) {
 	return global.cloth_pal[_index]}
 function outcol_give(_index) {
 	return global.out_pal[_index]}
-	
+function isaac(_limb) {
+    switch _limb {
+        case "hip_acc":
+        return true break
+        case "face_acc":
+        return true break
+        case "head_acc":
+        return true break
+		case "eyesL":
+		return true break
+		case "eyesR":
+		return true break
+		case "
+        default: return false}}
