@@ -19,7 +19,7 @@ sa = false
 localSteamID = net_my_id()
 lobbyHost = net_host_id()
 isHost = net_is_host()
-isLocal = (localSteamID == steamID)
+isLocal = (localSteamID == steamID) 
 persistent = isLocal
 if isLocal {camera_set_view_target(view_camera[0],id)}
 if !instance_exists(doorcontroller) {
@@ -33,14 +33,10 @@ tx = x
 ty = y
 facing = "D"
 pos_buffer = [{x:x, y:y, t:current_time}]
-outfit = {legL: 0, legR:0,chest:0,armL:0,armR:0,head:0,eyesL:0,eyesR:0,hip_acc:-1,face_acc:-1,head_acc:-1,skin:array_create(11,0),cloth:array_create(11,0),outline:0}
-var _text = "spr_part_" + "chest_" + string(outfit.chest) + "_" + "D"
-var _sprite = asset_get_index(_text)
-show_debug_message(_sprite)
-var _s = part_sprite("chest", outfit.chest, "D")
-show_debug_message(_s)
-var getName = array_get_index(global.limb_names,"chest")
+outfit = {legL: 0, legR:0,chest:0,armL:0,armR:0,head:0,mouth:0,eyesL:0,eyesR:0,hip_acc:-1,face_acc:-1,head_acc:-1,skin:array_create(12,0),cloth:array_create(12,0),outline:0}
+part_sprite("chest", outfit.chest, "D")
+var getName = array_get_index(global.limbnames,"chest")
 var getPosSkin = outfit.skin[getName]
-var debug = skincol_give(getPosSkin)
-show_debug_message(debug)
+skincol_give(getPosSkin)
+
 

@@ -281,7 +281,7 @@
   "name":"rm_locked1",
   "parent":{
     "name":"key rooms",
-    "path":"folders/Rooms/hotelrooms/key rooms.yy",
+    "path":"folders/_Rooms/hotelrooms/key rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

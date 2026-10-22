@@ -1,0 +1,5007 @@
+Project: Doors 1999
+
+---
+
+Folder: extensions\NekoPresence
+File: NekoPresence.gml
+Modified: 2026-09-04
+
+#define np_get_avatar_url
+
+if (!is_string(argument0) || !is_string(argument1) || !string_length(argument0) || !string_length(argument1)) return "";
+return "https://cdn.discordapp.com/avatars/" + argument0 + "/" + argument1 + ".png";
+
+
+---
+
+Folder: objects\ambushO
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+if room == rm_1
+{
+	path_start(path1,7,path_action_reverse,true)	
+}
+
+if room == rm_2
+{
+	path_start(path2,4,path_action_reverse,true)	
+}
+
+if room == rm_3
+{
+	path_start(path3,7,path_action_reverse,true)
+}
+
+
+
+---
+
+Folder: objects\ambushO
+File: Create_0.gml
+Modified: 2026-07-22
+
+x = doorstart.x
+y = doorstart.y + 100
+alarm[0] = 200
+canDie = false
+paths = [path1,path2,path3,path4]
+pathTimes = 0
+
+
+
+---
+
+Folder: objects\ambushO
+File: Other_8.gml
+Modified: 2026-07-22
+
+
+
+
+
+
+if pathTimes == 3
+{
+	instance_destroy()	
+}
+
+pathTimes = pathTimes + 1
+
+---
+
+Folder: objects\ambushO
+File: Step_0.gml
+Modified: 2026-07-22
+
+
+if global.amSpawn == true
+{if y > doorexit.y + 20 or doorexitb.y + 400 or doorexity.y + 400 or doorexitr.y + 400
+{
+		global.amSpawn = false
+		instance_destroy()
+}}
+
+if instance_exists(obj_player)
+{
+	if point_distance(x,y,obj_player.x,obj_player.y) < 100
+	{
+		if canDie == false
+		{
+				vis = collision_line(x,y,obj_player.x,obj_player.y,layer_tilemap_get_id("col"),false,true)
+				if vis == noone
+				{
+					canDie = true	
+				}
+	
+		}
+	}
+}
+
+if canDie == true
+{
+	global.hp = 0
+}
+
+
+
+---
+
+Folder: objects\deathmanager
+File: Create_0.gml
+Modified: 2026-07-22
+
+
+
+---
+
+Folder: objects\deathmanager
+File: Draw_64.gml
+Modified: 2026-07-22
+
+
+
+---
+
+Folder: objects\deathmanager
+File: Step_0.gml
+Modified: 2026-07-22
+
+
+
+---
+
+Folder: objects\doorcontroller
+File: Alarm_0.gml
+Modified: 2026-09-26
+
+reroll = true
+
+---
+
+Folder: objects\doorcontroller
+File: Create_0.gml
+Modified: 2026-09-26
+
+randomise()
+global.doorcount = 0 global.hasexit = 0 global.darkroom = 0 global.coinCount = 0 
+global.room_list = [rm_1,rm_1b,rm_1y,rm_1r,rm_2,rm_2b,rm_2y,rm_2r,rm_3,rm_3b,rm_3y,rm_3r,rm_4,rm_4b,rm_4y,rm_4r,rm_5,rm_5b,rm_5y,rm_5r]  screechChance = 0 reroll = true
+new_rooms = ds_map_create()  //[rm_1,rm_1b,rm_1y,rm_1r,rm_2b,rm_2y,rm_2r,rm_3b,rm_3y,rm_3r,rm_4b,rm_4y,rm_4r,rm_5b,rm_5y,rm_5r,rm_2,rm_4,rm_5]
+rushChance = 0  
+rrush = 1       //irandom(rushChance)
+amChance = 0 
+aambush = irandom(amChance)
+canA = false
+canR = false
+instance_create_layer(0,0,"HUD",drawgraph)
+// SPAWNED BY OBJ_PLAYER NOW
+gather_timer = -1
+GATHER_TIMEOUT = 7000
+gathered_forward = false
+gathered_backward = false
+start_door_active_at = 0
+door_gather_state = ds_map_create()
+
+---
+
+Folder: objects\doorcontroller
+File: Other_4.gml
+Modified: 2026-10-13
+
+
+
+
+
+
+
+if (ds_map_find_value(new_rooms, room) == undefined) 
+{
+    ds_map_add(new_rooms, room, true)
+	randomTimeRush = irandom(60)
+	if aambush == 1
+	if global.amSpawn == false
+	{if  global.rushSpawn == false
+		{{
+		instance_create_layer(doorstart.x,doorstart.y - 30,"dark",ambushO)
+		canR = true
+	}}}
+} 
+
+
+
+
+	if rrush == 0
+	if canR == false
+	if global.amSpawn == false
+	{{if global.rushSpawn == false
+		{{
+		instance_create_layer(doorstart.x,doorstart.y - 30,"Player",rushO)
+	}}}}
+	
+	
+start_door_active_at = current_time + 7000
+gathered_forward = false
+gathered_backward = false
+if net_is_host() {gather_time = -1; ds_map_clear(door_gather_state)}
+
+
+
+
+---
+
+Folder: objects\doorcontroller
+File: Step_0.gml
+Modified: 2026-09-27
+
+if reroll == true && global.isRoomdark == 0
+{reroll = false
+	alarm[0] = 100
+	if screechChance == 0
+	{alarm[0] = 300
+		newinst = noone
+		if screechDecide == 0
+		{newinst = instance_create_layer(obj_player.x + 16,obj_player.y,"Player",obj_screech)
+			if newinst != noone {newinst.sprite_index = spr_screech3}}
+		if screechDecide == 1
+		{newinst = instance_create_layer(obj_player.x - 16,obj_player.y,"Player",obj_screech)
+			if newinst != noone {newinst.sprite_index = spr_screech2}}
+		if screechDecide == 2
+		{newinst = instance_create_layer(obj_player.x,obj_player.y - 32,"Player",obj_screech)
+			if newinst != noone {newinst.sprite_index = spr_screech1}}
+		if screechDecide == 3
+		{newinst = instance_create_layer(obj_player.x,obj_player.y + 16,"Player",obj_screech)
+			if newinst != noone {newinst.sprite_index = spr_screech4}}
+		screechDecide = irandom(3)
+		}}
+		
+var _fdoor = get_forward_door()
+if _fdoor != noone {
+	var _near = false
+	with obj_player {if isLocal && point_distance(x,y,_fdoor.x,_fdoor.y) < 30 {_near = true}}
+	if _near != gathered_forward {gathered_forward = _near; send_gather_status(true, _near)}}
+if instance_exists(doorstart) && current_time >= start_door_active_at {
+	var _near_b = false
+	with obj_player {if isLocal && point_distance(x,y,doorstart.x,doorstart.y) < 30 {_near_b = true}
+	}
+	if _near_b != gathered_backward {gathered_backward = _near_b; send_gather_status(false, _near_b)}}
+	if net_is_host() {host_update_gather_timer()}
+
+		
+			
+
+---
+
+Folder: objects\doorexit
+File: Create_0.gml
+Modified: 2026-07-22
+
+instance_create_layer(x - 8,y + 16,"Instances",obj_wmat)
+
+
+---
+
+Folder: objects\doorexity
+File: Create_0.gml
+Modified: 2026-07-22
+
+
+
+---
+
+Folder: objects\doorexit_locked
+File: Alarm_0.gml
+Modified: 2026-09-27
+
+instance_create_layer(x - 20,y + 16,"Instances",obj_doorradiusU)
+
+---
+
+Folder: objects\doorexit_locked
+File: Create_0.gml
+Modified: 2026-09-26
+
+instance_create_layer(x - 8,y + 16,"Instances",obj_wmat)
+alarm[0] = 200
+
+
+---
+
+Folder: objects\doorstart
+File: Create_0.gml
+Modified: 2026-09-03
+
+
+
+---
+
+Folder: objects\drawgraph
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+if global.rushKill == 2
+{
+	go = go + 1
+	alarm[1] = 60
+}
+
+---
+
+Folder: objects\drawgraph
+File: Alarm_1.gml
+Modified: 2026-07-22
+
+if global.rushKill == 2
+{
+	go = go + 1
+	alarm[2] = 60
+}
+
+---
+
+Folder: objects\drawgraph
+File: Alarm_2.gml
+Modified: 2026-07-22
+
+if global.rushKill == 2
+{
+	go = go + 1
+	alarm[3] = 60
+}
+
+---
+
+Folder: objects\drawgraph
+File: Alarm_3.gml
+Modified: 2026-07-22
+
+go = go + 1
+
+---
+
+Folder: objects\drawgraph
+File: Create_0.gml
+Modified: 2026-09-28
+
+ran = irandom_range(30,120)
+go = 0 
+alarm[0] = ran global.screechJump = 0 
+ra = 0 
+trans = 0
+ah = false  
+jl = false
+text[0] = "Found you!"
+text[1] = "Found you!"
+text[2] = "Found you!"
+message_current = 0
+message_draw = "" 
+increase = 4
+characters = 0
+choosetext = text[irandom(2)]
+message_length = string_length(choosetext)
+count = 1
+po = false
+gl = false
+walk_timer = 0
+global.hp = 100
+global.hp_max = 100
+global.death = 0
+global.rushKill = 0
+healthchange = global.hp
+global.drawblack = 0
+global.isHotel = false
+if room == rm_reception {global.isHotel = true}
+
+
+---
+
+Folder: objects\drawgraph
+File: Draw_64.gml
+Modified: 2026-08-26
+
+
+
+
+
+
+
+
+
+if global.rushKill == 1 or global.rushKill == 2
+{	
+	global.rushKill = 2
+	draw_sprite(dark,0,0,0)
+	if go == 2
+	{draw_sprite_ext(rushd1,0,global.guiw * 0.5,global.guih * 0.5,5,5,0,c_white,1)}
+	if go == 3 or go == 4 or go == 4.1
+	{draw_sprite_ext(rushd2,0,global.guiw * 0.5, global.guih * 0.5,5,5,0,c_white,1)}
+if go == 4 or go == 4.1
+{count = count + 1
+	if count >= 75 && count < 100 {draw_sprite_ext(rushd6,0,global.guiw * 0.5 + textr, global.guih * 0.5 + texty,6,6,0,c_white,trans) audio_play_sound(snd_rushscream,6,false)}
+	draw_circle(global.guiw * 0.6 + eyer,global.guih * 0.2 + eyey,5,false)
+	draw_circle(global.guiw * 0.4 + eyer,global.guih * 0.2 + eyey,5,false)
+	draw_set_colour(c_white) draw_set_font(bigFont)
+	draw_text_ext(global.guiw * 0.1 + textr,global.guih * 0.1 + texty,message_draw,-1,1000)		draw_text_ext(global.guiw * 0.5 + textr,global.guih * 0.4 + texty,message_draw,-1,1000)
+	draw_text_ext(global.guiw * 0.45 + textr,global.guih * 0.3 + texty,message_draw,-1,1000)	draw_text_ext(global.guiw * 0.3 + textr,global.guih * 0.2 + texty,message_draw,-1,1000)
+	draw_text_ext(global.guiw * 0.1 + textr,global.guih * 0.3 + texty,message_draw,-1,1000)		draw_text_ext(global.guiw * 0.1 + textr,global.guih * 0.45 + texty,message_draw,-1,1000)
+	draw_text_ext(global.guiw * 0.1 + textr,global.guih * 0.67 + texty,message_draw,-1,1000)	draw_text_ext(global.guiw * 0.05 + textr,global.guih * 0.55 + texty,message_draw,-1,1000)
+	draw_text_ext(global.guiw * 0.6 + textr,global.guih * 0.6 + texty,message_draw,-1,1000)		draw_text_ext(global.guiw * 0.05 + textr,global.guih * 0.3 + texty,message_draw,-1,1000)
+	if go == 4 {audio_play_sound(snd_rushsoundt,5,true,20) go = go + 0.1}
+	if count >= 100 {go = go + 1}
+}
+}
+		if go == 5 or go == 5.1
+		{draw_sprite_ext(rushd6,0,global.guiw * 0.5, global.guih * 0.5,6 + ra,6 + ra,0,c_white,1) if go == 5 {audio_play_sound(snd_rushscreamt,6,true,-100) go = go + 0.1}
+			
+		}
+		if go == 6
+		{
+			audio_stop_sound(snd_rushscreamt)	
+		}
+		
+	
+
+
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+Folder: objects\drawgraph
+File: Draw_75.gml
+Modified: 2026-09-28
+
+draw_sprite(wgadsg, 0,0,0) 
+draw_sprite(left,0,-460,0)
+draw_sprite(left,0,1000,0)
+draw_set_font(bigFont)
+draw_text_colour(700,874,string(global.coinCount), #f6c9ad,#f6c9ad,c_white,c_white,1)
+draw_sprite(coinicon,0,600,866)
+draw_sprite_ext(healthoutside,0,130,870,5,5,0,c_white,1)
+draw_sprite_stretched_ext(healthinside,0,130,870,240 * (global.hp / global.hp_max),80,c_white,1)
+draw_sprite_ext(healthicon,0,100,854,7,7,0,c_white,1)
+draw_sprite_ext(doornumberHUD,0,50,700,7,7,0,c_white,1)
+text = string_replace_all(string_format(global.doorcount,4,0)," ","0")
+draw_sprite_ext(spr_itemHUD,0,360,854,8,7,0,c_white,1) 
+if instance_exists(obj_player) {if obj_player.isLocal {if array_contains(obj_player.playeritems, "key"){
+draw_sprite_ext(spr_key_wall,0,400,875,4,4,0,c_white,1)}}}
+draw_text_transformed_colour(83,720,text,0.7,0.9,0,#5B2418,#5B2418,#5B2418,#5B2418,1)
+draw_set_font(gameFont)
+//draw_text(300,830, $"Steam initalised? {steam_initialised() ? "Yes" : "No"}")
+
+
+
+
+if global.hp <= 0
+{draw_sprite_ext(healthdead,0,660,854,7,7,0,c_white,1)}
+
+//draw_sprite_ext(healthoutside,0,690,870,5,5,0,c_white,1)
+//draw_sprite_stretched_ext(healthinside,0,690,870,240 * (global.hp / global.hp_max),80,c_white,1)
+//draw_sprite_ext(healthicon,0,660,854,7,7,0,c_white,1)
+//draw_sprite(coinicon,0,100,866)
+//draw_text_colour(200,874,string(global.coinCount), #f6c9ad,#f6c9ad,c_white,c_white,1)
+//draw_sprite_ext(doornumberHUD,0,400,854,7,7,0,c_white,1)
+//draw_text_transformed_colour(432,875,text,0.7,0.9,0,#5B2418,#5B2418,#5B2418,#5B2418,1)
+
+
+
+if global.hp != healthchange
+{	
+	if global.hp > healthchange
+	{
+			
+	}
+}
+
+---
+
+Folder: objects\drawgraph
+File: Step_0.gml
+Modified: 2026-09-28
+
+
+
+
+
+
+
+
+
+if count >= 50
+{if trans != 1
+	{trans = 1}}
+
+
+
+
+
+textr = irandom(30)
+texty = irandom(30)
+eyer = irandom(5)
+eyey = irandom(5)
+if go == 4 or go == 4.1{
+if characters < message_length
+{characters += increase
+message_draw = string_copy(choosetext,1,characters)}}
+
+if go == 5 or go == 5.1{
+	ra = ra + 0.8}
+	if global.rushKill == 1 or global.rushKill == 2
+{if global.rushKill == 1
+	{
+		alarm[0] = 60	
+	}
+	if go == 4 or go == 4.1
+{count = count + 1}
+	if count >= 100 {go = go + 1}
+	if go == 4 {audio_play_sound(snd_rushsoundt,5,true,20) go = go + 0.1}
+		if count >= 100 {go = go + 1}}
+		
+		if go == 5 or go == 5.1
+		{if count >= 150 {go = go + 1}
+count = count + 1}
+	
+	
+
+---
+
+Folder: objects\draw_hide
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+asd = true
+global.s = true
+
+---
+
+Folder: objects\draw_hide
+File: Alarm_1.gml
+Modified: 2026-07-22
+
+
+	if count > -1 && count <= 29
+	{
+		count = count + 1	
+		aalpha = aalpha + 0.05
+		alarm[1] = 2.5
+	}
+
+
+	if count >= 30 && count < 90
+	{count = count + 1
+			ialpha = ialpha - 0.05
+			alarm[1] = 2.5
+		}
+
+---
+
+Folder: objects\draw_hide
+File: Alarm_2.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\draw_hide
+File: Create_0.gml
+Modified: 2026-07-22
+
+canDraw = false
+rop = false
+count = 0
+ialpha = 1
+aalpha = 0
+palpha = 0
+gh = false
+ny = false
+frame = 0
+frameGo = 0.9
+rushYes = false
+alarm[1] = 2.5
+asd = false
+
+---
+
+Folder: objects\draw_hide
+File: Draw_64.gml
+Modified: 2026-07-22
+
+
+
+
+
+
+if asd == false {draw_sprite_ext(closethide,0,-550,-950,3,3,0,c_white,palpha)}
+if count >= 30 && count < 90
+{draw_sprite_ext(dark,0,0,0,1,1,0,c_white,ialpha)
+	palpha = 1}
+
+if count > -1 && count <= 29
+{
+		draw_sprite_ext(dark,0,0,0,1,1,0,c_white,aalpha)
+}
+
+if instance_exists(rushO)
+{	
+		if point_distance(rushO.x,rushO.y,x,y) < 300 && ialpha <= 0
+		{
+			if rushYes == false
+			{
+				rushYes = true
+			}
+		}
+		if rushYes == true
+		{
+			if frame < 7 {frame = frame + frameGo} else {frame = 7}
+			if asd == false {draw_sprite_ext(closethideR,frame,-550,-950,3,3,0,c_white,1)}
+			if frame >= 7
+			{
+
+				if asd == false {draw_sprite_ext(closethide,0,-550,-950,3,3,0,c_white,1)}
+			}	
+		}
+			
+	
+}
+	
+
+
+
+	
+
+
+
+---
+
+Folder: objects\draw_hide
+File: KeyPress_69.gml
+Modified: 2026-07-22
+
+if ny == false {ny = true count = 0 alarm[0] = 40 aalpha = 0 ialpha = 1 alarm[2] = 80
+alarm[1] = 2.5}
+
+---
+
+Folder: objects\fiftecoin
+File: Alarm_0.gml
+Modified: 2026-08-16
+
+global.coinCount = global.coinCount + 15
+audio_play_sound_at(snd_coincollect,x,y,0,32,120,1,false,2)
+instance_destroy()
+
+---
+
+Folder: objects\fiftecoin
+File: Create_0.gml
+Modified: 2026-07-22
+
+alarm[0] = 40
+
+---
+
+Folder: objects\fivecoin
+File: Alarm_0.gml
+Modified: 2026-08-16
+
+global.coinCount = global.coinCount + 5
+audio_play_sound_at(snd_coincollect,x,y,0,32,120,1,false,2)
+instance_destroy()
+
+---
+
+Folder: objects\fivecoin
+File: Create_0.gml
+Modified: 2026-07-22
+
+alarm[0] = 20
+
+---
+
+Folder: objects\lightmanager
+File: CleanUp_0.gml
+Modified: 2026-07-22
+
+if (surface_exists(light_surface))
+{
+    surface_free(light_surface);
+}
+
+---
+
+Folder: objects\lightmanager
+File: Create_0.gml
+Modified: 2026-08-09
+
+application_surface_draw_enable(false)  lightget = instance_id_get(obj_wall_light_D)
+global.isRoomdark = irandom(1000) 
+camera = view_get_camera(0)
+camw = camera_get_view_width(camera)
+camh = camera_get_view_height(camera)
+
+light_surface = surface_create(camw,camh)
+
+---
+
+Folder: objects\lightmanager
+File: Draw_73.gml
+Modified: 2026-08-17
+
+
+
+
+
+surface_set_target(self.light_surface)
+draw_clear(c_black)
+camera_apply(camera)
+
+gpu_set_blendmode(bm_subtract)
+with obj_wall_light_D_weak
+{
+	draw_sprite(spr_wall_light,0,x,y)
+}
+with obj_wall_light_R_weak
+{
+	draw_sprite(spr_wall_light,0,x,y)
+}
+with obj_wall_light_L_weak
+{
+	draw_sprite(spr_wall_light,0,x,y)
+}
+with obj_wall_light_D
+{
+	draw_sprite_ext(spr_wall_light,0,x,y,2,2,0,c_white,1)
+}
+
+with obj_wall_light_L
+{
+	draw_sprite_ext(spr_wall_light,0,x,y,2,2,0,c_white,1)
+}
+
+with obj_wall_light_R
+{
+	draw_sprite_ext(spr_wall_light,0,x,y,2,2,0,c_white,1)
+}
+
+with obj_player
+{
+	draw_sprite(light,0,x - 24,y - 16)
+}	
+
+
+gpu_set_blendmode(bm_normal)
+
+surface_reset_target()
+
+
+
+---
+
+Folder: objects\lightmanager
+File: Draw_77.gml
+Modified: 2026-08-07
+
+if (surface_exists(application_surface))
+{
+    draw_surface(application_surface, 0, 0);
+}
+
+if (surface_exists(light_surface))
+{
+    draw_surface_stretched(light_surface, 0, 0, window_get_width(), window_get_height());
+}
+
+
+---
+
+Folder: objects\lightmanager
+File: Step_0.gml
+Modified: 2026-08-09
+
+if (!surface_exists(self.light_surface))
+{
+	camera = view_get_camera(0)
+	camw = camera_get_view_width(camera)
+	camh = camera_get_view_height(camera)
+	
+	self.light_surface = surface_create(camw,camh)
+}
+
+---
+
+Folder: objects\objNekoPresenceDemo
+File: Alarm_0.gml
+Modified: 2026-09-04
+
+/// @description Check if Discord's running
+
+ready = true;
+global.discord_initialized = false;
+
+---
+
+Folder: objects\objNekoPresenceDemo
+File: Create_0.gml
+Modified: 2026-09-23
+
+/// @description Initialize Discord.
+
+#macro DISCORD_APP_ID "1527554737262694481"
+
+ready = false;
+
+alarm[0] = room_speed * 5;
+
+if (!np_initdiscord(DISCORD_APP_ID, true, 0))
+{
+	show_error("NekoPresence init fail.", true);
+}
+if instance_number(objNekoPresenceDemo) > 1 {instance_destroy()}
+
+---
+
+Folder: objects\objNekoPresenceDemo
+File: KeyPress_27.gml
+Modified: 2026-09-04
+
+/// @description quit
+
+game_end();
+
+---
+
+Folder: objects\objNekoPresenceDemo
+File: Other_60.gml
+Modified: 2026-09-04
+
+/// @description check if we can use the avatar.
+
+if (async_load[? "status"] >= 0) {
+	sprite_index = async_load[? "id"];
+}
+
+---
+
+Folder: objects\objNekoPresenceDemo
+File: Other_70.gml
+Modified: 2026-09-23
+
+/// @description Capture async events from NekoPresence.
+
+var ev_type = async_load[? "event_type"];
+
+if (ev_type == "DiscordReady")
+{
+	global.discord_initialized = true;
+	
+	window_set_caption("Doors 1999");
+	ready = true;
+	show_debug_message("date: " + string(date_current_datetime()));
+	np_setpresence_timestamps(date_current_datetime(), 0, false);
+	np_setpresence_more("Small image text", "Large image text", false);
+	// bruh
+	// np_setpresence_buttons(0, "Kremlin", "https://kremlin.ru");
+	// np_setpresence_buttons(1, "Russian Facebook", "https://vk.com/");
+	// DISCORD_MAX_BUTTONS == 2, so only allowed IDs are 0 and 1.
+	
+	//np_setpresence() should ALWAYS come the last!!
+	if room == rm_beginningmenu {np_setpresence("Playing", "In THAT Menu", "beginningpresence", "doors_1999_title_dgs")}
+	if room == rm_hotelmenu {
+	np_setpresence("Playing", "In Limbo's Menu", "doors_1999_title_dgs", "doors_1999_title_dgs");}
+	
+	
+	
+
+}
+
+---
+
+Folder: objects\objNekoPresenceDemo
+File: Step_0.gml
+Modified: 2026-09-04
+
+/// @description Update NekoPresence so async events will execute.
+
+np_update();
+
+---
+
+Folder: objects\obj_act1_button
+File: Create_0.gml
+Modified: 2026-10-15
+
+hover_speed = 0.07
+hover_range = 8
+audio_play_sound(snd_wind,2,true)
+
+---
+
+Folder: objects\obj_act1_button
+File: Draw_0.gml
+Modified: 2026-08-21
+
+draw_self()
+draw_text(x + 10,y + 3,"Act 1")
+draw_text(x + 10,y + 40,"Limbo")
+
+---
+
+Folder: objects\obj_act1_button
+File: Other_5.gml
+Modified: 2026-08-22
+
+audio_stop_sound(snd_wind)
+
+---
+
+Folder: objects\obj_act1_button
+File: Step_0.gml
+Modified: 2026-10-15
+
+y = y + dsin(current_time * hover_speed) * hover_range
+
+---
+
+Folder: objects\obj_act1_button_fake
+File: Step_0.gml
+Modified: 2026-08-21
+
+if image_alpha <= 0 {instance_destroy()}
+image_alpha = image_alpha - 0.01
+
+---
+
+Folder: objects\obj_act2_button
+File: Draw_0.gml
+Modified: 2026-08-21
+
+draw_self()
+
+
+---
+
+Folder: objects\obj_backgroundmain
+File: Draw_0.gml
+Modified: 2026-08-21
+
+draw_rectangle_colour(0, 0, room_width, room_height + 100, #1D003A, #1D003A, #0F001E, #0F001E, false)
+
+---
+
+Folder: objects\obj_backgroundsea
+File: Alarm_0.gml
+Modified: 2026-10-21
+
+instance_create_layer(100,100,"Back",obj_noob_characreate)
+
+---
+
+Folder: objects\obj_backgroundsea
+File: Create_0.gml
+Modified: 2026-10-21
+
+np_setpresence("Swimming", "In Sea Of The Dead", "seepresence", "doors_1999_title_dgs")
+instance_create_layer(0,0,"Bubble",obj_bubbletransition)
+alarm[0] = 1
+
+---
+
+Folder: objects\obj_backgroundsea
+File: Draw_0.gml
+Modified: 2026-10-16
+
+draw_rectangle_colour(0, 0, room_width, room_height + 100, #1B4C56, #1B4C56, #061214, #061214, false)
+
+---
+
+Folder: objects\obj_blue_sparkles_intro
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\obj_blue_sparkles_intro
+File: Create_0.gml
+Modified: 2026-07-22
+
+alarm[0] = 180
+
+---
+
+Folder: objects\obj_blue_sparkles_intro
+File: Other_7.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\obj_blue_sparkles_intro
+File: Step_0.gml
+Modified: 2026-07-22
+
+
+
+---
+
+Folder: objects\obj_blue_sparkles_spawn
+File: Alarm_0.gml
+Modified: 2026-10-10
+
+if stop == false {
+instance_create_layer(random_range(0, 320), random_range(0, 280), "Backinst", obj_blue_sparkles_intro)
+
+alarm[0]=random_range(50, 100)}
+
+
+
+---
+
+Folder: objects\obj_blue_sparkles_spawn
+File: Alarm_1.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\obj_blue_sparkles_spawn
+File: Create_0.gml
+Modified: 2026-10-10
+
+alarm[0] = 400
+stop = false
+
+
+
+---
+
+Folder: objects\obj_bubble
+File: Create_0.gml
+Modified: 2026-10-15
+
+hover_speed = random_range(0.1,1)
+hover_range = irandom(1)
+
+---
+
+Folder: objects\obj_bubble
+File: Step_0.gml
+Modified: 2026-10-15
+
+x = x + dsin(current_time * hover_speed) * hover_range
+y = y - 3
+
+---
+
+Folder: objects\obj_bubblespawner
+File: Alarm_0.gml
+Modified: 2026-10-15
+
+randomsphere = irandom(1)
+smallsphere = irandom(10)
+up = irandom(30)
+down = irandom_range(250,280)
+if randomsphere == 0 {
+instance_create_layer(random(x + room_width),(y + room_height) + 16,"Bubble",obj_bubble)}
+if randomsphere == 1{
+instance_create_layer(random(x + room_width),(y + room_height) + 16,"Bubble",obj_bubble_big)}
+if smallsphere == 0 {instance_create_layer(random(x + room_width),y + room_height + 16,"Bubble",obj_bubble_small)}
+hasSpawned = false
+
+---
+
+Folder: objects\obj_bubblespawner
+File: Create_0.gml
+Modified: 2026-10-13
+
+hasSpawned = false
+
+
+---
+
+Folder: objects\obj_bubblespawner
+File: Step_0.gml
+Modified: 2026-10-15
+
+if hasSpawned == false {hasSpawned = true
+	alarm[0] = 40}
+
+---
+
+Folder: objects\obj_bubbletransition
+File: Other_7.gml
+Modified: 2026-10-15
+
+instance_destroy()
+
+---
+
+Folder: objects\obj_bubbletransition
+File: Step_0.gml
+Modified: 2026-10-13
+
+if image_index >= 3 {instance_destroy()}
+
+---
+
+Folder: objects\obj_bubble_big
+File: Create_0.gml
+Modified: 2026-10-15
+
+hover_speed = random_range(0.1,1)
+hover_range = irandom(2)
+
+---
+
+Folder: objects\obj_bubble_big
+File: Step_0.gml
+Modified: 2026-10-15
+
+x = x + dsin(current_time * hover_speed) * hover_range
+y = y - 3
+
+---
+
+Folder: objects\obj_bubble_small
+File: Create_0.gml
+Modified: 2026-10-15
+
+hover_speed = random_range(0.1,0.5)
+hover_range = irandom(1)
+
+---
+
+Folder: objects\obj_bubble_small
+File: Step_0.gml
+Modified: 2026-10-15
+
+x = x + dsin(current_time * hover_speed) * hover_range
+y = y - 1
+
+---
+
+Folder: objects\obj_Client
+File: Create_0.gml
+Modified: 2026-09-24
+
+	/// @description Init Client Variables
+
+	
+playerList = []
+
+steamID = net_my_id()
+steamName = global.player_name
+lobbyMemberID = undefined
+lobbyHost = net_host_id()
+character = undefined
+
+inbuf = buffer_create(16, buffer_grow, 1);
+
+playerList[0] = {
+	steamID		: steamID,
+	steamName	: steamName,
+	character	: undefined,
+	startPos	: grab_spawn_point(0),
+	lobbyMemberID : undefined
+	}
+	
+on_net_event = function (evt) {
+	if (evt.type == "lobby_joined") {
+		steamID = evt.my_id
+        lobbyHost = evt.host_id	
+		playerList[0].steamID = evt.my_id}
+	if (evt.type == "lobby_closed" || evt.type == "disconnected") {
+		show_debug_message("Host left or connection lost")
+		game_restart()}}
+
+---
+
+Folder: objects\obj_Client
+File: Step_1.gml
+Modified: 2026-10-13
+
+/// @description Listening for activity as client
+
+while(net_packet_receive()){
+	
+	var _sender = net_packet_get_sender_id();
+	net_packet_get_data(inbuf);
+	buffer_seek(inbuf, buffer_seek_start, 0);
+	var _type = buffer_read(inbuf, buffer_u8);
+	
+	switch _type{
+		case NETWORK_PACKETS.SYNC_PLAYERS:
+			var _playerList = buffer_read(inbuf, buffer_string);
+			_playerList = json_parse(_playerList)
+			sync_players(_playerList)
+			break
+		case NETWORK_PACKETS.SPAWN_OTHER:
+			var _layer = layer_get_id("Player");
+			var _x = buffer_read(inbuf, buffer_u16)
+			var _y = buffer_read(inbuf, buffer_u16)
+			var _steamID = buffer_read(inbuf, buffer_u64)
+			var _num = array_length(playerList)
+			var _inst = instance_create_layer(_x,_y,_layer,obj_player,{
+							steamName : net_peer_name(steamID),
+							steamID : _steamID,
+							lobbyMemberID : _num
+							})
+			show_debug_message("SPAWN_OTHER handled, created instance " + string(_inst))
+			array_push(playerList, {
+				steamID	 : _steamID,
+				steamName: net_peer_name(_steamID),
+				character: _inst,
+				lobbyMemberID : _num
+			})
+			break
+			
+		case NETWORK_PACKETS.SPAWN_SELF:
+			var _layer = layer_get_id("Player");
+			var _x = buffer_read(inbuf, buffer_u16)
+			var _y = buffer_read(inbuf, buffer_u16)
+			lobbyMemberID = buffer_read(inbuf, buffer_u16)
+			global.room_seed = buffer_read(inbuf, buffer_u32)	
+			var _inst = instance_create_layer(_x,_y,_layer,obj_player,{
+							steamName	: steamName,
+							steamID: steamID,
+							lobbyMemberID: lobbyMemberID
+						})
+			show_debug_message("SPAWN_SELF handled, created instance " + string(_inst))
+			with _inst {
+				alarm[0] = 100
+				instance_create_layer(0,0,"trans",obj_dark)}
+			playerList[0].character = _inst
+			playerList[0].lobbyMemberID = lobbyMemberID
+			character = _inst
+			send_my_outfit()
+			break
+
+		case NETWORK_PACKETS.SERVER_PLAYER_INPUT:
+			receive_player_input(inbuf)
+			break
+			
+		case NETWORK_PACKETS.PLAYER_POSITION:
+			update_player_position(inbuf)
+			break
+		case NETWORK_PACKETS.MONOGRAM:
+			if (instance_exists(obj_monogram)) {
+				with (obj_monogram) {toggle_state()}
+			}
+			break
+		case NETWORK_PACKETS.ROOM_CHANGE:
+		var _new_index = buffer_read(inbuf, buffer_u16)
+		var _going_forward = (_new_index > global.doorcount)
+		enter_new_room(_new_index, _going_forward)
+		break
+		default:
+			show_debug_message("Unknown packet received: "+string(_type))
+			break
+		case NETWORK_PACKETS.DOOR_GATHER:
+		var _flag = buffer_read(inbuf, buffer_u8)
+		if _flag == 255 {
+			var _ms = buffer_read(inbuf, buffer_s32)
+			var _fwd = buffer_read(inbuf, buffer_u8)
+			show_debug_message("DOOR_GATHER recv: ms=" + string(_ms) + " fwd=" + string(_fwd))
+			set_gather_timer_display(_ms,_fwd)}
+		case NETWORK_PACKETS.OUTFIT:
+		var _subject = buffer_read(inbuf, buffer_u64)
+		var _outfit_in = outfit_read(inbuf)
+		apply_outfit(_subject, _outfit_in)
+			break
+	}
+}
+
+
+
+---
+
+Folder: objects\obj_client2
+File: Create_0.gml
+Modified: 2026-10-11
+
+my_cocket = network_create_socket(network_socket_tcp)
+network_connect_async(my_cocket,"127.0.0.1",6510)
+
+---
+
+Folder: objects\obj_client2
+File: Other_68.gml
+Modified: 2026-10-11
+
+show_debug_message("FUCK")
+
+---
+
+Folder: objects\obj_creator
+File: Alarm_0.gml
+Modified: 2026-10-21
+
+spritechange++
+switch facing {
+case "D":facing = "R" break
+case "R":facing = "U" break
+case "U":facing = "L" break
+case "L":facing = "D" break}
+
+
+if spritechange == 4 {
+spritechange = 0
+	if iswalking == false {image_speed = 0.06}
+	else {image_speed = 0 image_index = 1}
+	iswalking = !iswalking}
+alarm[0] = 240
+show_debug_message(string(spritechange) + facing)
+
+---
+
+Folder: objects\obj_creator
+File: Create_0.gml
+Modified: 2026-10-22
+
+row = 0
+col = 0
+cur = 0
+mode = 0
+rower = 0
+grider = 0
+boxer = 4
+boxl = 32
+boxw = 32
+count = 0
+colx = [160,180,200]
+xtop = 0
+spacing = 4
+isgrid = false
+outfit = variable_clone(global.chardef[0])
+charanames = ["Noob","Avery","Po"]
+spritechange = 0
+iswalking = false
+alarm[0] = 240
+facing = "D"
+image_speed = 0
+image_index = 1
+
+---
+
+Folder: objects\obj_creator
+File: Draw_0.gml
+Modified: 2026-10-22
+
+drawspriteplayerbig(outfit,facing,80,80,image_index,iswalking)
+for (var r = 0;r <= array_length(global.limbnames); r++) {
+	var ry = xtop + r * spacing
+	draw_text(colx[0], ry, "<")
+	draw_text(colx[1], ry, ">")
+	if !(r == 0 && mode > 0) {draw_rectangle(colx[2],ry,colx[2] + 16,ry + 16,false)}}
+	
+	var hy = xtop + row * spacing
+	draw_set_colour(c_yellow)
+	draw_rectangle(colx[col] - 2, hy - 2, colx[col] + 18, hy + 18, true)
+	draw_set_colour(c_white)
+if isgrid {
+	var gx= 160
+	var gy = 40
+	var gap = 4
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	
+	for (var _i = 0; _i < count; _i++) {
+		var bx = gx + (_i mod boxer) * (boxw + gap)
+		var by = gy + (_i div boxer) * (boxl + gap)
+		
+		if row > 0 && mode == 1 {draw_set_colour(global.skin_pal[_i])}
+		else if row > 0 && mode == 2 {draw_set_colour(global.cloth_pal[_i])}
+		else {draw_set_colour(c_dkgray)}
+		draw_rectangle(bx,by,bx + boxw, by + boxl,false)
+		draw_set_colour(c_white)
+		if row == 0 {
+			drawspriteplayer(global.chardef[_i],"D",bx + boxw / 2,by + boxl / 2,1)}
+		else if mode == 0 {
+			var v = _i
+			if isaac(sel) {v = _i - 1}
+			var label =  string(v)
+			if v == -1 {label = "none"}
+			draw_text(bx + boxw / 2, by + boxl / 2,label)}
+			draw_rectangle(bx,by,bx+boxw,by+boxl,true)}
+			
+		var cx = gx + (grider mod boxer) * (boxw + gap)
+		var cy = gy + (grider div boxer) * (boxl + gap)
+		draw_set_colour(c_yellow)
+		draw_rectangle(cx - 2, cy - 2, cx + boxw + 2, cy + boxl + 2, true)
+		draw_set_colour(c_white)
+		draw_set_halign(fa_left)
+		draw_set_valign(fa_top)}
+
+
+		
+
+---
+
+Folder: objects\obj_creator
+File: Step_0.gml
+Modified: 2026-10-22
+
+if !isgrid {
+if keyboard_check_pressed(ord("D")) {
+	if col == 2 {col = 0 show_debug_message("row " + string(row) + " col " + string(col))}
+	else {
+	col++ show_debug_message("row " + string(row) + " col " + string(col))}}
+if keyboard_check_pressed(ord("A")) {
+if col == 0 {col = 2 show_debug_message("row " + string(row) + " col " + string(col))}
+else {col-- show_debug_message("row " + string(row) + " col " + string(col))}}
+if keyboard_check_pressed(ord("W")) {
+if row == 0 {row = array_length(global.limbnames) show_debug_message("row " + string(row) + " col " + string(col))}
+else {row-- show_debug_message("row " + string(row) + " col " + string(col))}}
+if keyboard_check_pressed(ord("S")) {
+if row == array_length(global.limbnames){row = 0 show_debug_message("row " + string(row) + " col " + string(col))}
+else {row++ show_debug_message("row " + string(row) + " col " + string(col))}}
+if row > 0 {sel = global.limbnames[row - 1]}
+if keyboard_check_pressed(ord("Q")) {
+	if mode == 2 {mode = 0}
+	else {mode++}}
+	
+	
+if keyboard_check_pressed(ord("E")) {	
+if mode == 0 {
+    if row > 0 
+    {var low = 0
+        if isaac(sel) {low = -1}
+		sel = global.limbnames[row - 1]
+		sel_pos = array_get_index(global.limbnames,sel)
+        if col == 0 {if outfit[$ sel] == low {outfit[$ sel] = global.limbcount[sel_pos] - 1}
+        else {
+            outfit[$ sel] = outfit[$ sel] - 1}
+    show_debug_message("outfit." + sel + " is now " + string(outfit[$ sel]))}
+        if col == 1 {if outfit[$ sel] == global.limbcount[sel_pos] - 1 {outfit[$ sel] = low}
+else {
+outfit[$ sel] = outfit[$ sel] + 1}
+show_debug_message("outfit." + sel + " is now " + string(outfit[$ sel]))}
+		if col == 2 {isgrid = true}}
+
+		else
+		{if col == 0{
+			if cur == 0{
+				cur = array_length(global.chardef) - 1  show_debug_message(cur)
+				outfit = variable_clone(global.chardef[cur]) show_debug_message(outfit)}
+				else {cur-- show_debug_message(cur)
+					outfit = variable_clone(global.chardef[cur]) show_debug_message(outfit)}}
+		
+			if col == 1{if cur == array_length(global.chardef) - 1{cur = 0 show_debug_message(cur)
+				outfit = variable_clone(global.chardef[cur]) show_debug_message(outfit)}
+			else {cur++ show_debug_message(cur)
+				outfit = variable_clone(global.chardef[cur]) show_debug_message(outfit)}}
+			if col == 2 {isgrid = true}}}
+if mode == 1 {
+	if row > 0 {sel = global.limbnames[row - 1]
+		sel_pos = array_get_index(global.limbnames,sel)
+		if col == 0 {
+			if outfit.skin[sel_pos] == 0 {outfit.skin[sel_pos] = array_length(global.skin_pal) - 1}
+			else {outfit.skin[sel_pos]--}}
+		if col == 1 {
+			if outfit.skin[sel_pos] == array_length(global.skin_pal) - 1 {outfit.skin[sel_pos] = 0}
+			else {outfit.skin[sel_pos]++}}
+		if col == 2 {isgrid = true}
+			
+}}
+if mode == 2 {
+	if row > 0 {sel = global.limbnames[row - 1]
+		sel_pos = array_get_index(global.limbnames,sel)
+		if col == 0 {
+				if outfit.cloth[sel_pos] == 0 {outfit.cloth[sel_pos] = array_length(global.cloth_pal) - 1}
+				else {outfit.cloth[sel_pos]--}}
+		if col == 1 {
+			if outfit.cloth[sel_pos] == array_length(global.cloth_pal) - 1 {outfit.cloth[sel_pos] = 0}
+			else {outfit.cloth[sel_pos]++}}
+		if col == 2 {isgrid = true}
+}}}}
+else {
+		if row > 0 {sel_pos = array_get_index(global.limbnames,sel)}
+		if row == 0 {count = array_length(global.chardef)}
+		else {
+			switch mode {
+				case 0:
+				count = global.limbcount[sel_pos]
+				if isaac(sel) {count++}
+				break
+				case 1: count = array_length(global.skin_pal) break
+				case 2: count = array_length(global.cloth_pal) break}}
+		if keyboard_check_pressed(ord("F")) {isgrid = false grider = 0}
+		if keyboard_check_pressed(ord("D")) {if grider == count - 1 {grider = 0}
+											else {grider++}}
+		if keyboard_check_pressed(ord("A")) {if grider == 0 {grider  = count - 1}
+											else {grider--}}
+		if keyboard_check_pressed(ord("S")) {if grider + boxer < count {grider += boxer} else {grider = grider mod boxer}}
+		if keyboard_check_pressed(ord("W")) {if grider - boxer >= 0 {grider -= boxer} else {
+			var colm = grider mod boxer
+			var rows = (count + boxer - 1) div boxer
+			var bottom = colm + (rows - 1) * boxer
+			if bottom >= count {bottom -= boxer}
+			grider = bottom}}
+		if keyboard_check_pressed(ord("E")) {
+			var v = grider
+			if row == 0 {
+				cur = grider
+				outfit = variable_clone(global.chardef[cur])}
+		else {
+			switch mode {
+				case 0:
+				if isaac(sel) {v = grider - 1}
+				outfit[$ sel] = v break
+				case 1: outfit.skin[sel_pos] = grider break
+				case 2: outfit.cloth[sel_pos] = grider break}}}}
+		
+	
+
+---
+
+Folder: objects\obj_dark
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\obj_dark
+File: Create_0.gml
+Modified: 2026-08-12
+
+alarm[0] = 60
+
+
+---
+
+Folder: objects\obj_dark
+File: Step_0.gml
+Modified: 2026-07-22
+
+image_alpha = image_alpha - 0.05
+
+
+---
+
+Folder: objects\obj_darkin
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\obj_darkin
+File: Create_0.gml
+Modified: 2026-07-22
+
+image_alpha = 0
+alarm[0] = 60
+
+
+---
+
+Folder: objects\obj_darkin
+File: Step_0.gml
+Modified: 2026-07-22
+
+image_alpha = image_alpha + 0.05
+
+
+---
+
+Folder: objects\obj_discord
+File: Create_0.gml
+Modified: 2026-09-17
+
+randomise()
+global.doorcountdiscord = 0
+discord_list = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10","11", "12", "13", "14", "15", "16", "17", "18", "19", "20","21", "22", "23", "24", "25", "26", "27", "28", "29", "30","31", "32", "33", "34", "35", "36", "37", "38", "39", "40","41", "42", "43", "44", "45", "46", "47", "48", "49", "50","51", "52", "53", "54", "55", "56", "57", "58", "59", "60","61", "62", "63", "64", "65", "66", "67", "68", "69", "70","71", "72", "73", "74", "75", "76", "77", "78", "79", "80","81", "82", "83", "84", "85", "86", "87", "88", "89", "90","91", "92", "93", "94", "95", "96", "97", "98", "99", "100"]
+discordmessages = ["Exploring The Hotel...", "Holding W In The Hotel...", "Keeping The Grounds...",  "Adding Crucifix Duplication...", "Hiding Secrets...", "Knocking On Walls...", "Door 13", "Sniffing Plants...", "Dying To First Rush...", "Creating Rugs...", "Multiplying Players...", "Weakening Lungs...", "Adding Perro...", "Dissing Medi_Nate...", "Adding Glitches...", "Glitching Glitch...", "Praying For A Release Date...", "Collecting Pages...", "Adding", "Reworking Basements...", "Jumpscaring Player...", "Adding Lore...", "Find The Lever!", "Down The Drain 2ing...", "Going Insane...", "Pondering Life...", "Visioning Visions...", "Taking Too Long...", "Who are you running from?", "Modifying The Hotel...",  "Getting Sued By LSPLASH...", "Rushing Rush...", "Ambushing Ambush...", "Figuring Figure...", "Seeking Seek...",  "Creating Lazy Badge Names...", "Writing In Journal...", "Copying From Various Games...", "Adding Unoriginal Ideas...", "Doing Absolutely Nothing...", "Skinning Players"]
+	array_shuffle_ext(discordmessages)	discordmessagechoose = discordmessages[0]
+show = discord_list[global.doorcountdiscord]
+
+---
+
+Folder: objects\obj_discord
+File: Other_4.gml
+Modified: 2026-09-07
+
+textdis = string_replace_all(string_format(global.doorcountdiscord,4,0)," ","0")
+if room != rm_reception {np_setpresence("At Door " + textdis, string(discordmessagechoose), "hotelpresence", "doors_1999_title_bgs")}
+
+
+
+---
+
+Folder: objects\obj_door_timer
+File: Create_0.gml
+Modified: 2026-09-27
+
+sprite_index = spr_countnumbers
+image_speed = 0
+
+---
+
+Folder: objects\obj_emitter
+File: Alarm_0.gml
+Modified: 2026-09-23
+
+emit = instance_create_layer(80, obj_act1_button.y,"Instances",obj_act1_button_fake)
+hasSpawned = false
+
+---
+
+Folder: objects\obj_emitter
+File: Create_0.gml
+Modified: 2026-08-21
+
+hasSpawned = false
+emit = undefined
+
+---
+
+Folder: objects\obj_emitter
+File: Step_0.gml
+Modified: 2026-08-21
+
+if hasSpawned == false {hasSpawned = true alarm[0] = 10}
+
+
+---
+
+Folder: objects\obj_eyes_characreate
+File: Alarm_0.gml
+Modified: 2026-10-16
+
+go = true
+
+---
+
+Folder: objects\obj_eyes_characreate
+File: Create_0.gml
+Modified: 2026-10-16
+
+hover_speed = 0.04
+hover_range = 0.1
+go = false
+alarm[0] = 20
+
+---
+
+Folder: objects\obj_eyes_characreate
+File: Step_0.gml
+Modified: 2026-10-16
+
+if go == true {
+y = y + dsin(current_time * hover_speed) * hover_range}
+
+---
+
+Folder: objects\obj_fridge_light
+File: Draw_0.gml
+Modified: 2026-08-16
+
+draw_sprite_pos(spr_fridge_light2,0,x,y,x,y,x - 10, y + 32, x, y + 32,1)
+
+---
+
+Folder: objects\obj_friendbutton
+File: Create_0.gml
+Modified: 2026-08-22
+
+image_speed = 1
+instance_create_layer(x, y - 30,"Text",obj_FRIENDS)
+
+---
+
+Folder: objects\obj_friendbutton
+File: Step_0.gml
+Modified: 2026-08-22
+
+switch floor(image_index) {
+	case 0:
+	image_speed = 1
+	break
+	case 9:
+	image_speed = 10
+	break
+	case 14:
+	image_speed = 1.5
+	break
+	case 16:
+	image_speed = 5}
+
+---
+
+Folder: objects\obj_friendbutton2
+File: Create_0.gml
+Modified: 2026-09-19
+
+
+
+---
+
+Folder: objects\obj_friendbutton2
+File: Step_0.gml
+Modified: 2026-09-19
+
+switch floor(image_index) {
+	case 0:
+	image_speed = 1
+	break
+	case 9:
+	image_speed = 10
+	break
+	case 14:
+	image_speed = 1.5
+	break
+	case 16:
+	image_speed = 5}
+
+---
+
+Folder: objects\obj_game
+File: Create_0.gml
+Modified: 2026-10-22
+
+global.playerupsprites = [spr_charanoobU,spr_chara_av_U] 
+global.playerupstandsprites = [spr_charanoob_standU,spr_chara_av_standU]
+global.playerdownsprites = [spr_charanoobD,spr_chara_av_D]
+global.playerdownstandsprites = [spr_charanoob_standD,spr_chara_av_standD]
+global.playerleftsprites = [spr_charanoobL,spr_chara_av_L]
+global.playerleftstandsprites = [spr_charanoob_standL,spr_chara_av_standL]
+global.playerrightsprites = [spr_charanoobR,spr_chara_av_R]
+global.playerrightstandsprites = [spr_charanoob_standR,spr_chara_av_standR]
+c = #EFD600            //1      //2   //3     //4     //5     //6     //7     //8      //9    //10    //11     //12   //13    //14     
+global.skin_pal = [c,#002A6A,#50AD00,#EED9BF,#67A4E0,#000000,#2D2D2D,#560000,#750000,#F26522,#BA4C1A,#191919,#1C1107,#3D240F,#FFFFFF]
+					    //1      //2    //3    //4     //5     //6     //7     //8      //9     //10   //11    //12   //13    //14
+global.cloth_pal = [c,#002A6A,#50AD00,#EED9BF,#67A4E0,#000000,#2D2D2D,#560000,#750000,#F26522,#BA4C1A,#191919,#1C1107,#3D240F,#FFFFFF]
+					  //1     //2     //3     //4     //5     //6     //7     //8     //9     //10    //11    //12   //13    //14
+global.out_pal = [c,#002A6A,#50AD00,#EED9BF,#67A4E0,#000000,#2D2D2D,#560000,#750000,#F26522,#BA4C1A,#191919,#1C1107,#3D240F,#FFFFFF]
+global.player_name = "Player123"
+global.partorder = {D: ["armL","armR","chest","hip_acc","legL","legR","head","mouth","eyesL","eyesR","face_acc","head_acc"], U: ["eyesL","eyesR","chest","legL","legR","hip_acc","armL","armR","head","mouth","face_acc","head_acc"],
+	L: ["eyesR","legL","legR","hip_acc","chest","armL","head","mouth","eyesL","face_acc","head_acc","armR"], R: ["eyesL","legR","legL","hip_acc","chest","armR","head","mouth","eyesR","face_acc","head_acc","armL"]}
+global.chardef = [{legL:0, legR:0, hip_acc:-1,armL:0,armR:0,chest:0,head:0,mouth:-1,eyesL:0,eyesR:0,face_acc:-1,head_acc:-1,skin:[2,2,1,0,0,0,0,1,1,0,0,0],cloth:array_create(12,0),outline:1},
+{legL:1, legR:1, hip_acc:1,armL:1,armR:1,chest:1,head:1,mouth:0,eyesL:-1,eyesR:-1,face_acc:-1,head_acc:-1,skin:[0,0,0,3,3,8,0,0,0,0,0,0],cloth:[7,7,7,7,7,6,0,0,0,5,0,0],outline:6},
+ {legL:2,legR:2,hip_acc:-1,armL:2,armR:2,chest:2,head:2,mouth:2,eyesL:2,eyesR:2,face_acc:-1,head_acc:2,skin:[12,12,13,12,12,12,5,14,14,0,0,9],cloth:[11,11,12,0,0,0,14,5,5,0,0,10],outline:12}]
+global.limbnames = ["legL","legR","chest","armL","armR","head","mouth","eyesL","eyesR","hip_acc","face_acc","head_acc"]
+global.limbcount = [3,3,3,3,3,3,1,2,2,1,0,1]
+global.charatint = shader_get_uniform(sh_playercolours, "u_tint")
+global.charaline = shader_get_uniform(sh_playercolours,"u_outline")
+global.charaskin = shader_get_uniform(sh_playercolours, "u_skin")
+global.characloth = shader_get_uniform(sh_playercolours, "u_cloth")
+
+
+
+---
+
+Folder: objects\obj_game
+File: Other_2.gml
+Modified: 2026-09-21
+
+audio_falloff_set_model(audio_falloff_linear_distance)
+	if net_init() {show_debug_message("Steam Initialised")}
+
+
+---
+
+Folder: objects\obj_game
+File: Other_3.gml
+Modified: 2026-09-21
+
+net_shutdown()
+
+
+---
+
+Folder: objects\obj_game
+File: Other_68.gml
+Modified: 2026-09-21
+
+net_handle_async()
+
+---
+
+Folder: objects\obj_game
+File: Step_0.gml
+Modified: 2026-10-03
+
+net_update()
+if keyboard_check_pressed(ord("R"))
+{game_restart()}
+
+
+---
+
+Folder: objects\obj_glitch_particles
+File: Alarm_0.gml
+Modified: 2026-08-11
+
+instance_destroy()
+
+---
+
+Folder: objects\obj_glitch_particles
+File: Create_0.gml
+Modified: 2026-08-21
+
+sprite_index = spr_glitch_particles
+alarm[0] = 1
+
+---
+
+Folder: objects\obj_glitch_particles_intro
+File: Create_0.gml
+Modified: 2026-08-21
+
+particles = [spr_g1,spr_g2,spr_g3,spr_g4,spr_g5,spr_g6,spr_g7,spr_g8,spr_g10,spr_g11,spr_g12]
+chosen = irandom(10)
+if irandom(600) == 600 {
+	sprite_index = spr_g9}
+else {
+	sprite_index = particles[chosen]
+}
+
+---
+
+Folder: objects\obj_glitch_particles_intro
+File: Other_7.gml
+Modified: 2026-08-21
+
+instance_destroy()
+
+---
+
+Folder: objects\obj_glitch_particles_spawn
+File: Alarm_0.gml
+Modified: 2026-08-21
+
+instance_create_layer(random_range(0, 320), random_range(0, 280), "Glitch", obj_glitch_particles_intro)
+
+alarm[0]=random_range(10, 50)
+
+
+
+---
+
+Folder: objects\obj_glitch_particles_spawn
+File: Alarm_1.gml
+Modified: 2026-08-21
+
+instance_destroy()
+
+---
+
+Folder: objects\obj_glitch_particles_spawn
+File: Create_0.gml
+Modified: 2026-08-21
+
+alarm[0] = 1
+
+
+
+
+---
+
+Folder: objects\obj_head_characreate
+File: Create_0.gml
+Modified: 2026-10-16
+
+hover_speed = 0.01
+hover_range = 0.3
+
+---
+
+Folder: objects\obj_head_characreate
+File: Step_0.gml
+Modified: 2026-10-16
+
+y = y + dsin(current_time * hover_speed) * hover_range
+
+---
+
+Folder: objects\obj_hostbutton
+File: Alarm_0.gml
+Modified: 2026-08-22
+
+sprite_index = spr_buttonplay_dupe
+image_speed = 1
+
+---
+
+Folder: objects\obj_hostbutton
+File: Create_0.gml
+Modified: 2026-09-24
+
+hovered = false
+selected = false
+disabled = false
+pressed = false
+image_speed = 0
+alarm [0] = 500
+
+selectAction = function () {
+	net_lobby_create(2)};
+	
+	on_net_event = function (evt) {
+		if (evt.type != "lobby_joined") return
+		if (evt.is_host) {global.server = instance_create_depth(0,0,0,obj_Server)}
+		room_goto(rm_reception)}
+
+---
+
+Folder: objects\obj_hostbutton
+File: Step_0.gml
+Modified: 2026-08-22
+
+if keyboard_check_pressed(ord("E")) && pressed == false && obj_selector.spot == 0{pressed = true image_speed = 1}
+
+if image_index >= 6 && sprite_index != spr_buttonplay_dupe {
+	image_speed = 0}
+if image_index >= 23 {
+	image_speed = 0 sprite_index = spr_buttonplay}
+
+---
+
+Folder: objects\obj_introsphere
+File: Create_0.gml
+Modified: 2026-10-15
+
+hover_speed = random_range(0.1,1)
+hover_range = irandom(10)
+
+---
+
+Folder: objects\obj_introsphere
+File: Step_0.gml
+Modified: 2026-10-15
+
+x = x + 3
+y = y + dsin(current_time * hover_speed) * hover_range
+
+---
+
+Folder: objects\obj_introsphere_big
+File: Create_0.gml
+Modified: 2026-10-10
+
+start_y = y
+hover_speed = random_range(0.1,1)
+hover_range = irandom(10)
+
+---
+
+Folder: objects\obj_introsphere_big
+File: Step_0.gml
+Modified: 2026-10-10
+
+x = x + 3
+y = start_y + dsin(current_time * hover_speed) * hover_range
+
+---
+
+Folder: objects\obj_introsphere_small
+File: Create_0.gml
+Modified: 2026-10-15
+
+start_y = y
+hover_speed = random_range(0.1,0.5)
+hover_range = irandom(2)
+
+---
+
+Folder: objects\obj_introsphere_small
+File: Step_0.gml
+Modified: 2026-10-15
+
+x++
+y = start_y + dsin(current_time * hover_speed) * hover_range
+
+---
+
+Folder: objects\obj_inviskey
+File: Create_0.gml
+Modified: 2026-08-11
+
+if sniffed == true && looked == true {}
+
+---
+
+Folder: objects\obj_inviswall
+File: Create_0.gml
+Modified: 2026-08-11
+
+image_alpha = 0
+
+---
+
+Folder: objects\obj_joinbutton
+File: Create_0.gml
+Modified: 2026-08-20
+
+hovered = false
+selected = false
+disabled = false
+selectAction = function () {
+	for (var _i = 0; _i < 5; _i++){
+		var _inst = instance_find(buttonspot,_i)
+		if _inst != noone then _inst.disabled = true}
+		
+		var lobby_list = instance_create_depth(130,63,-10,obj_lobbylist)
+		//lobby_list.image_xscale = 25
+		//lobby_list.image_yscale = 16
+		// lobby_item = instance_create_depth(lobby_list.x,lobby_list.bbox_top+40,-20,obj_LobbyItem)
+		//lobby_list.lobby_list[0] = lobby_item
+		//lobby_list.alarm[0] = 1
+}
+
+---
+
+Folder: objects\obj_joinbutton
+File: Step_0.gml
+Modified: 2026-07-25
+
+
+
+if ((point_in_rectangle(mouse_x,mouse_y,bbox_left,bbox_top,bbox_right,bbox_bottom) or selected == true) && !disabled) {
+	
+	if (mouse_check_button_pressed(mb_left)) {
+		show_debug_message("Join clicked")
+		selectAction()
+	}}
+	
+
+---
+
+Folder: objects\obj_keywall
+File: Create_0.gml
+Modified: 2026-09-19
+
+key = "key"
+
+---
+
+Folder: objects\obj_keywall
+File: Step_0.gml
+Modified: 2026-09-24
+
+
+
+---
+
+Folder: objects\obj_knife_characreate
+File: Create_0.gml
+Modified: 2026-10-16
+
+hover_speed = 0.005
+hover_range = 0.5
+
+---
+
+Folder: objects\obj_knife_characreate
+File: Step_0.gml
+Modified: 2026-10-16
+
+y = y + dsin(current_time * hover_speed) * hover_range
+image_angle++
+
+---
+
+Folder: objects\obj_leg_characreate
+File: Create_0.gml
+Modified: 2026-10-16
+
+hover_speed = 0.02
+hover_range = 0.2
+
+---
+
+Folder: objects\obj_leg_characreate
+File: Step_0.gml
+Modified: 2026-10-16
+
+y = y + dsin(current_time * hover_speed) * hover_range
+
+---
+
+Folder: objects\obj_LobbyItem
+File: Create_0.gml
+Modified: 2026-09-24
+
+hovered = false;
+selected = false;
+disabled = false;
+
+selectAction = function () {if disabled == false { global.client = instance_create_depth(0,0,0,obj_Client)
+	net_lobby_join(lobby_id) disabled = true
+	show_debug_message("Clicked lobbyitem")}}
+
+textColor = c_white
+
+
+
+
+
+---
+
+Folder: objects\obj_LobbyItem
+File: Draw_0.gml
+Modified: 2026-09-29
+
+
+
+
+draw_self()
+draw_set_halign(fa_left)
+draw_set_valign(fa_middle)
+
+if is_string(lobby_id) {
+	draw_text_transformed(bbox_left+10,y-100,"Code: " + lobby_id,.2,.2,0)
+	draw_text_transformed(bbox_left+10,y+5,"Creator: " + lobby_creator,.2,.2,0)
+} else {
+	draw_text(bbox_left+10,y + 15,"Searching...")
+}
+draw_set_valign(fa_top)
+draw_set_halign(fa_left	)
+
+---
+
+Folder: objects\obj_LobbyItem
+File: Step_0.gml
+Modified: 2026-07-27
+
+
+
+
+if ((point_in_rectangle(mouse_x,mouse_y,bbox_left,bbox_top,bbox_right,bbox_bottom) or selected == true) && !disabled ) {
+	// The buttom was clicked (flicker for 1 frame)
+	
+	if (mouse_check_button_pressed(mb_left)) {
+		selectAction();}}
+
+---
+
+Folder: objects\obj_lobbylist
+File: Create_0.gml
+Modified: 2026-09-22
+
+
+
+lobby_list = []
+
+image_xscale = xScale
+image_yscale = yScale
+
+lobby_list[0] = instance_create_depth(x,bbox_top + 60,-20,obj_LobbyItem)
+
+
+
+resetLobbyList = function () {
+	for (var _i = 0; _i < array_length(lobby_list); _i = _i + 1) {
+		show_debug_message("Deleting: "+string(lobby_list[_i]))
+		instance_destroy(lobby_list[_i])}
+		lobby_list = []}
+		
+on_net_event = function (evt) {
+	if (evt.type == "lobby_join_failed") {show_debug_message("Could not join that lobby"); return}
+	if (evt.type != "lobby_list") return
+	
+	resetLobbyList()
+	if (array_length(evt.lobbies) == 0) {
+		lobby_list[0] = instance_create_depth(x,bbox_top + 60,-20,obj_LobbyItem)}
+		else {
+			for (var _i = 0; _i < array_length(evt.lobbies); _i++) {
+				var _l = evt.lobbies[_i]
+				var _ins = instance_create_depth(x,bbox_top + 40 + 80*_i,-20,obj_LobbyItem, {
+					lobby_index : _i,
+					lobby_id : _l.code,
+					lobby_creator : _l.creator})
+					array_push(lobby_list, _ins)}}}
+		net_lobby_list()
+	
+
+---
+
+Folder: objects\obj_mnote
+File: Step_0.gml
+Modified: 2026-08-16
+
+if image_index >= 14 {instance_destroy()}
+
+---
+
+Folder: objects\obj_monogram
+File: Alarm_0.gml
+Modified: 2026-08-16
+
+if on == true {alarm[0] = 300
+	instance_create_layer(x + 2, y - 47,"dark",obj_mnote)}
+
+---
+
+Folder: objects\obj_monogram
+File: Create_0.gml
+Modified: 2026-10-13
+
+on = false
+firstpressed = false
+image_speed = 0
+toggle_state = function() {
+    alarm[0] = 300
+    switch (on) {
+        case false:
+            on = true
+            image_speed = 1
+            audio_play_sound_at(sndef_monogram,x,y,0,32,150,1,false,4,0.5)
+            if (firstpressed == false) {
+                audio_play_sound_at(snd_relaxedscene,x,y,0,32,150,1,true,5)
+            } else {
+                audio_resume_sound(snd_relaxedscene)
+            }
+            firstpressed = true
+            break
+            
+        case true:
+            on = false
+            image_speed = 0
+            image_index = 0
+            audio_play_sound_at(sndef_monogram,x,y,0,32,150,1,false,4,0.5)
+            audio_pause_sound(snd_relaxedscene)
+            break
+    }
+}
+
+---
+
+Folder: objects\obj_monogram
+File: Step_0.gml
+Modified: 2026-10-13
+
+var _local_player = noone
+with (obj_player) {
+    if (isLocal) {_local_player = id}
+}
+if (_local_player != noone && point_distance(x, y, _local_player.x, _local_player.y) < 25) {
+    if (keyboard_check_pressed(ord("E"))) {
+        toggle_state()
+        var _b = buffer_create(1, buffer_fixed, 1)
+        buffer_write(_b, buffer_u8, NETWORK_PACKETS.MONOGRAM)
+        if (instance_exists(obj_Server)) {
+            for (var _i = 0; _i < array_length(obj_Server.playerList); _i++) {
+                if (obj_Server.playerList[_i].steamID != obj_Server.steamID) {
+                    net_packet_send(obj_Server.playerList[_i].steamID, _b)
+                }
+            }
+        } else if (instance_exists(obj_Client)) {
+            var lobbyHost = obj_player.lobbyHost
+            net_packet_send(lobbyHost,_b)
+        }
+        
+        buffer_delete(_b)
+    }
+}
+
+if (on == false) {alarm[0] = 1000;}
+		
+
+---
+
+Folder: objects\obj_musicmenu
+File: Create_0.gml
+Modified: 2026-10-13
+
+audio_play_sound(snd_placeholdotd,3,true)
+sndeffectmuff = audio_effect_create(AudioEffectType.LPF2)
+sndeffectre = audio_effect_create(AudioEffectType.Reverb1)
+sndeffectmuff.cutoff = 300
+sndeffectre.mix = 0.5
+audio_bus_main.effects[0] = sndeffectmuff
+audio_bus_main.effects[1] = sndeffectre
+audio_bus_main.bypass = true
+
+
+---
+
+Folder: objects\obj_musicmenu
+File: Other_4.gml
+Modified: 2026-10-13
+
+if room == rm_characreator {audio_bus_main.bypass = false}
+else {audio_bus_main.bypass = true}
+if room != rm_characreator or room != rm_hotelmenu {instance_destroy()}
+
+---
+
+Folder: objects\obj_noob_characreate
+File: Create_0.gml
+Modified: 2026-10-21
+
+hover_speed = 0.005
+hover_range = 0.5
+
+---
+
+Folder: objects\obj_noob_characreate
+File: Step_0.gml
+Modified: 2026-10-21
+
+x++
+image_angle++
+if x > 2000 {x = -10}
+
+---
+
+Folder: objects\obj_playbutton
+File: Create_0.gml
+Modified: 2026-08-07
+
+image_speed = 0
+chooseroom = rm_reception
+
+---
+
+Folder: objects\obj_playbutton
+File: Step_0.gml
+Modified: 2026-09-24
+
+if (point_in_rectangle(mouse_x,mouse_y,bbox_left,bbox_top,bbox_right,bbox_bottom)) {
+if (mouse_check_button_pressed(mb_left)) {room_goto(rm_reception)
+	instance_create_layer(obj_SpawnPoint.x,obj_SpawnPoint.y,"Player",obj_player)}}
+
+---
+
+Folder: objects\obj_player
+File: Alarm_0.gml
+Modified: 2026-09-24
+
+
+canTeleport = true
+show_debug_message("canTeleport is now true for " + steamName)
+
+---
+
+Folder: objects\obj_player
+File: Alarm_1.gml
+Modified: 2026-08-17
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ra = false
+
+---
+
+Folder: objects\obj_player
+File: Alarm_2.gml
+Modified: 2026-08-17
+
+closetstool.image_index = 0
+closetstool.image_speed = 0
+instance_create_layer(x - 4,y - 40,"HUD",obj_z)
+alarm[2] = 300
+
+---
+
+Folder: objects\obj_player
+File: Collision_sideroomL.gml
+Modified: 2026-07-22
+
+if canTeleport == true
+{room_goto(choose(sm_1,sm_2))
+canTeleport = false}
+
+---
+
+Folder: objects\obj_player
+File: Collision_sideroomR.gml
+Modified: 2026-07-22
+
+if canTeleport == true
+{room_goto(choose(sm_1,sm_2))
+	canTeleport = false}
+
+---
+
+Folder: objects\obj_player
+File: Create_0.gml
+Modified: 2026-10-19
+
+global.guiw = display_get_gui_width() at_window = false 	hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
+ver = keyboard_check(ord("S")) - keyboard_check(ord("W")); key = undefined  
+global.guiw = display_get_gui_width() lightsubin = 0 i = false	
+global.guih = display_get_gui_height()  isCrouched = false playeritems = [] 
+collidewith = [layer_tilemap_get_id("col"), randomFurniture, randomFurnituresideR, randomFurnituresideL,obj_windowR,obj_hotelplant,obj_reception_stool_bottom,obj_reception_stool_top_U,obj_windowL,obj_inviswall,obj_wall,obj_wall_wall,obj_wall_middle]
+move_speed = 1 trueplayer = id inCutscene = false hasPressed = false count = 0
+sprite_index = global.playerupstandsprites[lobbyMemberID]
+
+canTeleport = false  stoolpotential = false closetpotential = false
+exityes = false hasPressed = false
+global.isHiding = false    inCutscene = false
+global.rushSpawn = false
+global.amSpawn = false
+global.canMove = true
+global.canInteract = true
+walk_timer = 0
+ka = false 
+sa = false 
+localSteamID = net_my_id()
+lobbyHost = net_host_id()
+isHost = net_is_host()
+isLocal = (localSteamID == steamID) 
+persistent = isLocal
+if isLocal {camera_set_view_target(view_camera[0],id)}
+if !instance_exists(doorcontroller) {
+	instance_create_depth(0,0,-10,doorcontroller)}
+init_controls()
+if room == rm_reception {stoolpotential = true}
+if instance_exists(randomFurniture) {closetpotential = true}
+if (is_undefined(lobbyMemberID)) {lobbyMemberID = 0
+self.sprite_index = global.playerupstandsprites[lobbyMemberID]}
+tx = x
+ty = y
+facing = "D"
+pos_buffer = [{x:x, y:y, t:current_time}]
+outfit = {legL: 0, legR:0,chest:0,armL:0,armR:0,head:0,mouth:0,eyesL:0,eyesR:0,hip_acc:-1,face_acc:-1,head_acc:-1,skin:array_create(12,0),cloth:array_create(12,0),outline:0}
+part_sprite("chest", outfit.chest, "D")
+var getName = array_get_index(global.limbnames,"chest")
+var getPosSkin = outfit.skin[getName]
+skincol_give(getPosSkin)
+
+
+
+
+---
+
+Folder: objects\obj_player
+File: Draw_0.gml
+Modified: 2026-10-22
+
+drawspriteplayer(outfit,facing,x,y,image_index,(xInput != 0 || yInput != 0))
+
+---
+
+Folder: objects\obj_player
+File: KeyPress_71.gml
+Modified: 2026-08-17
+
+instance_create_layer(448,624,"Instances",obj_glitch_particles)
+
+---
+
+Folder: objects\obj_player
+File: Other_4.gml
+Modified: 2026-09-25
+
+if isLocal {
+	var _pos = grab_spawn_point(0)
+	x = _pos.x
+	y = _pos.y
+	camera_set_view_target(view_camera[0], id)
+	respawn_other_players()}
+	alarm[0] = 100
+	instance_create_layer(0,0,"trans",obj_dark)
+
+
+---
+
+Folder: objects\obj_player
+File: Other_7.gml
+Modified: 2026-10-13
+
+var playerhopsprites = [spr_chara_noob_hop, spr_chara_av_hop]
+var playersitsprites = [spr_chara_noob_stool_sit, spr_chara_av_stool_sit]
+if (sprite_index == playerhopsprites[lobbyMemberID] && image_index >= 6) {
+    image_speed = 0
+    sprite_index = playersitsprites[lobbyMemberID]
+}
+
+---
+
+Folder: objects\obj_player
+File: Step_0.gml
+Modified: 2026-10-03
+
+get_controls(isHost,isLocal) 
+if stoolpotential {closetstool = instance_nearest(x,y,obj_reception_stool_top_U)}
+if (stoolpotential && !hasPressed) {
+   
+    var playerhopsprites = [spr_chara_noob_hop, spr_chara_av_hop]
+    
+    if (interactKey > 0 && instance_exists(closetstool) && point_distance(closetstool.x, closetstool.y, x, y) < 20) {
+        hasPressed = true
+        inCutscene = true
+        global.canMove = false
+        
+
+        x = closetstool.x + 8
+        y = closetstool.y
+        
+
+        sprite_index = playerhopsprites[lobbyMemberID]
+        image_index = 0
+        image_speed = 1
+    }
+}
+
+
+if (inCutscene && hasPressed) && !count {
+    var playerhopsprites = [spr_chara_noob_hop, spr_chara_av_hop]
+    
+    if (sprite_index == playerhopsprites[lobbyMemberID] && image_index >= 6) {
+        
+        var playersitsprites = [spr_chara_noob_stool_sit, spr_chara_av_stool_sit]
+        
+        if (instance_exists(closetstool)) {
+            closetstool.sprite_index = playersitsprites[lobbyMemberID]
+							if count == false && closetstool.sprite_index == spr_chara_noob_stool_sit {count = true alarm[2] = 1200}
+        }
+        
+        image_alpha = 0
+    }
+}
+
+if isLocal || isHost {
+    paddle_movement()
+	if (isLocal && !isHost) {
+	if  (point_distance(x,y,tx,ty) > 8) {
+		x = lerp(x, tx, 0.05)
+		y = lerp(y, ty, 0.05)}}
+} else {
+	var _s = pos_buffer_sample(pos_buffer, current_time - 150)
+	if (!is_undefined(_s)) {
+		x = _s.x
+		y = _s.y}
+}
+
+if (!inCutscene) {
+    if (xInput != 0 || yInput != 0) {
+        image_speed = 1
+        if (xInput > 0)      {self.sprite_index = global.playerrightsprites[lobbyMemberID] facing = "R"}
+        else if (xInput < 0) {self.sprite_index = global.playerleftsprites[lobbyMemberID] facing = "L"}
+        else if (yInput > 0) {self.sprite_index = global.playerdownsprites[lobbyMemberID] facing = "D"}
+        else if (yInput < 0) {self.sprite_index = global.playerupsprites[lobbyMemberID] facing = "U"}
+        
+        if (walk_timer < 23) {
+            walk_timer = walk_timer + 1
+        } else {
+            if (sa == false) {
+                walk_timer = 0
+                audio_play_sound_at(walk1,x,y,0,32,100,1,false,6,0.4)
+                sa = true
+            }
+            if (sa == true) {
+                walk_timer = 0
+                audio_play_sound_at(walk1,x,y,0,32,100,1,false,6,0.4)
+                sa = false
+            }
+        }
+    } else {
+        self.image_speed = 0
+        self.image_index = 1
+    }
+}
+
+
+if isLocal {
+    audio_listener_position(x, y, 0)
+    audio_listener_orientation(0, 0, 1, 0, -1, 0)
+}
+	
+
+---
+
+Folder: objects\obj_reception_stool_top_U
+File: Create_0.gml
+Modified: 2026-09-07
+
+np_setpresence("At The Reception", "Checking In", "receptionpresence", "doors_1999_title_dgs")
+
+---
+
+Folder: objects\obj_relay2
+File: Create_0.gml
+Modified: 2026-10-11
+
+server_socket = network_create_server(network_socket_tcp, 6510, 8)
+
+---
+
+Folder: objects\obj_relay2
+File: Other_68.gml
+Modified: 2026-10-12
+
+show_debug_message("Something happened")
+if async_load[? "type"] == network_type_connect {
+	show_debug_message("Connect")}
+
+---
+
+Folder: objects\obj_screech
+File: Step_0.gml
+Modified: 2026-08-07
+
+if sprite_index == spr_screech1
+{if obj_player.sprite_index == spr_charanoob_standU or obj_player.sprite_index == spr_charanoobU
+	{ global.screechJump = 1
+		instance_destroy()
+	}
+}
+if sprite_index == spr_screech2
+{if obj_player.sprite_index == spr_charanoob_standL or obj_player.sprite_index == spr_charanoobL
+	{global.screechJump = 1
+		instance_destroy()	
+	}
+		
+}
+if sprite_index == spr_screech3
+{if obj_player.sprite_index == spr_charanoob_standR or obj_player.sprite_index == spr_charanoobR
+	{global.screechJump = 1
+		instance_destroy()	
+	}
+	
+}
+if sprite_index == spr_screech4
+{if obj_player.sprite_index == spr_charanoob_standD or obj_player.sprite_index == spr_charanoobD
+	{global.screechJump = 1
+		instance_destroy()	
+	}
+}
+
+---
+
+Folder: objects\obj_selector
+File: Alarm_0.gml
+Modified: 2026-10-12
+
+switch room {
+	case rm_beginningmenu:
+	switch spot {
+		case 0: 
+		room_goto(rm_hotelmenu)
+		instance_destroy()
+		break
+		case 1:
+		if global.act2 == true {
+		}
+		break}
+	break
+	case rm_hotelmenu:
+	switch spot {
+		case 0:
+		with obj_hostbutton {
+			selectAction()}
+		break
+		case 1:	
+		with obj_joinbutton {
+			selectAction()}
+		break
+		case 2:
+		go = true
+		alarm[1] = 60
+		alarm[2] = 48
+		break
+
+}}
+
+
+
+
+
+
+
+
+
+---
+
+Folder: objects\obj_selector
+File: Alarm_1.gml
+Modified: 2026-10-11
+
+room_goto(rm_characreator)
+
+---
+
+Folder: objects\obj_selector
+File: Alarm_2.gml
+Modified: 2026-10-12
+
+instance_create_layer(0,0,"Text",obj_wavetransition)
+
+---
+
+Folder: objects\obj_selector
+File: Create_0.gml
+Modified: 2026-10-10
+
+image_speed = 0
+stage = 0
+spot = 0
+endspot = undefined
+spotx = undefined
+spoty = undefined
+pressed = false
+canMove = true
+function go_up() {y = y - 3}
+go = false
+
+
+---
+
+Folder: objects\obj_selector
+File: KeyPress_69.gml
+Modified: 2026-08-22
+
+image_speed = 1
+
+if pressed == false {pressed = true canMove = false alarm[0] = 120 audio_play_sound(snd_menu_selector,2,false)}
+
+---
+
+Folder: objects\obj_selector
+File: Step_0.gml
+Modified: 2026-10-15
+
+switch room
+{
+	case rm_beginningmenu:
+	spotx = [60, 157]
+	spoty = [obj_act1_button.y - 18, obj_act2_button.y - 18]
+	endspot = 1
+	break
+	case rm_hotelmenu:
+	spotx = [16,106,196]
+	spoty = [obj_hostbutton.y - 18, obj_joinbutton.y - 18, obj_skinbutton.y - 18]
+	endspot = 2}
+switch room {
+	case rm_beginningmenu:
+if keyboard_check_pressed(ord("A")) && canMove == true {
+	spot = spot - 1
+	audio_play_sound(snd_spot_change_menu,4,false)
+	if spot < 0 {
+		spot = endspot}
+}
+if keyboard_check_pressed(ord("D")) && canMove == true {
+spot++
+audio_play_sound(snd_spot_change_menu,4,false)
+if spot > 1 {
+	spot = 0}
+}
+
+x = spotx[spot]
+y = spoty[spot]
+
+if keyboard_check_pressed(ord("E")) && pressed == false {pressed = true
+	image_speed = 1
+	alarm[0] = 120
+	if (spot == 0) {with obj_hostbutton {image_speed = 1}}}
+	break
+	case rm_hotelmenu:
+if keyboard_check_pressed(ord("A")) && canMove == true {
+	spot = spot - 1
+	audio_play_sound(snd_spot_change_menu,4,false)
+	if spot < 0 {
+		spot = endspot}
+}
+if keyboard_check_pressed(ord("D")) && canMove == true {
+spot++
+audio_play_sound(snd_spot_change_menu,4,false)
+if spot > 2 {
+	spot = 0}
+}}
+if go == true {
+	with obj_spawn_title {y = y - 15}
+	with obj_joinbutton {y = y - 15}
+	with obj_hostbutton {y = y - 15}
+	with obj_skinbutton {y = y - 15}
+	with obj_blue_sparkles_spawn {stop = true}
+	with obj_blue_sparkles_intro {y = y - 15}}
+x = spotx[spot]
+y = spoty[spot]
+
+---
+
+Folder: objects\obj_Server
+File: Alarm_0.gml
+Modified: 2026-09-25
+
+
+send_player_positions()
+
+alarm[0] = 1
+
+---
+
+Folder: objects\obj_Server
+File: Create_0.gml
+Modified: 2026-10-13
+
+
+playerList = []
+
+steamID = net_my_id()
+steamName = global.player_name
+lobbyMemberID = 0
+character = undefined
+
+inbuf = buffer_create(16, buffer_grow, 1)
+
+
+			
+playerList[0] = {
+	steamID			: steamID,
+	steamName		: steamName,
+	character		: undefined,
+	startPos		: grab_spawn_point(0),
+	lobbyMemberID	: 0
+	}
+
+on_net_event = function (evt) {
+	switch (evt.type) {
+		case "peer_joined":
+			show_debug_message("Player Joined: " + evt.name)
+			var _existing = -1
+			for (var _i = 0; _i < array_length(playerList); _i++) {
+				if (playerList[_i].steamID == evt.pid) {_existing = _i; break}
+			}
+			var _slot = _existing
+			if (_slot < 0) {
+				_slot = array_length(playerList)
+				array_push(playerList, {
+					steamID: evt.pid,
+					steamName: evt.name,
+					character: undefined,
+					startPos: grab_spawn_point(_slot),
+					lobbyMemberID: _slot})
+			} else {
+				playerList[_slot].steamName = evt.name
+			}
+			send_player_sync(evt.pid)
+			send_player_spawn(evt.pid, _slot)
+			host_send_outfits_to(evt.pid)
+			break
+
+		case "peer_left":
+			for (var _i = array_length(playerList) - 1; _i >= 0; _i--) {
+				if (playerList[_i].steamID == evt.pid) {
+					if (playerList[_i].character != undefined && instance_exists(playerList[_i].character)) {
+						instance_destroy(playerList[_i].character)
+					}
+					array_delete(playerList, _i, 1)
+				}
+			}
+			break
+
+		case "disconnected":
+			game_restart()
+			break
+	}
+}
+		
+	global.room_seed = irandom(999999999)
+
+---
+
+Folder: objects\obj_Server
+File: Other_4.gml
+Modified: 2026-09-25
+
+if (!instance_exists(obj_player)) {
+	var _pos = grab_spawn_point(0)
+	var _inst = instance_create_layer(_pos.x,_pos.y,"Player",obj_player, {
+		steamName: global.player_name,
+		steamID: obj_Server.steamID,
+		lobbyMemberID: 0 })
+	playerList[0].character = _inst
+	playerList[0].startPos = _pos
+	character = _inst}
+	
+alarm[0] = 2
+
+---
+
+Folder: objects\obj_Server
+File: Step_1.gml
+Modified: 2026-10-13
+
+while(net_packet_receive()){
+	
+	var _sender = net_packet_get_sender_id()
+	net_packet_get_data(inbuf)
+	buffer_seek(inbuf, buffer_seek_start, 0)
+	var _type = buffer_read(inbuf, buffer_u8)
+	
+	switch _type{
+		case NETWORK_PACKETS.CLIENT_PLAYER_INPUT:
+			var _playerInput = receive_player_input(inbuf, _sender)
+			send_player_input_to_clients(_playerInput)
+			break
+		case NETWORK_PACKETS.MONOGRAM:
+			if (instance_exists(obj_monogram)) {
+				with (obj_monogram) { toggle_state(); }
+			}
+			var _b = buffer_create(1, buffer_fixed, 1)
+			buffer_write(_b, buffer_u8, NETWORK_PACKETS.MONOGRAM)
+			for (var _i = 0; _i < array_length(playerList); _i++){
+				if (playerList[_i].steamID != steamID && playerList[_i].steamID != _sender) {
+					net_packet_send(playerList[_i].steamID, _b)
+				}
+			}
+			buffer_delete(_b)
+			break
+		case NETWORK_PACKETS.DOOR_GATHER:
+		var _forward = buffer_read(inbuf, buffer_u8)
+		var _near = buffer_read(inbuf, buffer_u8)
+		host_receive_gather(_sender, _forward, _near)
+		break
+		case NETWORK_PACKETS.OUTFIT:
+		buffer_read(inbuf, buffer_u64)
+		var _outfit_in = outfit_read(inbuf)
+		apply_outfit(_sender, _outfit_in)
+		host_relay_outfit(_sender, _outfit_in)
+		break
+		default:
+			show_debug_message("Unknown packet received: "+string(_type))
+			break
+	}
+	
+}
+
+---
+
+Folder: objects\obj_sideroom
+File: Collision_obj_player.gml
+Modified: 2026-09-17
+
+if nearplayer.y <= y {image_index = 1}
+
+---
+
+Folder: objects\obj_sideroom
+File: Create_0.gml
+Modified: 2026-09-17
+
+depth1 = layer_get_id("Instances") image_speed = 0
+depth2 = layer_get_id("dark")
+nearplayer = undefined
+
+
+---
+
+Folder: objects\obj_sideroom
+File: Step_0.gml
+Modified: 2026-09-19
+
+nearplayer = instance_nearest(x,y,obj_player)
+if obj_player.isLocal {
+if obj_player.y > y {layer = depth1}
+if obj_player.y <= y {layer = depth2}}
+
+
+
+
+
+---
+
+Folder: objects\obj_skinbutton
+File: Create_0.gml
+Modified: 2026-09-19
+
+image_speed = 0
+
+---
+
+Folder: objects\obj_spawn_title
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+sprite_index = spr_titlescreen
+
+---
+
+Folder: objects\obj_spawn_title
+File: Alarm_1.gml
+Modified: 2026-10-13
+
+image_speed = 0
+instance_create_layer(36,192,"Instances",obj_hostbutton)
+instance_create_layer(126,192,"Instances",obj_joinbutton)
+instance_create_layer(0,0,"Instances",obj_selector)
+instance_create_layer(obj_joinbutton.x + 90,192,"Instances",obj_skinbutton)
+instance_create_layer(0,0,"Instances",obj_musicmenu)
+
+
+---
+
+Folder: objects\obj_spawn_title
+File: Alarm_2.gml
+Modified: 2026-08-22
+
+audio_play_sound(snd_introbounce,1,false)
+
+---
+
+Folder: objects\obj_spawn_title
+File: Create_0.gml
+Modified: 2026-10-01
+
+alarm[0] = 200
+alarm[1] = 400
+alarm[2] = 230
+np_setpresence("Playing", "In Limbo's Menu", "doors_1999_title_dgs", "doors_1999_title_dgs")
+if (variable_global_exists("skip_intro") && global.skip_intro) {alarm[1] = 1; global.skip_intro = false}
+
+
+
+---
+
+Folder: objects\obj_spawn_title
+File: KeyPress_84.gml
+Modified: 2026-08-23
+
+alarm[1] = 1
+
+---
+
+Folder: objects\obj_spherespawner
+File: Alarm_0.gml
+Modified: 2026-10-15
+
+randomsphere = irandom(1)
+smallsphere = irandom(10)
+up = irandom(30)
+down = irandom_range(250,280)
+up = irandom(30)
+down = irandom_range(250,280)
+if randomsphere == 0 {
+instance_create_layer(x - 32,y + choose(up,down),"Backstuff",obj_introsphere)}
+if randomsphere == 1{
+	instance_create_layer(x - 32,y + choose(up,down),"Backstuff",obj_introsphere_big)}
+if smallsphere == 0 {instance_create_layer(x - 32,irandom_range(30,250),"Backstuff",obj_introsphere_small)}
+hasSpawned = false
+
+---
+
+Folder: objects\obj_spherespawner
+File: Create_0.gml
+Modified: 2026-08-21
+
+hasSpawned = false
+
+
+---
+
+Folder: objects\obj_spherespawner
+File: Step_0.gml
+Modified: 2026-08-21
+
+if hasSpawned == false {hasSpawned = true
+	alarm[0] = 10}
+
+---
+
+Folder: objects\obj_wall
+File: Create_0.gml
+Modified: 2026-09-17
+
+depth1 = layer_get_id("Instances")
+depth2 = layer_get_id("dark")
+
+there	= collision_rectangle(x + 16, y - 6, x + 32, y + 10, obj_player, false, true)
+
+---
+
+Folder: objects\obj_wall
+File: Step_0.gml
+Modified: 2026-09-19
+
+if obj_player.isLocal {
+if obj_player.y > y {layer = depth1}
+if obj_player.y <= y {layer = depth2}}
+
+
+
+
+---
+
+Folder: objects\obj_wall_middle
+File: Create_0.gml
+Modified: 2026-09-17
+
+depth1 = layer_get_id("Instances")
+depth2 = layer_get_id("dark")
+
+
+
+---
+
+Folder: objects\obj_wall_middle
+File: Step_0.gml
+Modified: 2026-09-19
+
+if obj_player.isLocal {
+if obj_player.y > y {layer = depth1}
+if obj_player.y <= y {layer = depth2}}
+
+
+
+
+---
+
+Folder: objects\obj_wall_wall
+File: Create_0.gml
+Modified: 2026-09-17
+
+depth1 = layer_get_id("Instances")
+depth2 = layer_get_id("dark")
+
+there	= collision_rectangle(x + 16, y - 6, x + 32, y + 10, obj_player, false, true)
+
+---
+
+Folder: objects\obj_wall_wall
+File: Step_0.gml
+Modified: 2026-09-19
+
+if obj_player.isLocal {
+if obj_player.y > y {layer = depth1}
+if obj_player.y <= y {layer = depth2}}
+
+
+
+
+---
+
+Folder: objects\obj_windowL
+File: Create_0.gml
+Modified: 2026-08-16
+
+instance_create_layer(x-15,y+8,"dark",obj_window_reflectionR)
+instance_create_layer(x-15,y+8,"dark",obj_window_rainR)
+audio_play_sound_at(sndef_rain,x,y,0,32,120,1,true,3,0.005)
+
+
+---
+
+Folder: objects\obj_windowR
+File: Create_0.gml
+Modified: 2026-08-11
+
+instance_create_layer(x+4,y,"Instances",obj_window_reflectionR)
+instance_create_layer(x+4,y,"Instances",obj_window_rainR)
+
+
+---
+
+Folder: objects\obj_windowR
+File: Draw_73.gml
+Modified: 2026-08-11
+
+
+
+---
+
+Folder: objects\obj_z
+File: Other_7.gml
+Modified: 2026-08-17
+
+instance_destroy()
+
+---
+
+Folder: objects\randomFurniture
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+
+
+
+
+canpresse = true
+
+---
+
+Folder: objects\randomFurniture
+File: Alarm_1.gml
+Modified: 2026-07-22
+
+image_speed = 0
+
+---
+
+Folder: objects\randomFurniture
+File: Create_0.gml
+Modified: 2026-09-27
+
+
+canpresse = true
+furniture = [drawerF, closetF, closetF]
+cShelf = 0 
+books = [nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,Object25,Object25,Object25,Object30,Object30,Object30,Object35,Object35,Object35,Object40,Object40,Object40,Object45,Object45,Object45,Object50,Object50,Object50,Object26,Object27,Object28,Object29,Object30,Object31,Object32,Object33,Object34,Object35,Object36,Object37,Object38,Object39,Object40,Object41,Object42,Object43,Object44,Object45,Object46,Object47,Object48,Object49,Object50,Object51,Object52,Object53,Object54]
+if irandom(5) == 0
+{
+result = irandom(1)
+sprite_index = furniture[result]
+image_speed = 0
+}
+
+if sprite_index == drawerF
+{ y = y - 10
+	drawerspawn1 = choose(nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin)
+drawerspawn2 = choose(nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin)
+drawerspawn3 = choose(nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin)
+
+canCount = 0
+canRun = false
+if sprite_index == drawerF
+{mask_index = drawercollision
+	canRun = true
+}
+	
+}
+
+if sprite_index == bookshelfF
+{	y = y - 25
+	
+}
+
+if sprite_index  == closetF
+{
+		y = y - 25
+}
+otherObj = instance_place(x - 16, y, randomFurniture)
+if otherObj != noone
+{
+	if otherObj.sprite_index == closetF
+	{
+		instance_destroy()	
+	}
+}
+global.s = false
+
+---
+
+Folder: objects\randomFurniture
+File: Draw_0.gml
+Modified: 2026-07-22
+
+draw_self()
+
+
+
+
+
+
+
+
+if sprite_index == drawerF
+{canRun = true
+	if image_index != 4 - 1
+{if canRun == true
+{if instance_exists(obj_player)
+	{
+		if point_distance(x,y,obj_player.x,obj_player.y) < 25
+		{
+			draw_roundrect_colour(x + 16, y - 16, x, y, #ffdebc, #ffcf9f, false)
+			draw_set_colour(c_black)
+		 draw_set_font(gameFont)
+		 draw_text(x + 4, y - 15, "E")
+		}
+	}
+}
+}
+}
+
+
+
+
+
+---
+
+Folder: objects\randomFurniture
+File: KeyPress_69.gml
+Modified: 2026-09-03
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if sprite_index == drawerF
+{if instance_exists(obj_player)
+    {if point_distance(x, y, obj_player.x, obj_player.y) < 25
+        {if canpresse == true
+            {if canCount >= 3
+                {canpresse = false
+                    alarm[0] = 5
+                    exit}
+				canpresse = false
+                if image_index < 3
+                {image_index = image_index + 1}
+                canCount = canCount + 1
+				if image_index == 1
+                {instance_create_layer(x + 4, y + 5, "Drawer", drawerspawn1)}
+                else if image_index == 2
+                {instance_create_layer(x + 4, y + 2, "Drawer", drawerspawn2)}
+                else if image_index == 3
+                {instance_create_layer(x + 4, y - 1, "Drawer", drawerspawn3)}
+                alarm[0] = 30}}}}
+if sprite_index == closetF
+{if canpresse == true
+    {canpresse = false
+        if obj_player.x > x && obj_player.x < x + 20
+        {global.lastx = obj_player.x 
+            global.lasty = obj_player.y
+            
+            global.bid = id
+            global.isHiding = true
+            global.canMove = false
+            instance_create_layer(x, y, "dark", draw_hide)
+            sprite_index = closetFanim
+            image_speed = 1
+            alarm[1] = 25  
+            alarm[0] = 200}}}
+
+
+---
+
+Folder: objects\randomFurniture
+File: Step_0.gml
+Modified: 2026-07-22
+
+
+
+
+if sprite_index == bookshelfF
+	{if cShelf <= 8
+	{cShelf = cShelf + 1 choosebooks = irandom(58)
+		instance_create_layer(x + 3 + irandom(8),y + 10,"Books",books[choosebooks])
+		instance_create_layer(x + 3 + irandom(8),y + 15,"Books",books[choosebooks])
+		instance_create_layer(x + 3 + irandom(8),y + 20,"Books",books[choosebooks])
+		instance_create_layer(x + 3 + irandom(8),y + 25,"Books",books[choosebooks])}}
+
+if global.s == true {global.s = false instance_create_layer(global.lastx,global.lasty,"Player",obj_player)
+	if variable_global_exists("bid") && instance_exists(global.bid)
+	{global.bid.sprite_index = closetF}}
+
+
+---
+
+Folder: objects\randomFurnituresideL
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+
+
+
+
+canpresse = true
+
+---
+
+Folder: objects\randomFurnituresideL
+File: Create_0.gml
+Modified: 2026-08-16
+
+canpresse = true
+furniture = [drawerS, drawerS, drawerS]
+if irandom(0) == 0
+{
+result = irandom(2)
+sprite_index = furniture[result]
+image_speed = 0
+}
+
+if sprite_index == drawerS
+{
+	drawerspawn1 = choose(nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin)
+drawerspawn2 = choose(nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin)
+drawerspawn3 = choose(nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin)
+
+canCount = 0
+canRun = false
+if sprite_index == drawerS
+{mask_index = drawercollision
+	canRun = true
+}
+	
+}
+
+---
+
+Folder: objects\randomFurnituresideL
+File: Draw_0.gml
+Modified: 2026-07-22
+
+draw_self()
+
+
+
+
+
+
+
+
+
+if sprite_index == drawerS
+{canRun = true
+	if image_index != 4 - 1
+{if canRun == true
+{if instance_exists(obj_player)
+	{
+		if (point_distance(x,y,obj_player.x,obj_player.y) < 25)
+		if obj_player.y > y
+		{{
+			draw_roundrect_colour(x + 13, y - 16, x - 3, y, #ffdebc, #ffcf9f, false)
+			draw_set_colour(c_black)
+		 draw_set_font(gameFont)
+		 draw_text(x + 1, y - 15, "E")
+		}
+		}
+	}
+}
+}
+}
+
+
+
+---
+
+Folder: objects\randomFurnituresideL
+File: KeyPress_69.gml
+Modified: 2026-07-22
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if sprite_index == drawerS
+{if instance_exists(obj_player)
+{if point_distance(x,y,obj_player.x,obj_player.y) < 25
+	{if canpresse == true
+{if image_index != 4 - 1
+{
+	image_index = image_index + 1	
+}
+if canCount <= 3
+		if image_index == 1
+		{
+			instance_create_layer(x + 8,y + 2,"Drawer",drawerspawn1)
+			canpresse = false
+			canCount = canCount + 1
+			alarm[0] = 30
+		}
+		if image_index == 2
+		{
+				instance_create_layer(x + 8,y - 1,"Drawer",drawerspawn2)
+				canpresse = false
+				canCount = canCount + 1
+			alarm[0] = 30
+		}
+		if image_index == 3
+		{
+			instance_create_layer(x + 8,y - 8,"Drawer",drawerspawn3)
+			canpresse = false
+			canCount = canCount + 1
+		}
+	}
+	
+}
+}
+}
+
+
+---
+
+Folder: objects\randomFurnituresideR
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+
+
+
+
+canpresse = true
+
+---
+
+Folder: objects\randomFurnituresideR
+File: Create_0.gml
+Modified: 2026-08-16
+
+canpresse = true
+furniture = [drawerSR, drawerSR, drawerSR]
+if irandom(0) == 0
+{
+result = irandom(2)
+sprite_index = furniture[result]
+image_speed = 0
+}
+
+if sprite_index == drawerSR
+{
+	drawerspawn1 = choose(nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin)
+drawerspawn2 = choose(nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin)
+drawerspawn3 = choose(nothing,nothing,nothing,nothing,nothing,nothing,nothing,nothing,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fivecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin,fiftecoin)
+
+canCount = 0
+canRun = false
+if sprite_index == drawerSR
+{mask_index = drawercollision
+	canRun = true
+}
+	
+}
+
+---
+
+Folder: objects\randomFurnituresideR
+File: Draw_0.gml
+Modified: 2026-07-22
+
+draw_self()
+
+
+
+
+
+
+
+
+
+if sprite_index == drawerSR
+{canRun = true
+	if image_index != 4 - 1
+{if canRun == true
+{if instance_exists(obj_player)
+	{
+		if (point_distance(x,y,obj_player.x,obj_player.y) < 25)
+		if obj_player.y > y
+			{{
+			draw_roundrect_colour(x + 19, y - 16, x + 3, y, #ffdebc, #ffcf9f, false)
+			draw_set_colour(c_black)
+		 draw_set_font(gameFont)
+		 draw_text(x + 7, y - 15, "E")
+		}
+			}
+	}
+}
+}
+}
+
+
+
+---
+
+Folder: objects\randomFurnituresideR
+File: KeyPress_69.gml
+Modified: 2026-07-22
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if sprite_index == drawerSR
+{if instance_exists(obj_player)
+{if point_distance(x,y,obj_player.x,obj_player.y) < 25
+	{if canpresse == true
+{if image_index != 4 - 1
+{
+	image_index = image_index + 1	
+}
+if canCount <= 3
+		if image_index == 1
+		{
+			instance_create_layer(x,y + 2,"Drawer",drawerspawn1)
+			canpresse = false
+			canCount = canCount + 1
+			alarm[0] = 30
+		}
+		if image_index == 2
+		{
+				instance_create_layer(x,y - 3,"Drawer",drawerspawn2)
+				canpresse = false
+				canCount = canCount + 1
+			alarm[0] = 30
+		}
+		if image_index == 3
+		{
+			instance_create_layer(x,y - 8,"Drawer",drawerspawn3)
+			canpresse = false
+			canCount = canCount + 1
+		}
+	}
+	
+}
+}
+}
+
+
+---
+
+Folder: objects\randomLightD
+File: Create_0.gml
+Modified: 2026-09-06
+
+var chooselight = [obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D,obj_wall_light_D_weak,obj_wall_light_D_weak,obj_wall_light_D_weak,obj_wall_light_D_weak,obj_wall_light_D_weak,obj_wall_light_D_off,obj_wall_light_D_off,obj_wall_light_D_off,obj_wall_light_D_off]
+array_shuffle_ext(chooselight)
+var select = chooselight[0]
+var newlight = instance_create_layer(x,y,"dark",select)
+
+---
+
+Folder: objects\randomLightL
+File: Create_0.gml
+Modified: 2026-09-06
+
+var chooselight = [obj_wall_light_R,obj_wall_light_R,obj_wall_light_R,obj_wall_light_R,obj_wall_light_R,obj_wall_light_R,obj_wall_light_R,obj_wall_light_R,obj_wall_light_R_weak,obj_wall_light_R_weak,obj_wall_light_R_weak,obj_wall_light_R_weak,obj_wall_light_R_weak,obj_wall_light_R_off,obj_wall_light_R_off,obj_wall_light_R_off,obj_wall_light_R_off]
+array_shuffle_ext(chooselight)
+var select = chooselight[0]
+var newlight = instance_create_layer(x,y,"dark",select)
+
+---
+
+Folder: objects\randomLightR
+File: Create_0.gml
+Modified: 2026-09-06
+
+var chooselight = [obj_wall_light_L,obj_wall_light_L,obj_wall_light_L,obj_wall_light_L,obj_wall_light_L,obj_wall_light_L,obj_wall_light_L,obj_wall_light_L,obj_wall_light_L_weak,obj_wall_light_L_weak,obj_wall_light_L_weak,obj_wall_light_L_weak,obj_wall_light_L_weak,obj_wall_light_L_off,obj_wall_light_L_off,obj_wall_light_L_off,obj_wall_light_L_off]
+array_shuffle_ext(chooselight)
+var select = chooselight[0]
+var newlight = instance_create_layer(x,y,"dark",select)
+
+---
+
+Folder: objects\roomcontroller
+File: CleanUp_0.gml
+Modified: 2026-07-22
+
+with roomspot {instance_destroy()}
+
+---
+
+Folder: objects\roomcontroller
+File: Create_0.gml
+Modified: 2026-10-13
+
+amount = instance_number(roomspot)
+if amount > 0 {
+    randomindex = irandom(amount - 1)
+    truexit = instance_find(roomspot,randomindex) 
+    angle = round(truexit.image_angle) % 360
+    if (angle < 0) angle += 360
+
+    if angle == 270 {
+        instance_create_layer(truexit.x - 16,truexit.y,"Instances",sidexitL)
+    }
+    if angle == 90 {
+        instance_create_layer(truexit.x,truexit.y,"Instances",sidexitR)
+    }
+    if angle == 0 {
+        instance_create_layer(truexit.x,truexit.y,"Instances",doorexit)
+    }
+}
+
+
+---
+
+Folder: objects\rushDsound
+File: Create_0.gml
+Modified: 2026-08-22
+
+audio_play_sound(snd_rushtext,5,0)
+
+---
+
+Folder: objects\rushO
+File: Alarm_0.gml
+Modified: 2026-07-22
+
+if roomi >= 0 && roomi < array_length(paths) {
+path_start(paths[roomi],4,path_action_stop,true)}
+
+---
+
+Folder: objects\rushO
+File: Collision_doorexit.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\rushO
+File: Collision_doorexitb.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\rushO
+File: Collision_doorexitr.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\rushO
+File: Collision_doorexity.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\rushO
+File: Collision_sidexitL.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\rushO
+File: Collision_sidexitR.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\rushO
+File: Create_0.gml
+Modified: 2026-07-25
+
+x = doorstart.x
+y = doorstart.y + 100
+alarm[0] = 200
+canDie = false
+paths = [path1,path2,path3,path4]
+
+roomname = room_get_name(room)
+num = real(string_digits(roomname))
+roomi =	num - 1
+
+
+
+---
+
+Folder: objects\rushO
+File: Other_8.gml
+Modified: 2026-07-22
+
+rushexit = path_add()
+	if instance_exists(doorexit) {path_add_point(rushexit,rushO.x,rushO.y,100) path_add_point(rushexit,doorexit.x,doorexit.y,100) path_start(rushexit,4,path_action_stop,true)}
+	if instance_exists(doorexitb) {path_add_point(rushexit,rushO.x,rushO.y,100) path_add_point(rushexit,doorexitb.x,doorexitb.y,100) path_start(rushexit,4,path_action_stop,true)}
+	if instance_exists(doorexitr) {path_add_point(rushexit,rushO.x,rushO.y,100) path_add_point(rushexit,doorexitr.x,doorexitr.y,100) path_start(rushexit,4,path_action_stop,true)}
+	if instance_exists(doorexity) {path_add_point(rushexit,rushO.x,rushO.y,100) path_add_point(rushexit,doorexity.x,doorexity.y,100) path_start(rushexit,4,path_action_stop,true)}
+	if instance_exists(sidexitL) {path_add_point(rushexit,rushO.x,rushO.y,100) path_add_point(rushexit,sidexitL.x + 10,sidexitL.y,100) path_start(rushexit,4,path_action_stop,true)}
+	if instance_exists(sidexitR) {path_add_point(rushexit,rushO.x,rushO.y,100) path_add_point(rushexit,sidexitR.x,sidexitR.y,100) path_start(rushexit,4,path_action_stop,true)}
+
+
+
+
+---
+
+Folder: objects\rushO
+File: Step_0.gml
+Modified: 2026-07-22
+
+
+if global.rushSpawn == true
+{if y > doorexit.y + 20 or doorexitb.y + 400 or doorexity.y + 400 or doorexitr.y + 400
+{
+		global.rushSpawn = false
+		instance_destroy()
+}}
+
+if instance_exists(obj_player)
+{
+	if point_distance(x,y,obj_player.x,obj_player.y) < 100
+	{
+		if canDie == false
+		{
+				vis = collision_line(x,y,obj_player.x,obj_player.y,layer_tilemap_get_id("col"),false,true)
+				if vis == noone
+				{
+					canDie = true	
+				}
+	
+		}
+	}
+}
+
+if canDie == true
+{	canDie = false
+	global.hp = global.hp - 125
+	if global.hp <= 0
+	{
+			global.canMove = false
+			global.canInteract = false
+			global.rushKill = 1
+	}
+}
+
+
+
+
+---
+
+Folder: objects\sideroom
+File: Collision_doorexit.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\sideroom
+File: Create_0.gml
+Modified: 2026-07-22
+
+//if irandom(1) == 1 {exit}
+//else
+instance_destroy()
+
+
+---
+
+Folder: objects\sideroomL
+File: Collision_sidexitR.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\sideroomL
+File: Create_0.gml
+Modified: 2026-07-22
+
+if irandom(1) == 1 {exit}
+else {instance_destroy()}
+
+
+---
+
+Folder: objects\sideroomR
+File: Collision_sidexitL.gml
+Modified: 2026-07-22
+
+instance_destroy()
+
+---
+
+Folder: objects\sideroomR
+File: Create_0.gml
+Modified: 2026-07-22
+
+if irandom(1) == 1 {exit}
+else {instance_destroy()}
+
+
+---
+
+Folder: objects\sidexitL
+File: Create_0.gml
+Modified: 2026-07-22
+
+instance_create_layer(x,y - 6,"Instances",obj_wmatR)
+
+---
+
+Folder: objects\sidexitR
+File: Create_0.gml
+Modified: 2026-07-22
+
+instance_create_layer(x,y - 10,"Instances",obj_wmatL)
+
+---
+
+Folder: objects\storage
+File: Create_0.gml
+Modified: 2026-10-13
+
+move_and_collide(hor * move_speed, ver * move_speed, collidewith, undefined, undefined, undefined, move_speed, move_speed);
+if _local {
+if (hor != 0 or ver != 0)
+{
+	if (ver > 0) sprite_index = spr_charanoobD
+	else if (ver < 0) sprite_index = spr_charanoobU
+	else if (hor > 0) sprite_index = spr_charanoobR
+	else if (hor < 0) sprite_index = spr_charanoobL
+	if walk_timer < 23 {
+    walk_timer = walk_timer + 1
+}
+else {
+	if sa == false
+		{walk_timer=0
+		 audio_play_sound(walk1,20,0)
+		 sa = true}
+		 
+	if sa == true
+	{
+		walk_timer = 0
+		audio_play_sound(walk2,20,0)
+		sa = false
+	}
+    }
+}}
+
+else
+{
+	if (sprite_index == spr_charanoobR) sprite_index = spr_charanoob_standR
+	else if (sprite_index == spr_charanoobL) sprite_index = spr_charanoob_standL
+	else if (sprite_index == spr_charanoobU) sprite_index = spr_charanoob_standU
+	else if (sprite_index == spr_charanoobD) sprite_index = spr_charanoob_standD}
+	function init_controls() {hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
+ver = keyboard_check(ord("S")) - keyboard_check(ord("W"))}
+
+---
+
+Folder: scripts\Input
+File: Input.gml
+Modified: 2026-10-13
+
+function get_controls(_is_host, _is_local)
+{
+	if (_is_host && _is_local) {
+
+	hor = keyboard_check(ord("D")) - keyboard_check(ord("A"))
+	ver = keyboard_check(ord("S")) - keyboard_check(ord("W"))
+	xInput = hor
+	yInput = ver
+	interactKey = keyboard_check(ord("E"))
+	var _input = {steamID: lobbyHost, xInput:xInput, yInput:yInput, interactKey:interactKey}
+	send_player_input_to_clients(_input)
+	}
+	
+	if (!_is_host && _is_local) {
+	
+	var _rightKey = keyboard_check(vk_right) ||keyboard_check(ord("D")) || gamepad_button_check( 0, gp_padr );
+	var _leftKey  = keyboard_check(vk_left) || keyboard_check(ord("A")) || gamepad_button_check( 0, gp_padl );
+	var _downKey  = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check( 0, gp_padd );
+	var _upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_button_check( 0, gp_padu );
+	var _interactKey = keyboard_check(ord("E"))
+	
+	xInput = _rightKey - _leftKey
+	yInput = _downKey - _upKey
+	interactKey = _interactKey
+	
+
+	
+	var _input = {rightKey:_rightKey, leftKey:_leftKey, downKey:_downKey, upKey:_upKey, interactKey:_interactKey}
+	send_player_input(_input,lobbyHost);
+	}
+
+}	
+
+function init_controls(){
+	
+	rightKey	= 0
+	leftKey		= 0
+	downKey		= 0
+	upKey		= 0
+	
+	xInput = 0
+	yInput = 0
+	interactKey = 0
+
+		
+}
+
+---
+
+Folder: scripts\lobbyManagement_Client
+File: lobbyManagement_Client.gml
+Modified: 2026-09-24
+
+/// @self obj_client
+function sync_players(_new_list) {
+	var _steamIDs = []
+	for (var _i = 0; _i < array_length(playerList); _i++){
+		array_push(_steamIDs, playerList[_i].steamID)
+	}
+	for (var _i = 0; _i < array_length(_new_list); _i++){
+		var _newSteamID	= _new_list[_i].steamID
+		if !array_contains(_steamIDs, _newSteamID){
+			var _inst = client_player_spawn_at_pos(_new_list[_i])
+			_new_list[_i].character = _inst
+			array_push(playerList, _new_list[_i])
+		} else {
+			for (var _k = 0; _k < array_length(playerList); _k++) {
+				if playerList[_k].steamID == _newSteamID {
+					playerList[_k].startPos = _new_list[_i].startPos
+					playerList[_k].lobbyMemberID = _new_list[_i].lobbyMemberID
+					playerList[_k].steamName = net_peer_name(playerList[_k].steamID)
+					if  playerList[_k].character == undefined && playerList[_k].steamID != _newSteamID{
+						var _inst = client_player_spawn_at_pos(playerList[_k])
+						playerList[_k].character = _inst
+					}
+				}
+			}
+		}
+	}
+}
+
+///@self obj_client
+function client_player_spawn_at_pos(_player_info) {
+	show_debug_message("client_player_spawn_at_pos called for steamID " + string(_player_info.steamID))
+	var _layer	= layer_get_id("Player")
+	var _name	= global.player_name
+	var _steamID= _player_info.steamID
+	var _num	= _player_info.lobbyMemberID
+	var _loc	= _player_info.startPos
+	var _inst	= instance_create_layer(_loc.x, _loc.y, _layer, obj_player, {
+		steamName	 :	_name,
+		steamID		 :	_steamID,
+		lobbyMemberID:	_num
+	})
+	return _inst
+}
+	
+	
+
+---
+
+Folder: scripts\lobbyManagement_Server
+File: lobbyManagement_Server.gml
+Modified: 2026-10-12
+
+	///@self obj_server
+function send_player_sync(_steam_id){
+	var _b = buffer_create(1, buffer_grow, 1)
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.SYNC_PLAYERS)
+	buffer_write(_b, buffer_string, shrink_player_list())
+	net_packet_send(_steam_id, _b)
+	buffer_delete(_b)
+}
+
+///@self obj_server
+function send_player_spawn(_steam_id, _slot) {
+	var _pos = grab_spawn_point(_slot)
+	var _b = buffer_create(11, buffer_fixed, 1)
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.SPAWN_SELF)
+	buffer_write(_b, buffer_u16, _pos.x)
+	buffer_write(_b, buffer_u16, _pos.y)
+	buffer_write(_b, buffer_u16, _slot)
+	buffer_write(_b, buffer_u32, global.room_seed)
+	net_packet_send(_steam_id, _b)
+	buffer_delete(_b);
+	server_player_spawn_at_pos(_steam_id, _pos)
+	send_other_player_spawn(_steam_id, _pos);
+}
+	
+	
+	///@self obj_server
+function send_other_player_spawn(_steam_id, _pos) {
+	var _b = buffer_create(13, buffer_fixed, 1)
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.SPAWN_OTHER)
+	buffer_write(_b, buffer_u16, _pos.x)
+	buffer_write(_b, buffer_u16, _pos.y)
+	buffer_write(_b, buffer_u64, _steam_id)
+	for (var _i = 1; _i < array_length(playerList); _i++){
+		if (playerList[_i].steamID != _steam_id) {
+			net_packet_send(playerList[_i].steamID, _b)
+		}
+	}
+	buffer_delete(_b);
+}
+/// @self obj_server
+function shrink_player_list(){
+	//_shrunkList = playerList
+	//for (var _i = 0; _i < array_length(_shrunkList); _i++) {
+	//	_shrunkList[_i].character = undefined
+	//}
+	return json_stringify(playerList)
+}
+
+function server_player_spawn_at_pos(_steam_id, _pos) {
+	var _layer = layer_get_id("Player");
+	for (var _i = 0; _i < array_length(playerList); _i++){
+		if playerList[_i].steamID == _steam_id {
+			var _inst = instance_create_layer(_pos.x, _pos.y,_layer,obj_player, {
+								steamName	: playerList[_i].steamName,
+								steamID: _steam_id,
+								lobbyMemberID: _i
+						})
+			playerList[_i].character = _inst
+		}
+	}
+}
+
+function send_player_input_to_clients(_player_input){
+	if _player_input == undefined then return
+	var _b = buffer_create(13, buffer_fixed, 1)
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.SERVER_PLAYER_INPUT)
+	buffer_write(_b, buffer_u64, _player_input.steamID)
+	buffer_write(_b, buffer_s8, _player_input.xInput)
+	buffer_write(_b, buffer_s8, _player_input.yInput)
+	buffer_write(_b, buffer_u8, _player_input.interactKey)
+	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++){
+		if (obj_Server.playerList[_i].steamID != obj_Server.steamID) {
+			net_packet_send(obj_Server.playerList[_i].steamID, _b)
+		}
+	}
+	buffer_delete(_b)
+}
+
+///@self obj_server
+function door_transition(_direction) {
+	global.doorcount += _direction
+	global.doorcountdiscord += _direction
+	if global.doorcount == 13 {
+		global.doorcount += _direction
+		global.doorcountdiscord += _direction}
+	
+		var _new_index = global.doorcount
+	
+	var _b = buffer_create(3, buffer_fixed, 1)
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.ROOM_CHANGE)
+	buffer_write(_b, buffer_u16, _new_index)
+	for (var _i = 0; _i < array_length(playerList); _i++) {
+		if playerList[_i].steamID != steamID {net_packet_send(playerList[_i].steamID, _b)}}
+		buffer_delete(_b)
+		enter_new_room(_new_index, _direction > 0)}
+		
+
+
+---
+
+Folder: scripts\net
+File: net.gml
+Modified: 2026-10-13
+
+function net_init() {
+    if (variable_global_exists("net")) net_shutdown()
+    global.net_regions = [
+        { tag: "LOCAL", ip: "127.0.0.1" },
+        // {tag: "US", ip: "US.SERVER.IP"},
+        // {tag: "AU", ip: "SYDNEY.SERVER.IP"},
+    ]
+    global.net_region = global.net_regions[0].tag
+
+    global.player_name = "Player" + string(irandom_range(100, 999))
+
+    global.net = {
+        socket: -1,
+        connecting: false,
+        connected: false,
+        tag: "",
+        pending: undefined,     
+        my_id: -1,
+        host_id: -1,
+        is_host: false,
+        lobby_code: "",
+        members: [],            
+        inbox: [],              
+        current: undefined,     
+        out: buffer_create(1024, buffer_grow, 1),
+        last_ping: 0,
+        last_rx: 0
+    }
+}
+
+function net_shutdown() {
+    if (!variable_global_exists("net") || is_undefined(global.net)) return
+    var n = global.net
+    net_clear_inbox()
+    if (n.socket >= 0) network_destroy(n.socket)
+    if (buffer_exists(n.out)) buffer_delete(n.out)
+    global.net = undefined
+}
+function net_update() {
+    if (is_undefined(global.net)) return
+    var n = global.net
+    if (!n.connected) return
+
+    if (current_time - n.last_ping > 10000) {
+        n.last_ping = current_time
+        buffer_seek(n.out, buffer_seek_start, 0)
+        buffer_write(n.out, buffer_u8, C2S.PING)
+        network_send_packet(n.socket, n.out, 1)
+    }
+
+    if (current_time - n.last_rx > 30000) {
+        show_debug_message("net: lost the connection to the relay")
+        net_disconnect()
+        net_dispatch({type: "disconnected"})
+    }
+}
+function net_region_ip(tag) {
+    for (var i = 0; i < array_length(global.net_regions); i++) {
+        if (global.net_regions[i].tag == tag) return global.net_regions[i].ip
+    }
+    return ""
+}
+function net_connect(tag, job) {
+    var n = global.net
+    var ip = net_region_ip(tag)
+    if (ip == "") {
+        show_debug_message("net: no server is set up for region " + tag)
+        net_dispatch({ type: "connect_failed"})
+        return
+    }
+
+    if (n.connected && n.tag == tag) {net_run_pending(job); return}
+    if (n.connecting && n.tag == tag) {n.pending = job; return}
+
+    net_disconnect()
+    n.socket = network_create_socket(network_socket_tcp)
+    n.tag = tag
+    n.connecting = true
+    n.pending = job
+    network_connect_async(n.socket, ip, NET_PORT)
+}
+
+function net_disconnect() {
+    var n = global.net
+    if (n.socket >= 0) network_destroy(n.socket)
+    n.socket = -1
+    n.connecting = false
+    n.connected = false
+    n.pending = undefined
+    n.tag = ""
+    net_clear_lobby()
+    net_clear_inbox()
+}
+
+function net_clear_lobby() {
+    var n = global.net
+    n.my_id = -1
+    n.host_id = -1
+    n.is_host = false
+    n.lobby_code = ""
+    n.members = []
+}
+
+function net_clear_inbox() {
+    var n = global.net
+    for (var i = 0; i < array_length(n.inbox); i++) {
+        if (buffer_exists(n.inbox[i].data)) buffer_delete(n.inbox[i].data)
+    }
+    n.inbox = []
+    if (!is_undefined(n.current)) {
+        if (buffer_exists(n.current.data)) buffer_delete(n.current.data)
+        n.current = undefined
+    }
+}
+function net_run_pending(job) {
+    var n = global.net
+    buffer_seek(n.out, buffer_seek_start, 0)
+
+    switch (job.kind) {
+        case "create":
+            buffer_write(n.out, buffer_u8, C2S.CREATE_LOBBY)
+            buffer_write(n.out, buffer_string, job.name)
+            buffer_write(n.out, buffer_u8, job.limit)
+            break
+        case "join":
+            buffer_write(n.out, buffer_u8, C2S.JOIN_LOBBY)
+            buffer_write(n.out, buffer_string, job.code)
+            buffer_write(n.out, buffer_string, job.name)
+            break
+        case "list":
+            buffer_write(n.out, buffer_u8, C2S.LIST_LOBBIES)
+            break
+        default:
+            return
+    }
+    network_send_packet(n.socket, n.out, buffer_tell(n.out))
+}
+function net_lobby_create(max_players) {
+    net_connect(global.net_region, { kind: "create", name: global.player_name, limit: max_players })
+}
+
+function net_lobby_list() {
+    net_connect(global.net_region, { kind: "list" })
+}
+function net_lobby_join(code) {
+    code = string_upper(code)
+    var dash = string_pos("-", code)
+    var tag = (dash > 1) ? string_copy(code, 1, dash - 1) : global.net_region
+    net_connect(tag, { kind: "join", code: code, name: global.player_name })
+}
+
+function net_lobby_leave() {
+    var n = global.net
+    if (n.connected && n.lobby_code != "") {
+        buffer_seek(n.out, buffer_seek_start, 0)
+        buffer_write(n.out, buffer_u8, C2S.LEAVE_LOBBY)
+        network_send_packet(n.socket, n.out, 1)
+    }
+    net_clear_lobby()
+    net_clear_inbox()
+}
+
+function net_my_id()      {return global.net.my_id}
+function net_host_id()    {return global.net.host_id}
+function net_is_host()    {return global.net.is_host}
+function net_lobby_code() {return global.net.lobby_code}
+
+function net_peer_name(pid) {
+    var m = global.net.members
+    for (var i = 0; i < array_length(m); i++) {
+        if (m[i].pid == pid) return m[i].name
+    }
+    return "Player"
+}
+function net_packet_send(to_id, buff, size = undefined) {
+    var n = global.net
+    if (!n.connected || n.lobby_code == "") return false
+    if (is_undefined(size)) size = buffer_tell(buff)
+    if (size <= 0 || size > NET_MAX_PAYLOAD) return false
+
+    var out = n.out
+    if (buffer_get_size(out) < size + 3) buffer_resize(out, size + 3)
+    buffer_seek(out, buffer_seek_start, 0)
+    buffer_write(out, buffer_u8, C2S.RELAY)
+    buffer_write(out, buffer_u16, to_id)
+    buffer_copy(buff, 0, size, out, 3)
+    network_send_packet(n.socket, out, size + 3)
+    return true
+}
+	function net_packet_receive() {
+    var n = global.net
+    if (!is_undefined(n.current)) {
+        if (buffer_exists(n.current.data)) buffer_delete(n.current.data)
+        n.current = undefined
+    }
+    if (array_length(n.inbox) == 0) return false
+    n.current = n.inbox[0]
+    array_delete(n.inbox, 0, 1)
+    return true
+}
+
+function net_packet_get_sender_id() {
+    var c = global.net.current
+    return is_undefined(c) ? -1 : c.from
+}
+function net_packet_get_data(dest) {
+    var c = global.net.current
+    if (is_undefined(c)) return false
+    if (buffer_get_size(dest) < c.size) buffer_resize(dest, c.size)
+    buffer_fill(dest, 0, buffer_u8, 0, buffer_get_size(dest))
+    buffer_copy(c.data, 0, c.size, dest, 0)
+    buffer_seek(dest, buffer_seek_start, 0)
+    return true
+}
+function net_handle_async() {
+    if (is_undefined(global.net)) return
+    var n = global.net
+    if (n.socket < 0) return
+
+    var type = async_load[? "type"]
+
+    switch (type) {
+        case network_type_non_blocking_connect:
+            n.connecting = false
+            if (async_load[? "succeeded"]) {
+                n.connected = true
+                n.last_rx = current_time
+                n.last_ping = current_time
+                if (!is_undefined(n.pending)) {
+                    var job = n.pending
+                    n.pending = undefined
+                    net_run_pending(job)
+                }
+            } else {
+                show_debug_message("net: could not reach the relay for region " + n.tag)
+                net_disconnect()
+                net_dispatch({ type: "connect_failed" })
+            }
+            break
+        case network_type_disconnect:
+            var gone_sock = async_load[? "socket"]
+            if (!is_undefined(gone_sock) && gone_sock != n.socket) break
+            show_debug_message("net: the relay closed the connection")
+            net_disconnect()
+            net_dispatch({ type: "disconnected" })
+            break
+
+        case network_type_data:
+            n.last_rx = current_time
+            net_handle_message(async_load[? "buffer"], async_load[? "size"])
+            break
+    }
+}
+
+function net_handle_message(buff, size) {
+    var n = global.net
+    buffer_seek(buff, buffer_seek_start, 0)
+    var msg = buffer_read(buff, buffer_u8)
+
+    switch (msg) {
+        case S2C.LOBBY_JOINED:
+            n.lobby_code = buffer_read(buff, buffer_string)
+            n.my_id = buffer_read(buff, buffer_u16)
+            n.host_id = buffer_read(buff, buffer_u16)
+            n.is_host = (n.my_id == n.host_id)
+            n.members = []
+            var member_count = buffer_read(buff, buffer_u8)
+            repeat (member_count) {
+                var member_id = buffer_read(buff, buffer_u16)
+                var member_name = buffer_read(buff, buffer_string)
+                array_push(n.members, { pid: member_id, name: member_name})
+            }
+            net_clear_inbox()
+            net_dispatch({
+                type: "lobby_joined", code: n.lobby_code, my_id: n.my_id,
+                host_id: n.host_id, is_host: n.is_host, members: n.members
+            })
+            break
+
+        case S2C.JOIN_FAILED:
+            var reason = buffer_read(buff, buffer_u8)
+            net_dispatch({ type: "lobby_join_failed", reason: reason})
+            break
+
+        case S2C.PEER_JOINED:
+            var joined_id = buffer_read(buff, buffer_u16)
+            var joined_name = buffer_read(buff, buffer_string)
+            array_push(n.members, { pid: joined_id, name: joined_name})
+            net_dispatch({ type: "peer_joined", pid: joined_id, name: joined_name})
+            break
+
+        case S2C.PEER_LEFT:
+            var left_id = buffer_read(buff, buffer_u16)
+            for (var i = array_length(n.members) - 1; i >= 0; i--) {
+                if (n.members[i].pid == left_id) array_delete(n.members, i, 1)
+            }
+            net_dispatch({ type: "peer_left", pid: left_id})
+            break
+
+        case S2C.LOBBY_CLOSED:
+            net_clear_lobby()
+            net_clear_inbox()
+            net_dispatch({ type: "lobby_closed" })
+            break
+        case S2C.LOBBY_LIST:
+            var found = []
+            var list_count = buffer_read(buff, buffer_u8)
+            repeat (list_count) {
+                var l_code = buffer_read(buff, buffer_string)
+                var l_creator = buffer_read(buff, buffer_string)
+                var l_players = buffer_read(buff, buffer_u8)
+                var l_limit = buffer_read(buff, buffer_u8)
+                array_push(found, {code: l_code, creator: l_creator, players: l_players, limit: l_limit})
+            }
+            net_dispatch({type: "lobby_list", lobbies: found})
+            break
+
+        case S2C.DATA:
+            var from_id = buffer_read(buff, buffer_u16)
+            var payload_size = size - 3
+            if (payload_size > 0) {
+                var pbuf = buffer_create(payload_size, buffer_fixed, 1)
+                buffer_copy(buff, 3, payload_size, pbuf, 0)
+                array_push(n.inbox, { from: from_id, data: pbuf, size: payload_size})
+                if (array_length(n.inbox) > 1000) { 
+                    buffer_delete(n.inbox[0].data)
+                    array_delete(n.inbox, 0, 1)
+                }
+            }
+            break
+
+        case S2C.PONG:
+            break
+    }
+}
+
+
+function net_dispatch(evt) {
+    var e = evt
+    with (all) {
+        if (variable_instance_exists(id, "on_net_event")) {
+            on_net_event(e)
+        }
+    }
+}
+
+
+---
+
+Folder: scripts\Packets
+File: Packets.gml
+Modified: 2026-09-30
+
+enum NETWORK_PACKETS {
+	CLIENT_PLAYER_INPUT = 10,
+	SERVER_PLAYER_INPUT = 11,
+	PLAYER_POSITION = 12,
+	GET_STOOL = 13,
+	MONOGRAM = 14,
+	DOOR_GATHER = 15,
+	ROOM_CHANGE = 16,
+	OUTFIT = 17,
+	SPAWN_OTHER = 97,
+	SPAWN_SELF = 98,
+	SYNC_PLAYERS = 99
+}
+
+---
+
+Folder: scripts\playerManagement
+File: playerManagement.gml
+Modified: 2026-10-05
+
+function grab_spawn_point(_player) {
+	var _spawnPoint  = instance_find(obj_SpawnPoint, _player)
+	if _spawnPoint == noone return {x:0,y:0}
+	return {x:_spawnPoint.x, y:_spawnPoint.y}
+}
+
+
+
+function send_player_input(_input,_lobby_host){
+	var _xInput = (_input.rightKey - _input.leftKey)
+	var _yInput = (_input.downKey - _input.upKey)
+	var _interactKey = _input.interactKey
+	var _b = buffer_create(5, buffer_fixed, 1)
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.CLIENT_PLAYER_INPUT)
+	buffer_write(_b, buffer_s8, _xInput)
+	buffer_write(_b, buffer_s8, _yInput)
+	buffer_write(_b, buffer_u8, _interactKey)
+	net_packet_send(_lobby_host, _b)
+	buffer_delete(_b)
+}
+
+
+function receive_player_input(_b, _steam_id=-1){
+	if _steam_id == -1 then _steam_id = buffer_read(_b, buffer_u64)
+	var _xInput = buffer_read(_b, buffer_s8)
+	var _yInput = buffer_read(_b, buffer_s8)
+	var _interactKey = buffer_read(_b, buffer_u8)
+	var _player = find_player_by_steam_id(_steam_id)
+	if _player == noone return
+	_player.xInput = _xInput
+	_player.yInput = _yInput
+	_player.interactKey = _interactKey
+
+	
+	return {steamID: _steam_id, xInput: _xInput, yInput: _yInput, interactKey: _interactKey}
+}
+
+function find_player_by_steam_id(_steam_id){
+	for (var _i = 0; _i < array_length(playerList); _i++){
+		var _player = playerList[_i].character
+		if _player == undefined continue
+		if !instance_exists(_player) {
+			playerList[_i].character = undefined continue}
+		if _player.steamID == _steam_id return _player
+		
+	}
+	return noone;
+}
+
+function send_player_positions() {
+	for (var _i = 0; _i < array_length(playerList); _i++){	
+		var _player = playerList[_i]
+		if _player.character == undefined then continue
+		if _player.steamID == undefined then continue
+		var _spritename = sprite_get_name(_player.character.sprite_index)
+		var _b = buffer_create(20, buffer_grow, 1)
+		buffer_write(_b, buffer_u8, NETWORK_PACKETS.PLAYER_POSITION)
+		buffer_write(_b, buffer_u64, _player.steamID)
+		buffer_write(_b, buffer_u16, _player.character.x)
+		buffer_write(_b, buffer_u16, _player.character.y)
+		buffer_write(_b, buffer_string, _spritename)
+		buffer_write(_b, buffer_s16, _player.character.image_index)
+		for (var _k = 0; _k < array_length(playerList); _k++){
+			if (playerList[_k].steamID != obj_Server.steamID) {
+				net_packet_send(playerList[_k].steamID, _b)	
+			}
+		}
+		buffer_delete(_b)
+		
+		
+	}
+}
+
+function update_player_position(_b) {
+	var _steam_id = buffer_read(_b, buffer_u64)
+	var _x = buffer_read(_b, buffer_u16)
+	var _y = buffer_read(_b, buffer_u16)
+	var _spritename = buffer_read(_b, buffer_string)
+	var _image_index = buffer_read(_b, buffer_s16)
+	var _realName = asset_get_index(_spritename)
+	
+
+	
+	for (var _i = 0; _i < array_length(playerList); _i++){
+		if (_steam_id == playerList[_i].steamID) {
+			if playerList[_i].character = undefined then continue
+			playerList[_i].character.tx = _x	
+			playerList[_i].character.ty = _y
+			pos_buffer_push(playerList[_i].character,_x,_y)
+			if (_steam_id != steamID) {
+			if (_realName != -1) {
+				playerList[_i].character.sprite_index = _realName}
+			playerList[_i].character.image_index = _image_index
+		}
+	}}}
+
+---
+
+Folder: scripts\playerMovement
+File: playerMovement.gml
+Modified: 2026-08-13
+
+function paddle_movement(){
+	
+
+
+
+	if (place_meeting(x + xInput, y, collidewith)) 
+{
+
+    while (!place_meeting(x + sign(xInput), y, collidewith)) 
+    {
+        x += sign(xInput)
+    }
+    xInput = 0
+}
+x += xInput
+
+
+if (place_meeting(x, y + yInput, collidewith)) 
+{
+  
+    while (!place_meeting(x, y + sign(yInput), collidewith)) 
+    {
+        y += sign(yInput)
+    }
+    yInput = 0
+}
+y += yInput
+}
+
+
+---
+
+Folder: scripts\scr_charamake
+File: scr_charamake.gml
+Modified: 2026-10-22
+
+function part_sprite(_part,_variant,_dire){
+var _text = "spr_part_" + _part + "_" + string(_variant) + "_" + _dire
+var _sprite = asset_get_index(_text)
+return _sprite
+}
+
+function give_tint(_slot) {
+	switch _slot {
+		case "legL": return "skin" break
+		case "legR": return "skin" break
+		case "hip_acc": return "cloth" break
+		case "chest": return "skin" break
+		case "armL": return "skin" break
+		case "armR": return "skin" break
+		case "mouth": return "skin" break
+		case "face_acc": return "cloth" break
+		case "head_acc": return "cloth" break}}
+function skincol_give(_index) {
+	return global.skin_pal[_index]}
+function clothcol_give(_index) {
+	return global.cloth_pal[_index]}
+function outcol_give(_index) {
+	return global.out_pal[_index]}
+function isaac(_limb) {
+    switch _limb {
+        case "hip_acc":
+        return true break
+        case "face_acc":
+        return true break
+        case "head_acc":
+        return true break
+		case "eyesL":
+		return true break
+		case "eyesR":
+		return true break
+		case "mouth":
+		return true break
+        default: return false}}
+function drawspriteplayer(_outfit,_facing,_x,_y,_frame,_walking = false) {
+	var _order = global.partorder[$ _facing]
+var getPosOut = outcol_give(_outfit.outline)
+shader_set(sh_playercolours)
+shader_set_uniform_f(global.charaline,colour_get_red(getPosOut) / 255,colour_get_green(getPosOut) / 255,colour_get_blue(getPosOut) / 255)
+for (var _i = 0; _i < array_length(_order); _i++) {
+	var _sprite = part_sprite(_order[_i],_outfit[$ _order[_i]],_facing)
+	if _sprite != -1 {
+	var getNameS = array_get_index(global.limbnames, _order[_i])
+	var getPosSkin = _outfit.skin[getNameS]
+	var getPosCloth = _outfit.cloth[getNameS]
+	var giveSkin = skincol_give(getPosSkin)
+	var giveCloth = clothcol_give(getPosCloth)
+	shader_set_uniform_f(global.charaskin,colour_get_red(giveSkin) / 255,colour_get_green(giveSkin) / 255,colour_get_blue(giveSkin) / 255)
+	shader_set_uniform_f(global.characloth,colour_get_red(giveCloth) / 255,colour_get_green(giveCloth) / 255,colour_get_blue(giveCloth) / 255)
+	var _f = _frame
+	if _order[_i] == "head_acc" && !_walking {_f = floor(current_time * 0.006) mod sprite_get_number(_sprite)}
+	draw_sprite(_sprite,_f,_x,_y)}}
+shader_reset()}
+function drawspriteplayerbig(_outfit,_facing,_x,_y,_frame,_walking = true) {
+	var _order = global.partorder[$ _facing]
+var getPosOut = outcol_give(_outfit.outline)
+shader_set(sh_playercolours)
+shader_set_uniform_f(global.charaline,colour_get_red(getPosOut) / 255,colour_get_green(getPosOut) / 255,colour_get_blue(getPosOut) / 255)
+for (var _i = 0; _i < array_length(_order); _i++) {
+	var _sprite = part_sprite(_order[_i],_outfit[$ _order[_i]],_facing)	
+	if _sprite != -1 {
+	var getNameS = array_get_index(global.limbnames, _order[_i])
+	var getPosSkin = _outfit.skin[getNameS]
+	var getPosCloth = _outfit.cloth[getNameS]
+	var giveSkin = skincol_give(getPosSkin)
+	var giveCloth = clothcol_give(getPosCloth)
+	shader_set_uniform_f(global.charaskin,colour_get_red(giveSkin) / 255,colour_get_green(giveSkin) / 255,colour_get_blue(giveSkin) / 255)
+	shader_set_uniform_f(global.characloth,colour_get_red(giveCloth) / 255,colour_get_green(giveCloth) / 255,colour_get_blue(giveCloth) / 255)
+	var _f = _frame
+	if _order[_i] == "head_acc" && !_walking {_f = floor(current_time * 0.006) mod sprite_get_number(_sprite)}
+	draw_sprite_ext(_sprite,_f, _x,_y,9,9,0,c_white,1)}
+shader_reset()}}
+
+---
+
+Folder: scripts\scr_interp
+File: scr_interp.gml
+Modified: 2026-09-25
+
+#macro INTERP_DELAY = 100
+
+function pos_buffer_push(_char, _x, _y) {
+	if (!variable_instance_exists(_char, "pos_buffer")) {_char.pos_buffer = []}
+	array_push(_char.pos_buffer, {x:_x, y:_y, t:current_time})
+	if (array_length(_char.pos_buffer) > 8) {array_delete(_char.pos_buffer,0,1)}}
+	
+	
+function pos_buffer_sample(_buf, _render_time) {
+	var _n = array_length(_buf)
+	if (_n == 0) return undefined
+	if (_n == 1) return {x:_buf[0].x, y:_buf[0].y}
+	if (_render_time <= _buf[0].t) return {x:_buf[_n-1].x, y:_buf[0].y}
+	if (_render_time >= _buf[_n-1].t) return {x:_buf[_n-1].x, y:_buf[_n-1].y}
+	for (var _i = 0; _i < _n - 1; _i++) {
+		var _a = _buf[_i]
+		var	_b = _buf[_i+1]
+		if (_render_time >= _a.t && _render_time <= _b.t) {
+			var _span = _b.t - _a.t 
+			var _f = (_span <= 0) ? 1 : (_render_time - _a.t) / _span
+			return {x: lerp(_a.x, _b.x, _f), y: lerp(_a.y, _b.y, _f)}}}
+			return {x:_buf[_n-1].x, y:_buf[_n-1].y}}
+
+---
+
+Folder: scripts\scr_lockstep
+File: scr_lockstep.gml
+Modified: 2026-09-27
+
+function get_forward_door(){
+	if (instance_exists(doorexit)) return doorexit
+	if (instance_exists(doorexitb)) return doorexitb
+	if (instance_exists(doorexitr)) return doorexitr
+	if (instance_exists(doorexity)) return doorexity
+	if (instance_exists(doorexit_locked)) return doorexit_locked
+	if (instance_exists(sidexitL)) return sidexitL
+	if (instance_exists(sidexitR)) return sidexitR
+	return noone
+
+}
+
+function enter_new_room(_door_index, _going_forward) {
+	var _marker = _going_forward ? get_forward_door() : (instance_exists(doorstart) ? doorstart : noone)
+	var _mx = (_marker != noone) ? _marker.x : 0
+	var _my = (_marker != noone) ? _marker.y : 0
+	instance_destroy(obj_SpawnPoint)
+	instance_create_layer(_mx,_my,"Instances",obj_SpawnPoint)
+	global.doorcount = _door_index
+	go_to_room(_door_index)}
+	
+function respawn_other_players() {
+	var _owner = instance_exists(obj_Server) ? obj_Server : (instance_exists(obj_Client) ? obj_Client : noone)
+	if _owner == noone return
+	var _layer = layer_get_id("Player")
+	for (var _i = 0; _i < array_length(_owner.playerList); _i++) {
+		var _p = _owner.playerList[_i]
+		if (_p.steamID == _owner.steamID) continue
+		var _pos = grab_spawn_point(0)
+		var _inst = instance_create_layer(_pos.x,_pos.y,_layer, obj_player, {
+			steamName: _p.steamName,
+			steamID : _p.steamID,
+			lobbyMemberID : _p.lobbyMemberID})
+		_owner.playerList[_i].character = _inst}}
+		
+function send_gather_status(_forward, _is_near) {
+	if net_is_host() {
+		host_receive_gather(net_my_id(), _forward, _is_near) return}
+		var _b = buffer_create(3,buffer_fixed,1)
+		buffer_write(_b, buffer_u8, NETWORK_PACKETS.DOOR_GATHER)
+		buffer_write(_b, buffer_u8, _forward)
+		buffer_write(_b, buffer_u8, _is_near)
+		net_packet_send(net_host_id(), _b)
+		buffer_delete(_b)}
+	
+function host_receive_gather(_steam_id, _forward, _near) {
+	if !instance_exists(doorcontroller) return
+	with doorcontroller {
+		var _entry = ds_map_exists(door_gather_state, _steam_id) ? door_gather_state[? _steam_id] : {forward:false, backward:false}
+		if _forward {_entry.forward = _near} else {_entry.backward = _near}
+		door_gather_state[? _steam_id] = _entry}}
+
+function host_update_gather_timer() {
+	if !instance_exists(obj_Server) ||	!instance_exists(doorcontroller) return
+	var _total = array_length(obj_Server.playerList)
+	if _total <= 0 return
+	
+	var _all_forward = true, _any_forward = false
+	var _all_backward = true, _any_backward = false
+	with doorcontroller {
+		for (var _i = 0; _i < _total; _i++) {
+			var _sid = obj_Server.playerList[_i].steamID
+			var _entry = ds_map_exists(door_gather_state, _sid) ? door_gather_state[? _sid] : {forward:false, backward:false}
+			if _entry.forward {_any_forward = true} else {_all_forward = false}
+			if _entry.backward {_any_backward = true} else {_any_backward = false}}
+			if _any_forward || _any_backward {
+				if gather_timer < 0 {gather_timer = GATHER_TIMEOUT}
+				gather_timer -= (1000/room_speed)} else {
+					gather_timer = -1}
+			static _last_sent = -999
+			if (abs(gather_timer - _last_sent) > 100 || (gather_timer < 0) != (_last_sent < 0)) {
+				_last_sent = gather_timer
+				set_gather_timer_display(gather_timer, _any_forward)
+				var _b = buffer_create(1, buffer_grow, 1)
+				buffer_write(_b, buffer_u8, NETWORK_PACKETS.DOOR_GATHER)
+				buffer_write(_b, buffer_u8, 255)
+				buffer_write(_b, buffer_s32, gather_timer)
+				buffer_write(_b, buffer_u8, _any_forward)
+				with (obj_Server) {
+					for (var _i = 0; _i < array_length(playerList); _i++) {
+						if (playerList[_i].steamID != steamID) {net_packet_send(playerList[_i].steamID, _b)}}}
+						buffer_delete(_b)}
+					
+			var _timed_out = (gather_timer >= 0 && gather_timer <= 0)
+			var _go_forward = _all_forward || (_timed_out && _any_forward)
+			var _go_backward = !_go_forward && (_any_backward || (_timed_out && _any_backward))
+			
+			if (_go_forward) {with (obj_Server) {door_transition(1)}}
+			else if (_go_backward) {with obj_Server {door_transition(-1)}}}}
+			
+function set_gather_timer_display(_ms,_forward) {
+	if (_ms < 0) {
+		if (instance_exists(obj_door_timer)) {instance_destroy(obj_door_timer)} return}
+		var _digit = ceil(_ms / 1000)
+		if (_digit < 0) {_digit = 0}
+		if !instance_exists(obj_door_timer) {
+			var _door = _forward ? get_forward_door() : (instance_exists(doorstart) ? doorstart : noone)
+			var _dx = (_door != noone) ? _door.x : 0
+			var _dy = (_door != noone) ? (_door.y - 32) : 0
+			instance_create_layer(_dx, _dy, "HUD", obj_door_timer)}
+			with (obj_door_timer) {image_index = _digit}}
+	
+
+---
+
+Folder: scripts\scr_net_protocol
+File: scr_net_protocol.gml
+Modified: 2026-10-12
+
+enum C2S {
+    CREATE_LOBBY = 1,   
+    JOIN_LOBBY   = 2,   
+    LIST_LOBBIES = 3,   
+    LEAVE_LOBBY  = 4,   
+    RELAY        = 5,  
+    PING         = 6    
+}
+
+
+enum S2C {
+    LOBBY_JOINED = 1,   
+    JOIN_FAILED  = 2,   
+    PEER_JOINED  = 3,  
+    PEER_LEFT    = 4,   
+    LOBBY_CLOSED = 5,   
+    LOBBY_LIST   = 6,   
+    DATA         = 7,   
+    PONG         = 8    
+}
+
+enum JOIN_ERR {
+    NOT_FOUND = 1,
+    FULL = 2
+}
+
+#macro NET_PORT 6510
+#macro NET_BROADCAST 65535
+#macro NET_MAX_PAYLOAD 8192
+
+
+---
+
+Folder: scripts\scr_room_sync
+File: scr_room_sync.gml
+Modified: 2026-09-24
+
+function go_to_room(_door_index){
+	if (!variable_global_exists("room_seed")) {global.room_seed = 0}
+	random_set_seed(global.room_seed + _door_index)
+	room_goto(global.room_list[_door_index])
+
+}
+
+---
+
+Folder: scripts\string_wrap
+File: string_wrap.gml
+Modified: 2026-07-22
+
+function string_wrap(_text,_width){
+var _text_wrapped = ""
+var	_space = -1 
+var	_char_pos = 1
+	while (string_length(_text) >= _char_pos)
+	{
+		if (string_width(string_copy(_text,1,_char_pos)) > _width)
+		{
+			if (_space != -1)
+			{
+				_text_wrapped += string_copy(_text,1,_space) + "\n"
+				_text = string_copy(_text,_space + 1,string_length(_text) - (_space))
+				_char_pos = 1
+				_space = -1
+			}
+			
+		}
+		if (string_char_at(_text,_char_pos) == " ")
+		{
+			_space = _char_pos
+		}
+		_char_pos += 1
+	}
+	if (string_length(_text) > 0)
+	{
+		_text_wrapped += _text	
+	}
+	return _text_wrapped
+
+}
+
+---
+

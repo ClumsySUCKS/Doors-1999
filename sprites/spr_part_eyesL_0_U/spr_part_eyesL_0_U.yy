@@ -29,7 +29,7 @@
   "origin":0,
   "parent":{
     "name":"back",
-    "path":"folders/Sprites/players/No/back.yy",
+    "path":"folders/_Sprites/players/No/back.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

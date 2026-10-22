@@ -14,6 +14,7 @@
     {"name":"inst_73BE14D9","path":"rooms/rm_characreator/rm_characreator.yy",},
     {"name":"inst_7222444E","path":"rooms/rm_characreator/rm_characreator.yy",},
     {"name":"inst_DAD8ECA","path":"rooms/rm_characreator/rm_characreator.yy",},
+    {"name":"inst_5AE4F7B9","path":"rooms/rm_characreator/rm_characreator.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -29,14 +30,15 @@
         {"$GMRInstance":"v4","%Name":"inst_73BE14D9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_73BE14D9","objectId":{"name":"obj_head_characreate","path":"objects/obj_head_characreate/obj_head_characreate.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":-5.2162027,"scaleX":1.0,"scaleY":1.0,"x":268.0,"y":148.0,},
         {"$GMRInstance":"v4","%Name":"inst_7222444E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7222444E","objectId":{"name":"obj_knife_characreate","path":"objects/obj_knife_characreate/obj_knife_characreate.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":19.601755,"scaleX":0.35416672,"scaleY":0.35416672,"x":131.5,"y":44.021988,},
         {"$GMRInstance":"v4","%Name":"inst_DAD8ECA","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_DAD8ECA","objectId":{"name":"obj_eyes_characreate","path":"objects/obj_eyes_characreate/obj_eyes_characreate.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":61.075638,"scaleX":1.0,"scaleY":1.0,"x":183.0,"y":224.0,},
-        {"$GMRInstance":"v4","%Name":"inst_FF5178D","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_FF5178D","objectId":{"name":"obj_sealight","path":"objects/obj_sealight/obj_sealight.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-6.0,"y":3.0,},
+        {"$GMRInstance":"v4","%Name":"inst_FF5178D","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_FF5178D","objectId":{"name":"obj_sealight","path":"objects/obj_sealight/obj_sealight.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-6.0,"y":0.8180542,},
+        {"$GMRInstance":"v4","%Name":"inst_5AE4F7B9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5AE4F7B9","objectId":{"name":"obj_noob_characreate","path":"objects/obj_noob_characreate/obj_noob_characreate.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-278.0,"y":91.52199,},
       ],"layers":[],"name":"Back","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4278190080,"depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],
   "name":"rm_characreator",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"_Rooms",
+    "path":"folders/_Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

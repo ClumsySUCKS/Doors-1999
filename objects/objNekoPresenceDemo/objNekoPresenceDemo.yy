@@ -14,7 +14,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"mechanics",
-    "path":"folders/Objects/game/mechanics.yy",
+    "path":"folders/_Objects/game/mechanics.yy",
   },
   "parentObjectId":null,
   "persistent":true,

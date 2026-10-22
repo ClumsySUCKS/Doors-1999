@@ -56,7 +56,7 @@
   "name":"sm_2",
   "parent":{
     "name":"hotelsubrooms",
-    "path":"folders/Rooms/hotelsubrooms.yy",
+    "path":"folders/_Rooms/hotelsubrooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

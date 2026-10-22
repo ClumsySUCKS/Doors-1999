@@ -132,7 +132,7 @@
   "name":"rm_3b",
   "parent":{
     "name":"main",
-    "path":"folders/Rooms/hotelrooms/main.yy",
+    "path":"folders/_Rooms/hotelrooms/main.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

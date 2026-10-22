@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Windows",
-    "path":"folders/Objects/room/Furniture/Windows.yy",
+    "path":"folders/_Objects/room/Furniture/Windows.yy",
   },
   "parentObjectId":null,
   "persistent":false,

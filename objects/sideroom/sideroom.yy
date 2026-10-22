@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Mechanics",
-    "path":"folders/Objects/room/Mechanics.yy",
+    "path":"folders/_Objects/room/Mechanics.yy",
   },
   "parentObjectId":null,
   "persistent":false,

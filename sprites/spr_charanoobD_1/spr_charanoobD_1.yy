@@ -29,7 +29,7 @@
   "origin":1,
   "parent":{
     "name":"complete",
-    "path":"folders/Sprites/players/Po/complete.yy",
+    "path":"folders/_Sprites/players/Po/complete.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

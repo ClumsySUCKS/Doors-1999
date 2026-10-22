@@ -26,7 +26,7 @@
   "origin":1,
   "parent":{
     "name":"complete",
-    "path":"folders/Sprites/players/No/complete.yy",
+    "path":"folders/_Sprites/players/No/complete.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

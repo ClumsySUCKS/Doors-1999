@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Reception",
-    "path":"folders/Objects/room/Furniture/Reception.yy",
+    "path":"folders/_Objects/room/Furniture/Reception.yy",
   },
   "parentObjectId":null,
   "persistent":false,

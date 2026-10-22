@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"playerManagement",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"_Scripts",
+    "path":"folders/_Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

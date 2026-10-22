@@ -19,8 +19,8 @@
   "name":"obj_player",
   "overriddenProperties":[],
   "parent":{
-    "name":"mechanics",
-    "path":"folders/Objects/game/mechanics.yy",
+    "name":"important",
+    "path":"folders/_Objects/game/important.yy",
   },
   "parentObjectId":{
     "name":"obj_shadow_parent",

@@ -8,8 +8,8 @@
   "name":"obj_door_timer",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"_Objects",
+    "path":"folders/_Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

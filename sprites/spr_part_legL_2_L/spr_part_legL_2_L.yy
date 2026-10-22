@@ -12,9 +12,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"66891fc9-90e2-4b7d-85ba-e18b9eb7f6e0","name":"66891fc9-90e2-4b7d-85ba-e18b9eb7f6e0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"4d6f7009-de3f-44ba-9ca9-99c9668670d0","name":"4d6f7009-de3f-44ba-9ca9-99c9668670d0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"0c5320b6-6ce6-44bb-a68e-761525c8d9a9","name":"0c5320b6-6ce6-44bb-a68e-761525c8d9a9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4d6f7009-de3f-44ba-9ca9-99c9668670d0","name":"4d6f7009-de3f-44ba-9ca9-99c9668670d0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"66891fc9-90e2-4b7d-85ba-e18b9eb7f6e0","name":"66891fc9-90e2-4b7d-85ba-e18b9eb7f6e0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"3b3fd9a1-fa33-4eed-a371-7c3be63c29fc","name":"3b3fd9a1-fa33-4eed-a371-7c3be63c29fc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
@@ -29,7 +29,7 @@
   "origin":1,
   "parent":{
     "name":"left",
-    "path":"folders/Sprites/players/Po/left.yy",
+    "path":"folders/_Sprites/players/Po/left.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -72,14 +72,14 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"66891fc9-90e2-4b7d-85ba-e18b9eb7f6e0","path":"sprites/spr_part_legL_2_L/spr_part_legL_2_L.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"94b80f64-9a54-4a14-8e41-17787cc8a1c3","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0c5320b6-6ce6-44bb-a68e-761525c8d9a9","path":"sprites/spr_part_legL_2_L/spr_part_legL_2_L.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"b250409d-b177-433e-bb25-a4e9a1534d7b","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4d6f7009-de3f-44ba-9ca9-99c9668670d0","path":"sprites/spr_part_legL_2_L/spr_part_legL_2_L.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"a4936a6f-ded0-4ec4-bdfa-2ada5fdc8ea7","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0c5320b6-6ce6-44bb-a68e-761525c8d9a9","path":"sprites/spr_part_legL_2_L/spr_part_legL_2_L.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b250409d-b177-433e-bb25-a4e9a1534d7b","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"66891fc9-90e2-4b7d-85ba-e18b9eb7f6e0","path":"sprites/spr_part_legL_2_L/spr_part_legL_2_L.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"94b80f64-9a54-4a14-8e41-17787cc8a1c3","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3b3fd9a1-fa33-4eed-a371-7c3be63c29fc","path":"sprites/spr_part_legL_2_L/spr_part_legL_2_L.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"c29c2fad-60a9-4c6a-9e71-9161c926c4d7","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},

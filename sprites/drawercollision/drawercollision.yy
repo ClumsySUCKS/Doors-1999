@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"collision",
-    "path":"folders/Sprites/collision.yy",
+    "path":"folders/_Sprites/collision.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Limbo Menu",
-    "path":"folders/Objects/intro/Limbo Menu.yy",
+    "path":"folders/_Objects/intro/Limbo Menu.yy",
   },
   "parentObjectId":null,
   "persistent":true,

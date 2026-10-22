@@ -29,7 +29,7 @@
   "origin":1,
   "parent":{
     "name":"down",
-    "path":"folders/Sprites/players/No/down.yy",
+    "path":"folders/_Sprites/players/No/down.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

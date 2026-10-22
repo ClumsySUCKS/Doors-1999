@@ -14,7 +14,7 @@
   "name":"rm_nothing",
   "parent":{
     "name":"hotelrooms",
-    "path":"folders/Rooms/hotelrooms.yy",
+    "path":"folders/_Rooms/hotelrooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -58,7 +58,7 @@
   "origin":0,
   "parent":{
     "name":"Limbo Menu",
-    "path":"folders/Sprites/intro/Limbo Menu.yy",
+    "path":"folders/_Sprites/intro/Limbo Menu.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

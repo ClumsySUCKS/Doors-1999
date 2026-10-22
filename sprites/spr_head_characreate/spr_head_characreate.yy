@@ -26,7 +26,7 @@
   "origin":1,
   "parent":{
     "name":"Sea Menu",
-    "path":"folders/Sprites/intro/Sea Menu.yy",
+    "path":"folders/_Sprites/intro/Sea Menu.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

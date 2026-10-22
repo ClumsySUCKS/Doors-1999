@@ -9,8 +9,8 @@
   "name":"obj_bubbletransition",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Sea Menu",
+    "path":"folders/_Objects/intro/Sea Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

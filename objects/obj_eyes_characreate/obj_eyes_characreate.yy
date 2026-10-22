@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Sea Menu",
-    "path":"folders/Objects/intro/Sea Menu.yy",
+    "path":"folders/_Objects/intro/Sea Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

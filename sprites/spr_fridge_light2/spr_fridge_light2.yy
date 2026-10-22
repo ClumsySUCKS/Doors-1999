@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"furniture",
-    "path":"folders/Sprites/furniture.yy",
+    "path":"folders/_Sprites/furniture.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

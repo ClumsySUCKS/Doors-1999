@@ -28,7 +28,7 @@
   "origin":0,
   "parent":{
     "name":"rooms",
-    "path":"folders/Sprites/rooms.yy",
+    "path":"folders/_Sprites/rooms.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

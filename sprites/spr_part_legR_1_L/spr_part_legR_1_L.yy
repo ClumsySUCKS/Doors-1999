@@ -27,7 +27,7 @@
   "origin":1,
   "parent":{
     "name":"left",
-    "path":"folders/Sprites/players/Av/left.yy",
+    "path":"folders/_Sprites/players/Av/left.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -102,8 +102,8 @@
   ],
   "name":"hotelroomkit",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"_Rooms",
+    "path":"folders/_Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"mechanics",
-    "path":"folders/Sprites/mechanics.yy",
+    "path":"folders/_Sprites/mechanics.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
