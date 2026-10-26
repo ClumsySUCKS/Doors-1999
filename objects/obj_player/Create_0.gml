@@ -33,7 +33,8 @@ tx = x
 ty = y
 facing = "D"
 pos_buffer = [{x:x, y:y, t:current_time}]
-outfit = {legL: 0, legR:0,chest:0,armL:0,armR:0,head:0,mouth:0,eyesL:0,eyesR:0,hip_acc:-1,face_acc:-1,head_acc:-1,skin:array_create(12,0),cloth:array_create(12,0),outline:0}
+outfit = variable_clone(global.defcreate)
+show_debug_message(outfit)
 part_sprite("chest", outfit.chest, "D")
 var getName = array_get_index(global.limbnames,"chest")
 var getPosSkin = outfit.skin[getName]

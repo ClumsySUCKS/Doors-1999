@@ -41,6 +41,18 @@ function drawspriteplayer(_outfit,_facing,_x,_y,_frame,_walking = false) {
 var getPosOut = outcol_give(_outfit.outline)
 shader_set(sh_playercolours)
 shader_set_uniform_f(global.charaline,colour_get_red(getPosOut) / 255,colour_get_green(getPosOut) / 255,colour_get_blue(getPosOut) / 255)
+shader_set_uniform_f(global.charatint,1,1,1)
+shader_set_uniform_f(global.charasilo,1)
+for (var _j = 0; _j < array_length(_order); _j++) {
+	var _s = part_sprite(_order[_j],_outfit[$ _order[_j]],_facing)
+	if _s != -1 {
+		var _sf = _frame
+		if _order[_j] == "head_acc" && !_walking {_sf = floor(current_time * 0.006) mod sprite_get_number(_s)}
+		draw_sprite(_s,_sf,_x - 1,_y)
+		draw_sprite(_s,_sf,_x + 1,_y)
+		draw_sprite(_s,_sf,_x,_y - 1)
+		draw_sprite(_s,_sf,_x,_y + 1)}}
+shader_set_uniform_f(global.charasilo,0)
 for (var _i = 0; _i < array_length(_order); _i++) {
 	var _sprite = part_sprite(_order[_i],_outfit[$ _order[_i]],_facing)
 	if _sprite != -1 {
@@ -60,6 +72,18 @@ function drawspriteplayerbig(_outfit,_facing,_x,_y,_frame,_walking = true) {
 var getPosOut = outcol_give(_outfit.outline)
 shader_set(sh_playercolours)
 shader_set_uniform_f(global.charaline,colour_get_red(getPosOut) / 255,colour_get_green(getPosOut) / 255,colour_get_blue(getPosOut) / 255)
+shader_set_uniform_f(global.charatint,1,1,1)
+shader_set_uniform_f(global.charasilo,1)
+for (var _j = 0; _j < array_length(_order); _j++) {
+	var _s = part_sprite(_order[_j],_outfit[$ _order[_j]],_facing)
+	if _s != -1 {
+		var _sf = _frame
+		if _order[_j] == "head_acc" && !_walking {_sf = floor(current_time * 0.006) mod sprite_get_number(_s)}
+		draw_sprite_ext(_s,_sf,_x - 9,_y,9,9,0,c_white,1)
+		draw_sprite_ext(_s,_sf,_x + 9,_y,9,9,0,c_white,1)
+		draw_sprite_ext(_s,_sf,_x,_y - 9,9,9,0,c_white,1)
+		draw_sprite_ext(_s,_sf,_x,_y + 9,9,9,0,c_white,1)}}
+shader_set_uniform_f(global.charasilo,0)
 for (var _i = 0; _i < array_length(_order); _i++) {
 	var _sprite = part_sprite(_order[_i],_outfit[$ _order[_i]],_facing)	
 	if _sprite != -1 {

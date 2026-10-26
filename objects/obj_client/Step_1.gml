@@ -51,7 +51,6 @@ while(net_packet_receive()){
 			playerList[0].character = _inst
 			playerList[0].lobbyMemberID = lobbyMemberID
 			character = _inst
-			send_my_outfit()
 			break
 
 		case NETWORK_PACKETS.SERVER_PLAYER_INPUT:

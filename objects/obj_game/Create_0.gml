@@ -18,11 +18,12 @@ global.partorder = {D: ["chest","legL","legR","hip_acc","armL","armR","head","mo
 global.chardef = [{legL:0, legR:0, hip_acc:-1,armL:0,armR:0,chest:0,head:0,mouth:-1,eyesL:0,eyesR:0,face_acc:-1,head_acc:-1,skin:[2,2,1,0,0,0,0,1,1,0,0,0],cloth:array_create(12,0),outline:1},
 {legL:1, legR:1, hip_acc:2,armL:1,armR:1,chest:1,head:1,mouth:0,eyesL:-1,eyesR:-1,face_acc:-1,head_acc:-1,skin:[0,0,0,3,3,8,0,0,0,0,0,0],cloth:[7,7,7,7,7,6,0,0,0,5,0,0],outline:6},
  {legL:2,legR:2,hip_acc:-1,armL:2,armR:2,chest:2,head:2,mouth:1,eyesL:1,eyesR:1,face_acc:-1,head_acc:0,skin:[12,12,13,12,12,12,5,14,14,0,0,9],cloth:[11,11,12,0,0,0,14,5,5,0,0,10],outline:12},
- {legL:3,legR:3,hip_acc:-1,armL:3,armR:3,chest:3,head:3,mouth:-1,eyesL:2,eyesR:2,face_acc:-1,head_acc:-1,skin:[16,19,19,19,16,19,0,14,14,0,0,0],cloth:[17,18,16,17,18,16,0,5,5,0,0,0]}
+ {legL:3,legR:3,hip_acc:-1,armL:3,armR:3,chest:3,head:3,mouth:-1,eyesL:2,eyesR:2,face_acc:-1,head_acc:-1,skin:[16,19,19,19,16,19,0,14,14,0,0,0],cloth:[17,18,16,17,18,16,0,5,5,0,0,0],outline:15}]
 global.limbnames = ["legL","legR","chest","armL","armR","head","mouth","eyesL","eyesR","hip_acc","face_acc","head_acc"]
 global.limbcount = [3,3,3,3,3,3,1,2,2,1,0,1]
 global.charatint = shader_get_uniform(sh_playercolours, "u_tint")
 global.charaline = shader_get_uniform(sh_playercolours,"u_outline")
 global.charaskin = shader_get_uniform(sh_playercolours, "u_skin")
 global.characloth = shader_get_uniform(sh_playercolours, "u_cloth")
-
+global.charasilo = shader_get_uniform(sh_playercolours, "u_silo")
+global.defcreate = variable_clone(global.chardef[0])

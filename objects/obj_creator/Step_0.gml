@@ -106,5 +106,4 @@ else {
 				outfit[$ sel] = v break
 				case 1: outfit.skin[sel_pos] = grider break
 				case 2: outfit.cloth[sel_pos] = grider break}}}}
-		
-	
+global.defcreate = outfit
