@@ -6,7 +6,7 @@ global.playerleftsprites = [spr_charanoobL,spr_chara_av_L]
 global.playerleftstandsprites = [spr_charanoob_standL,spr_chara_av_standL]
 global.playerrightsprites = [spr_charanoobR,spr_chara_av_R]
 global.playerrightstandsprites = [spr_charanoob_standR,spr_chara_av_standR]
-var c = #EFD600            //1      //2   //3     //4     //5     //6     //7     //8      //9    //10    //11     //12   //13    //14     //15   //16    //17    //18    //19
+var c = #EFD600         //1      //2   //3     //4     //5     //6     //7     //8      //9    //10    //11     //12   //13    //14     //15   //16    //17    //18    //19
 global.skin_pal = [c,#002A6A,#50AD00,#EED9BF,#67A4E0,#000000,#2D2D2D,#560000,#750000,#F26522,#BA4C1A,#191919,#1C1107,#3D240F,#FFFFFF,#00A99D,#00AEF0,#0072BC,#ABA000,#FFF200]
 					    //1      //2    //3    //4     //5     //6     //7     //8      //9     //10   //11    //12   //13    //14      //15   //16    //17    //18    //19
 global.cloth_pal = [c,#002A6A,#50AD00,#EED9BF,#67A4E0,#000000,#2D2D2D,#560000,#750000,#F26522,#BA4C1A,#191919,#1C1107,#3D240F,#FFFFFF,#00A99D,#00AEF0,#0072BC,#ABA000,#FFF200]
