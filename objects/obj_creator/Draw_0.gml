@@ -42,6 +42,12 @@ if isgrid {
 		draw_set_colour(c_white)
 		draw_set_halign(fa_left)
 		draw_set_valign(fa_top)}
+var j = draw_get_font()
+draw_set_font(gameFont)
+draw_text(33,10,"Mode:")
+draw_text(33,30,modetext[mode])
+draw_set_font(j)
+
 
 
 		

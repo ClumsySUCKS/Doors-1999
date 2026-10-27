@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":1,
   "parent":{
-    "name":"complete",
-    "path":"folders/_Sprites/players/Po/complete.yy",
+    "name":"down",
+    "path":"folders/_Sprites/players/Po/down.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
