@@ -1,1 +1,1 @@
-audio_play_sound(snd_introbounce,1,false)
+audio_play_sound(snd_introbounce,1,false,4)

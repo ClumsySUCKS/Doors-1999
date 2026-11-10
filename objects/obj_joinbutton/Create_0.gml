@@ -13,3 +13,4 @@ selectAction = function () {
 		//lobby_list.lobby_list[0] = lobby_item
 		//lobby_list.alarm[0] = 1
 }
+image_speed = 1
