@@ -24,5 +24,7 @@ spritechange = 0
 iswalking = false
 alarm[0] = 240
 con = 0
+icons = [spr_characreatechar,spr_characreatelegL,spr_characreatelegR,spr_characreatechest,spr_characreatearmL,spr_characreatearmR,spr_characreatehead,spr_characreatemouth,spr_characreateeyesL,spr_characreateeyesR,spr_characreatehip_acc,spr_characreateface_acc,spr_characreatehead_acc]
 image_speed = 0
 image_index = 1
+o = 0.8

@@ -80,8 +80,7 @@ if mode == 2 {
 			else {outfit.cloth[sel_pos]++}}
 		if col == 2 {isgrid = true}
 }}}}
-if global.godown {godo = godo - 15}
-else {
+else if isgrid {
 		if row > 0 {sel_pos = array_get_index(global.limbnames,sel)}
 		if row == 0 {count = array_length(global.chardef)}
 		else {
@@ -116,9 +115,10 @@ else {
 				outfit[$ sel] = v break
 				case 1: outfit.skin[sel_pos] = grider break
 				case 2: outfit.cloth[sel_pos] = grider break}}}}
+if global.godown {godo = godo - 15}
 if keyboard_check_pressed(ord("C")) {
 	iswalking = !iswalking
-	if !iswalking {image_speed = 0.06}
+	if iswalking {image_speed = 0.06}
 	else {image_speed = 0 image_index = 1}}
 global.defcreate = outfit
 facing = dir[con]
