@@ -1,0 +1,1 @@
+global.rom = room

@@ -1,4 +1,4 @@
-audio_play_sound(snd_placeholdotd,3,true)
+if !audio_is_playing(snd_placeholdotd) {audio_play_sound(snd_placeholdotd,3,true)}
 sndeffectmuff = audio_effect_create(AudioEffectType.LPF2)
 sndeffectre = audio_effect_create(AudioEffectType.Reverb1)
 sndeffectmuff.cutoff = 600

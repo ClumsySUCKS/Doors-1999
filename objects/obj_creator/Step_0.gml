@@ -1,4 +1,8 @@
-if !isgrid {
+if !isgrid && !global.godown {
+if keyboard_check_pressed(ord("F")) {
+	global.godown = true
+	alarm[1] = 48}
+	
 if keyboard_check_pressed(ord("D")) {
 	if col == 2 {col = 0 show_debug_message("row " + string(row) + " col " + string(col))}
 	else {
@@ -16,8 +20,13 @@ if row > 0 {sel = global.limbnames[row - 1]}
 if keyboard_check_pressed(ord("Q")) {
 	if mode == 2 {mode = 0}
 	else {mode++}}
-	
-	
+if keyboard_check_pressed(ord("Z")) {
+	if con == 0 {con = 3}
+	else {con--}
+	}
+if keyboard_check_pressed(ord("X")) {
+	if con == 3 {con = 0}
+	else {con++}}
 if keyboard_check_pressed(ord("E")) {	
 if mode == 0 {
     if row > 0 
@@ -71,6 +80,7 @@ if mode == 2 {
 			else {outfit.cloth[sel_pos]++}}
 		if col == 2 {isgrid = true}
 }}}}
+if global.godown {godo = godo - 15}
 else {
 		if row > 0 {sel_pos = array_get_index(global.limbnames,sel)}
 		if row == 0 {count = array_length(global.chardef)}
@@ -106,4 +116,9 @@ else {
 				outfit[$ sel] = v break
 				case 1: outfit.skin[sel_pos] = grider break
 				case 2: outfit.cloth[sel_pos] = grider break}}}}
+if keyboard_check_pressed(ord("C")) {
+	iswalking = !iswalking
+	if !iswalking {image_speed = 0.06}
+	else {image_speed = 0 image_index = 1}}
 global.defcreate = outfit
+facing = dir[con]

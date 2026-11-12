@@ -28,3 +28,4 @@ global.charaskin = shader_get_uniform(sh_playercolours, "u_skin")
 global.characloth = shader_get_uniform(sh_playercolours, "u_cloth")
 global.charasilo = shader_get_uniform(sh_playercolours, "u_silo")
 global.defcreate = variable_clone(global.chardef[0])
+global.rom = undefined

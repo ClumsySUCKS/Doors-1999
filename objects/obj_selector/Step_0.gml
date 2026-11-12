@@ -45,6 +45,12 @@ audio_play_sound(snd_spot_change_menu,4,false)
 if spot > 2 {
 	spot = 0}
 }}
+if goo == true {
+	with obj_spawn_title {y = y + 15}
+	with obj_joinbutton {y = y + 15}
+	with obj_hostbutton {y = y + 15}
+	with obj_skinbutton {y = y + 15}
+	with obj_blue_sparkles_intro {y = y + 15}}
 if go == true {
 	with obj_spawn_title {y = y - 15}
 	with obj_joinbutton {y = y - 15}
