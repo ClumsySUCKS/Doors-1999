@@ -78,8 +78,11 @@ for (var _j = 0; _j < array_length(_order); _j++) {
 	var _s = part_sprite(_order[_j],_outfit[$ _order[_j]],_facing)
 	if _s != -1 {
 		var _sf = _frame
+		var _pj = array_get_index(global.limbnames,_order[_j])
+		var _ox = _outfit.offx[_j] * 9
+		var _oy = _outfit.offy[_j] * 9	
 		if _order[_j] == "head_acc" && !_walking {_sf = floor(current_time * 0.006) mod sprite_get_number(_s)}
-		draw_sprite_ext(_s,_sf,_x - 9,_y,9,9,0,c_white,1)
+		draw_sprite_ext(_s,_sf,_x + _ox - 9,_y + _oy,9,9,0,c_white,1)
 		draw_sprite_ext(_s,_sf,_x + 9,_y,9,9,0,c_white,1)
 		draw_sprite_ext(_s,_sf,_x,_y - 9,9,9,0,c_white,1)
 		draw_sprite_ext(_s,_sf,_x,_y + 9,9,9,0,c_white,1)}}
