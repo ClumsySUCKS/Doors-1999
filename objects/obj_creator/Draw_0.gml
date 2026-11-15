@@ -11,12 +11,22 @@ for (var r = 0;r <= array_length(global.limbnames); r++) {
 	draw_rectangle(colx[col] - 2, (hy + 5) - godo, colx[col] + 18, (hy + 25) - godo, true)
 	draw_set_colour(c_white)
 if isgrid {
-	draw_set_halign(fa_center)
+	var page = grider div box
+	var first = page * box
+	var last = min(first + box,count)
+	pages = ceil(count / box)
+	if keyboard_check_pressed(ord("P")) {
+	show_debug_message("perpage " + string(box) + " page " + string(page) + " first " + string(first) + " last " + string(last) + " pages " + string(pages))}
+	draw_set_halign(fa_center) 
 	draw_set_valign(fa_middle)
+	draw_set_font(gameFont)	
+	draw_text(gx + 53,gy - 10,"Page:" + string(page + 1) + " of " + string(pages))
+
 	
-	for (var _i = 0; _i < count; _i++) {
-		var bx = gx + (_i mod boxer) * (boxw + gap)
-		var by = gy + (_i div boxer) * (boxl + gap)
+	for (var _i = first; _i < last; _i++) {
+		var li = _i - first
+		var bx = gx + (li mod boxer) * (boxw + gap)
+		var by = gy + (li div boxer) * (boxl + gap)
 		
 		if row > 0 && mode == 1 {draw_set_colour(global.skin_pal[_i])}
 		else if row > 0 && mode == 2 {draw_set_colour(global.cloth_pal[_i])}
@@ -32,9 +42,9 @@ if isgrid {
 			if v == -1 {label = "none"}
 			draw_text(bx + boxw / 2, (by + boxl / 2) - godo,label)}
 			draw_rectangle(bx,by - godo,bx+boxw,(by+boxl) - godo,true)}
-			
-		var cx = gx + (grider mod boxer) * (boxw + gap)
-		var cy = gy + (grider div boxer) * (boxl + gap)
+		var c = grider - first
+		var cx = gx + (c mod boxer) * (boxw + gap)
+		var cy = gy + (c div boxer) * (boxl + gap)
 		draw_set_colour(c_yellow)
 		draw_rectangle(cx - 2, (cy - 2) - godo, cx + boxw + 2, (cy + boxl + 2) - godo, true)
 		draw_set_colour(c_white)

@@ -90,11 +90,13 @@ for (var _i = 0; _i < array_length(_order); _i++) {
 	var getNameS = array_get_index(global.limbnames, _order[_i])
 	var getPosSkin = _outfit.skin[getNameS]
 	var getPosCloth = _outfit.cloth[getNameS]
+	var getOffX = _outfit.offx[getNameS]
+	var getOffY= _outfit.offy[getNameS]
 	var giveSkin = skincol_give(getPosSkin)
 	var giveCloth = clothcol_give(getPosCloth)
 	shader_set_uniform_f(global.charaskin,colour_get_red(giveSkin) / 255,colour_get_green(giveSkin) / 255,colour_get_blue(giveSkin) / 255)
 	shader_set_uniform_f(global.characloth,colour_get_red(giveCloth) / 255,colour_get_green(giveCloth) / 255,colour_get_blue(giveCloth) / 255)
 	var _f = _frame
 	if _order[_i] == "head_acc" && !_walking {_f = floor(current_time * 0.006) mod sprite_get_number(_sprite)}
-	draw_sprite_ext(_sprite,_f, _x,_y,9,9,0,c_white,1)}}
+	draw_sprite_ext(_sprite,_f, (_x + getOffX) * 9,(_y + getOffY) * 9,9,9,0,c_white,1)}}
 shader_reset()}
