@@ -40,4 +40,3 @@ var getName = array_get_index(global.limbnames,"chest")
 var getPosSkin = outfit.skin[getName]
 skincol_give(getPosSkin)
 
-

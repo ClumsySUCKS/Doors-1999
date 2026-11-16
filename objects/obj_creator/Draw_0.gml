@@ -2,9 +2,11 @@ drawspriteplayerbig(outfit,facing,80,80 - godo,image_index,iswalking)
 for (var r = 0;r <= array_length(global.limbnames); r++) {
 	var ry = xtop + r * spacing
 	draw_sprite(icons[r],0,colx[2] + 30,ry + 9 - godo)
+	if mode != 3 {
 	draw_sprite(spr_charrowL,0,colx[0], ry + 9 - godo)
 	draw_sprite(spr_charrowR,0,colx[1], ry + 9 - godo)
-	if !(r == 0 && mode > 0) {draw_sprite(spr_gridview,0,colx[2],ry + 23    - godo)}}
+	if !(r == 0 && mode > 0) {draw_sprite(spr_gridview,0,colx[2],ry + 23 - godo)}}
+	else {draw_sprite(spr_gridview,0,colx[0],ry+23-godo)}}
 	
 	var hy = xtop + row * spacing
 	draw_set_colour(c_yellow)

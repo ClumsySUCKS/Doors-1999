@@ -1,13 +1,13 @@
-if !isgrid && !global.godown {
+if !isgrid && !global.godown && !ismove {
 if keyboard_check_pressed(ord("F")) {
 	global.godown = true
 	alarm[1] = 48}
 	
-if keyboard_check_pressed(ord("D")) {
+if keyboard_check_pressed(ord("D")) && mode != 3 {
 	if col == 2 {col = 0 show_debug_message("row " + string(row) + " col " + string(col))}
 	else {
 	col++ show_debug_message("row " + string(row) + " col " + string(col))}}
-if keyboard_check_pressed(ord("A")) {
+if keyboard_check_pressed(ord("A")) && mode != 3 {
 if col == 0 {col = 2 show_debug_message("row " + string(row) + " col " + string(col))}
 else {col-- show_debug_message("row " + string(row) + " col " + string(col))}}
 if keyboard_check_pressed(ord("W")) {
@@ -18,8 +18,12 @@ if row == array_length(global.limbnames){row = 0 show_debug_message("row " + str
 else {row++ show_debug_message("row " + string(row) + " col " + string(col))}}
 if row > 0 {sel = global.limbnames[row - 1]}
 if keyboard_check_pressed(ord("Q")) {
-	if mode == 2 {mode = 0}
+	if mode == 3 {mode = 0 col = 0 }
 	else {mode++}}
+if keyboard_check_pressed(vk_tab) {
+	if mode == 0 {mode = 3}
+	else {mode--}}
+if mode == 3 {col = 0}
 if keyboard_check_pressed(ord("Z")) {
 	if con == 0 {con = 3}
 	else {con--}
@@ -79,7 +83,12 @@ if mode == 2 {
 			if outfit.cloth[sel_pos] == array_length(global.cloth_pal) - 1 {outfit.cloth[sel_pos] = 0}
 			else {outfit.cloth[sel_pos]++}}
 		if col == 2 {isgrid = true}
-}}}}
+}}
+if mode == 3 {
+	 if row > 0 {sel = global.limbnames[row - 1]
+		 sel_pos = array_get_index(global.limbnames,sel)
+		 if col == 0 {ismove = true}}}
+		 }}
 else if isgrid {
 		if row > 0 {sel_pos = array_get_index(global.limbnames,sel)}
 		if row == 0 {count = array_length(global.chardef)}
@@ -115,6 +124,17 @@ else if isgrid {
 				outfit[$ sel] = v break
 				case 1: outfit.skin[sel_pos] = grider break
 				case 2: outfit.cloth[sel_pos] = grider break}}}}
+else if ismove {
+	if keyboard_check_pressed(ord("A")) {
+		outfit.offx[sel_pos] = clamp(outfit.offx[sel_pos]--,-30,30) show_debug_message(string(outfit.offx[sel_pos]))}
+	if keyboard_check_pressed(ord("D")) {
+		outfit.offx[sel_pos] = clamp(outfit.offx[sel_pos]++,-30,30) show_debug_message(string(outfit.offx[sel_pos]))}
+	if keyboard_check_pressed(ord("W")) {
+		outfit.offy[sel_pos] = clamp(outfit.offy[sel_pos]--,-30,30) show_debug_message(string(outfit.offy[sel_pos]))}
+	if keyboard_check_pressed(ord("S")) {
+		outfit.offy[sel_pos] = clamp(outfit.offy[sel_pos]++,-30,30) show_debug_message(string(outfit.offy[sel_pos]))}
+	if keyboard_check_pressed(ord("F")) {
+	ismove = false}}
 if global.godown {godo = godo - 15}
 if keyboard_check_pressed(ord("C")) {
 	iswalking = !iswalking
